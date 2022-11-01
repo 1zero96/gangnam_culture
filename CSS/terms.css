@@ -1,0 +1,101 @@
+/* main */
+
+#main {
+  width: 1194px;
+  margin: auto;
+  margin-bottom: 100px;
+}
+
+.menu_title {
+  clear: both;
+  height: 50px;
+  margin-bottom: 60px;
+}
+.menu_txt {
+  width: 1050px;
+  margin: auto;
+  padding-bottom: 20px;
+  font-size: 26px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.box1 {
+  width: 990px;
+  height: 341px;
+  overflow: auto;
+  border: 2px solid #dddddd;
+  border-top: 2px solid #006ab6;
+  padding: 0 0.5em;
+  padding-left: 70px;
+  padding-right: 70px;
+  margin: 14px auto;
+}
+.check_img > img {
+  margin-right: 10px;
+}
+.check_img {
+  float: left;
+  margin-left: 102px;
+}
+
+#main > h2 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.check {
+  width: 100%;
+  height: 140px;
+  display: flex;
+  justify-content: center;
+}
+
+.check_txt1 {
+  font-size: 18px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+input.checkbox {
+  width: 27px;
+  height: 27px;
+  margin-left: 15px;
+  accent-color: #006ab6;
+}
+
+#checkBtn1 {
+  margin-top: 27px;
+}
+
+#checkBtn2 {
+  margin-top: 27px;
+}
+
+.check_all {
+  display: flex;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 36px;
+  margin-top: 30px;
+}
+
+#agree_all {
+  margin-top: 3px;
+}
+
+.check_all input {
+  width: 27px;
+  height: 27px;
+  margin: -1px 15px;
+}
+
+.next_button {
+  text-align: center;
+}
+
+.next_button img {
+  display: block;
+  margin: 0px auto;
+  margin-bottom: 65px;
+}

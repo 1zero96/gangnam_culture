@@ -1,0 +1,188 @@
+/* header 헤더 영역 */
+
+#header {
+  width: 100%;
+  height: 253px;
+  border-top: 1px solid #dddddd;
+}
+
+/* topmenu 탑메뉴 */
+
+.top_menu_wrap {
+  height: 39px;
+}
+
+.top_menu {
+  width: 1194px;
+  height: 39px;
+  margin: auto;
+}
+
+/* topmenu sns button 탑메뉴 sns버튼 */
+
+.top_menu_list {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.top_menu_sns {
+  position: relative;
+}
+
+.sns_item_wrap {
+  display: flex;
+  position: absolute;
+  right: 0px;
+  margin-top: 15px;
+}
+
+.sns_item_wrap li {
+  width: 44px;
+  height: 44px;
+  margin-left: 3px;
+}
+
+.signup_item {
+  width: 102px;
+  height: 38px;
+  text-align: center;
+  padding-top: 7.5px;
+}
+
+.login_item::after {
+  content: "l";
+  position: relative;
+  left: 19px;
+  top: 2px;
+  font-size: 19px;
+  font-weight: 300;
+  color: #dddddd;
+}
+
+.login_item {
+  width: 102px;
+  height: 38px;
+  text-align: center;
+  padding-top: 5.5px;
+}
+
+/* logo 로고영역 */
+
+.logo_wrap {
+  height: 98px;
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  margin: auto;
+}
+
+.header_logo {
+  margin: auto;
+  text-align: center;
+  padding-top: 30px;
+  box-sizing: border-box;
+}
+
+#logo {
+  width: 1194px;
+  height: 98px;
+  margin: auto;
+}
+
+/* #menu .gnb 메뉴영역 */
+
+.gnb {
+  height: 59px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.gnb_border {
+  border-bottom: 2px solid #006fbb;
+}
+
+/* #menu1 .sub:hover li {
+  background: #e3f5ff;
+} */
+
+.menu_br {
+  font-size: 18px;
+}
+
+.gnb h2 {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+}
+.gnb > ul {
+  width: 1198px;
+  height: 40px;
+  margin: auto;
+}
+.gnb > ul > li {
+  font-size: 18px;
+  font-family: "나눔고딕";
+  float: left;
+  width: 14.28%;
+  height: 59px;
+  text-align: center;
+  position: relative;
+  z-index: 5;
+}
+.gnb > ul > li > a {
+  display: block;
+  height: 40px;
+  padding-top: 15px;
+}
+.gnb ul ul {
+  padding: 20px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 59px;
+  /* background: #aaa; */
+  display: none;
+  line-height: 200%;
+  font-size: 16px;
+}
+.nav_bg {
+  position: relative;
+  width: 100%;
+  height: 235px;
+  background: white;
+  display: none;
+  border-bottom: 2px solid #dddddd;
+  z-index: 4;
+}
+
+.sub_bdg {
+  background: #e3f5ff;
+}
+
+.menu_pa {
+  line-height: 200%;
+}
+
+.menu > li > ul {
+  height: 233px;
+}
+
+.menu_br {
+  font-size: 18px;
+}
+
+.menu_bar {
+  position: absolute;
+  width: 100%;
+  height: 54px;
+  background: linear-gradient(45deg, #1a1761, #0072bd);
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  z-index: 0;
+}
+.mbr_txt {
+  width: 1194px;
+  text-align: right;
+  margin: auto;
+  color: white;
+  padding: 17px;
+  box-sizing: border-box;
+}
