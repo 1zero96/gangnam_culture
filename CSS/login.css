@@ -1,0 +1,161 @@
+/* main page -------------- */
+
+#main {
+  height: 810px;
+  width: 1194px;
+  min-width: 1194px;
+  margin: 0 auto;
+}
+
+.menu_title {
+  width: 1194px;
+  height: 190px;
+  margin: 0 auto;
+}
+
+.login_box_wrap {
+  height: 423px;
+}
+
+.login_box {
+  margin: auto;
+  width: 780px;
+  height: 416px;
+  border: 3px solid #0d72ba;
+}
+.login_box_title {
+  height: 105px;
+}
+
+.login_box_img1_wrap {
+  display: block;
+  width: 642px;
+  height: 103px;
+  margin: 0 auto;
+  text-align: center;
+  border-bottom: 1px solid #dddddd;
+}
+.login_box_img1 {
+  margin: auto;
+  padding-top: 36px;
+}
+.login_box_bottom {
+  height: 311px;
+}
+.login_box_img2_wrap > h2 {
+  margin: auto;
+  margin-top: 35px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+.login_box_img2_wrap {
+  width: 387px;
+  float: left;
+  position: relative;
+  z-index: 1;
+}
+.login_box_img3_wrap {
+  width: 387px;
+  float: right;
+  position: relative;
+  z-index: 1;
+}
+.login_box_img3_wrap > h2 {
+  margin-top: 35px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+.login_box_img3_wrap > p {
+  font-size: 12px;
+  letter-spacing: -1px;
+  text-align: center;
+  margin-top: 10px;
+  color: #696666;
+  margin-bottom: 32px;
+}
+.login_button1 {
+  width: 306px;
+  height: 50px;
+}
+
+.login_box_footer {
+  position: relative;
+  top: 11px;
+  left: 85px;
+  z-index: 0;
+}
+
+.login_box_txt1 {
+  margin-right: 30px;
+}
+
+.login_box_txt1::after {
+  content: "ㅣ";
+  position: absolute;
+  right: 297px;
+  color: #c5c5c5c5;
+}
+
+.formbox {
+  border: none;
+  margin-top: 30px;
+}
+.label_id {
+  margin-left: 50px;
+  margin-right: 37px;
+}
+.label_pwd {
+  margin-left: 50px;
+  margin-right: 21px;
+}
+.input_id {
+  margin-bottom: 18px;
+  border-radius: 2px;
+  border: 1px solid gray;
+  width: 212px;
+  height: 35px;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+.input_id:focus {
+  outline: 1px solid #006fbb;
+  box-sizing: border-box;
+}
+
+.input_pwd {
+  border-radius: 2px;
+  border: 1px solid gray;
+  width: 212px;
+  height: 35px;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+
+.input_pwd:focus {
+  outline: 1px solid #006fbb;
+  box-sizing: border-box;
+}
+
+.input_login {
+  text-align: center;
+  margin: auto;
+  margin-left: 13px;
+  margin-top: 25px;
+}
+.sns_group {
+  margin: auto;
+  width: 306px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: space-around;
+  margin-right: 45px;
+}
+.input_login2 {
+  margin-top: 47px;
+  margin-left: 35px;
+}

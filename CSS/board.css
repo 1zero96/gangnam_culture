@@ -1,0 +1,374 @@
+/* 기본설정 */
+
+.txtc {
+  text-align: center;
+}
+.txtl {
+  text-align: left;
+}
+.txtr {
+  text-align: right;
+}
+
+/* main page -------------- */
+
+#main {
+  width: 1194px;
+  min-width: 1194px;
+  margin: 0 auto;
+}
+
+.menu_txt {
+  height: 100px;
+  margin: 0 auto;
+  padding-top: 33px;
+  text-align: left;
+  /* padding-bottom: 20px; */
+  font-size: 26px;
+  border-bottom: 1px solid #dddddd;
+  box-sizing: border-box;
+}
+
+/* TabMenu */
+ul.tabs {
+  margin: 10px;
+  padding: 0px;
+}
+ul.tabs li {
+  display: inline-block;
+  background: #eeeeee;
+  color: black;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 0.5em;
+}
+ul.tabs li.on {
+  background: #006fbb;
+  font-weight: bold;
+  color: white;
+  transition: 0.4s;
+  border-radius: 0.5em;
+}
+
+.tab-content {
+  display: none;
+  /* background: #e0e0e0; */
+  padding: 12px;
+}
+
+.tab-content.on {
+  display: inherit;
+}
+
+/* accordion Menu */
+
+.accordion {
+  background-color: #fff;
+  cursor: pointer;
+  padding: 15px;
+  text-align: left;
+  font-size: 16px;
+  width: 750px;
+  position: relative;
+  font-weight: bold;
+}
+
+/* 아코디언 메뉴에 배경색 넣을때 사용
+.accordion.active:hover {
+  background-color: #dddddd;
+} 
+*/
+
+.accordion:after {
+  content: "\002B";
+  font-weight: 100;
+  position: absolute;
+  font-size: 30px;
+  color: #777777;
+  right: 0;
+  top: -0px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.panel {
+  margin: 0 20px;
+  padding: 0 16px;
+  background-color: #dddddd;
+  max-height: 0;
+  transition: max-height 0.2s ease-out;
+  border-bottom: 1px solid #eee;
+  overflow: hidden;
+  width: 730px;
+}
+
+.div_wrap {
+  width: 1194px;
+  display: flex;
+  justify-content: center;
+}
+
+.total {
+  margin: 15px auto 15px;
+  display: inline-block;
+}
+
+#viewCnt {
+  border: 1px solid black;
+  padding: 8px;
+}
+.viewCntBtn {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: center;
+}
+
+.board_control {
+  float: right;
+  margin-top: 7px;
+}
+
+.color-main {
+  color: #0d4590;
+  font-weight: bold;
+}
+
+.aside_wrap {
+  width: 200px;
+  height: 100%;
+  margin-right: 30px;
+}
+.content_wrap {
+  width: 800px;
+  height: 100%;
+}
+
+.aside_head {
+  width: 200px;
+  height: 100px;
+  background: #0d4590;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  border-bottom: 2px solid white;
+}
+
+.aside_head > h2 {
+  font-size: 22px;
+  display: block;
+  padding-top: 35px;
+  box-sizing: border-box;
+}
+
+.aside_menu {
+  font-size: 17px;
+}
+
+.aside_menu li {
+  border-bottom: 1px solid #dddddd;
+}
+
+.aside_menu a {
+  display: block;
+  padding-top: 9.5px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  box-sizing: border-box;
+  height: 40px;
+}
+
+.board_List a:hover {
+  color: #006fbb;
+}
+
+#board1 {
+  background: #0d4590;
+  color: #fff;
+}
+
+.aside_menu li a:hover {
+  background: #f4f4f4;
+}
+
+.board_List {
+  width: 800px;
+  border-top: 2px solid #2162af;
+}
+
+.board_List th {
+  padding: 0.7813rem;
+  border-bottom: 1px solid #808285;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.board_List td {
+  border-bottom: 1px solid #d7d7d7;
+  max-width: 100px;
+  max-height: 25px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 15px 20px;
+}
+
+.row1 {
+  position: relative;
+}
+
+.row2 {
+  width: 400px;
+  position: relative;
+}
+
+.row3 {
+  position: relative;
+}
+.row4 {
+  position: relative;
+}
+
+table .row1:after {
+  content: "ㅣ";
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #d7d7d7;
+  font-weight: 300;
+}
+table .row2:after {
+  content: "ㅣ";
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #d7d7d7;
+  font-weight: 300;
+}
+table .row3:after {
+  content: "ㅣ";
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #d7d7d7;
+  font-weight: 300;
+}
+table .row4:after {
+  content: "ㅣ";
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #d7d7d7;
+  font-weight: 300;
+}
+
+.page_num {
+  width: 420px;
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.page_num li {
+  width: 28px;
+  height: 34px;
+  text-align: center;
+  padding-top: 4px;
+}
+
+.list1 {
+  border-bottom: 1px solid #2162af;
+  color: #2162af;
+  box-sizing: border-box;
+}
+
+.btn_page {
+  margin: 5px;
+}
+
+.search_bar {
+  width: 1000px;
+  height: 100px;
+  margin: 25px auto 0 310px;
+  position: relative;
+}
+
+.search_select {
+  width: 101px;
+  height: 41.2px;
+  border: 1px solid #dadada;
+}
+
+#search_txt {
+  width: 282px;
+  height: 37px;
+  border: 1px solid #dadada;
+}
+
+.search_bar img {
+  height: 41.2px;
+  position: absolute;
+  top: 0;
+  left: 397px;
+}
+/* footer */
+.footer_wrap {
+  border-top: 1px solid #dddddd;
+}
+
+.terms {
+  width: 100%;
+  height: 50px;
+  background-color: #dddddd;
+}
+
+.footer_menu {
+  width: 1194px;
+  height: 50px;
+  font-size: 16px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#f_select {
+  width: 200px;
+  height: 44px;
+  background: white;
+  border: 1px solid gray;
+  margin-left: 34px;
+}
+
+.footer_bottom {
+  width: 1194px;
+  height: 125px;
+  margin: 40px auto;
+  font-size: 13px;
+  position: relative;
+}
+
+.footer_logo {
+  float: left;
+  margin-right: 50px;
+  padding-bottom: 6px;
+}
+
+.fb_txt4 {
+  color: #777777;
+}
+.ft_btn {
+  padding: 10px;
+  border: 1px solid gray;
+}
+
+.footer_menu li:after {
+  content: "ㅣ";
+  margin-left: 30px;
+}

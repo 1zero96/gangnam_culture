@@ -1,0 +1,110 @@
+/* topmenu 탑메뉴 */
+
+#topMenu {
+  width: 1194px;
+  height: 39px;
+  margin: auto;
+}
+
+/* topmenu sns + signup + login */
+
+.topMenu__list {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.topMenu__sns {
+  position: relative;
+}
+
+.topMenu__snsIcon {
+  display: flex;
+  position: absolute;
+  right: 0px;
+  margin-top: 15px;
+}
+
+.topMenu__snsIcon li {
+  width: 44px;
+  height: 44px;
+  margin-left: 3px;
+}
+
+.topMenu__txt1 {
+  width: 95px;
+  height: 38px;
+  text-align: center;
+  padding: 6.5px;
+  position: relative;
+}
+
+.topMenu__txt1::after {
+  content: "ㅣ";
+  position: absolute;
+  top: 4.5px;
+  right: -21px;
+  font-size: 19px;
+  font-weight: 300;
+  color: #dddddd;
+  padding: 0 10px;
+}
+
+.topMenu__txt2 {
+  width: 102px;
+  height: 38px;
+  text-align: center;
+  padding: 6.5px;
+}
+
+.topMenu__txt3 {
+  width: 150px;
+  height: 38px;
+  text-align: center;
+  position: relative;
+  padding: 6.5px;
+  font-size: 15px;
+}
+
+.topMenu__txt3::after {
+  content: "ㅣ";
+  position: absolute;
+  top: 4.5px;
+  right: -18px;
+  font-size: 19px;
+  font-weight: 300;
+  color: #dddddd;
+  padding: 0 10px;
+}
+
+.topMenu__txt4 {
+  width: 110px;
+  height: 38px;
+  text-align: center;
+  padding: 6.5px;
+  font-size: 15px;
+}
+
+.topMenu__txt5 {
+  width: 110px;
+  height: 38px;
+  text-align: center;
+  padding: 6.5px;
+  font-size: 15px;
+  position: relative;
+}
+
+.topMenu__txt5::before {
+  content: "ㅣ";
+  position: absolute;
+  top: 4.5px;
+  right: 85px;
+  font-size: 19px;
+  font-weight: 300;
+  color: #dddddd;
+  padding: 0 10px;
+}
+
+.prt_name {
+  color: #006ab6;
+  font-weight: bold;
+}

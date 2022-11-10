@@ -1,0 +1,254 @@
+/* 기본설정 */
+
+.txtc {
+  text-align: center; /* 가운데 정렬 */
+}
+.txtl {
+  text-align: left; /* 왼쪽 정렬 */
+}
+.txtr {
+  text-align: right; /* 오른쪽 정렬 */
+}
+
+/* main page -------------- */
+
+#main {
+  height: 1200px;
+  width: 1194px;
+  min-width: 1194px;
+  margin: 0 auto;
+}
+
+.menu_txt {
+  height: 100px;
+  margin: 0 auto;
+  padding-top: 33px;
+  text-align: left;
+  /* padding-bottom: 20px; */
+  font-size: 26px;
+  border-bottom: 3px solid #1a1761;
+  box-sizing: border-box;
+}
+
+.menu_txt h1 {
+  font-size: 30px;
+}
+
+.div_wrap {
+  width: 1194px;
+  display: flex;
+  justify-content: center;
+}
+
+.color-main {
+  color: #0d4590;
+  font-weight: bold;
+}
+
+.aside_wrap {
+  width: 200px;
+  height: 100%;
+  margin-right: 30px;
+}
+.content_wrap {
+  width: 800px;
+  height: 100%;
+}
+
+.aside_head {
+  width: 200px;
+  height: 100px;
+  background: #0d4590;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  border-bottom: 3px solid white;
+}
+
+.aside_head > h2 {
+  font-size: 22px;
+  display: block;
+  padding-top: 35px;
+  box-sizing: border-box;
+}
+
+.aside_menu {
+  font-size: 17px;
+}
+
+.aside_menu li {
+  border-bottom: 1px solid #dddddd;
+}
+
+.aside_menu a {
+  display: block;
+  padding-top: 9.5px;
+  padding-bottom: 10px;
+  padding-left: 15px;
+  box-sizing: border-box;
+  height: 40px;
+}
+
+#board1 {
+  background: #0d4590;
+  color: #fff;
+}
+
+.aside_menu li a:hover {
+  background: #f4f4f4;
+}
+
+.write_wrap {
+  height: 1000px;
+  padding: 15px;
+}
+
+.board_head {
+  height: 90px;
+  padding: 30px;
+  font-size: 22px;
+}
+
+.board_head h3 {
+  color: #0d4590;
+  /* text-decoration: underline;
+  text-underline-position: under; */ /*제목 색상 변경 */
+}
+
+.board_table {
+  width: 100%;
+}
+
+.board_table thead tr > td {
+  padding: 10px 15px;
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  position: relative;
+}
+
+.board_table thead tr > td:nth-child(1)::after {
+  content: "|";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #d7d7d7;
+  font-weight: 300;
+}
+
+.board_table thead tr > td:nth-child(2)::after {
+  content: "|";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #d7d7d7;
+  font-weight: 300;
+}
+
+.board_table thead tr > td:nth-child(3)::after {
+  content: "|";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #d7d7d7;
+  font-weight: 300;
+}
+
+.td_left {
+  text-align: left;
+}
+
+.bd_contwrap {
+  padding: 15px;
+  height: 700px;
+}
+
+.content_table {
+  width: 600px;
+  border: 1px solid rgba(185, 184, 184, 0.712);
+}
+
+.content_table th {
+  height: 40px;
+  padding-top: 8px;
+  border: 1px solid rgba(185, 184, 184, 0.712);
+  background: #dddddd;
+}
+.content_table td {
+  height: 30px;
+  text-align: center;
+  border: 1px solid rgba(185, 184, 184, 0.712);
+}
+
+.board_content p:nth-child(3) {
+  font-size: 18px;
+  font-weight: bold;
+}
+.board_content p:nth-child(7) {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.board_content p:nth-child(10) {
+  font-weight: bold;
+}
+.board_content p:nth-child(14) {
+  font-weight: bold;
+}
+.board_content p:nth-child(18) {
+  font-weight: bold;
+}
+
+.table_bottom {
+  padding: 10px 15px;
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
+  height: 50px;
+  position: relative;
+}
+
+.table_bottom td {
+  vertical-align: middle;
+}
+
+.table_bottom td:nth-child(1) {
+  text-align: center;
+}
+
+.table_bottom td:nth-child(1)::after {
+  content: "ㅣ";
+  position: absolute;
+  left: 152px;
+  color: #d7d7d7;
+  font-weight: 300;
+}
+
+.table_bottom button {
+  width: 95px;
+  height: 35px;
+  border: 1px solid #777777;
+  margin-left: 20px;
+}
+
+td.down_link {
+  padding-left: 30px;
+}
+
+.btm_btns1 {
+  width: 800px;
+  height: 40px;
+}
+
+.btm_btns2 {
+  width: 800px;
+  margin-top: 15px;
+  margin-left: 90%;
+}
+
+.btm_btns2 > button {
+  width: 80px;
+  height: 40px;
+  background: #808285;
+  color: white;
+}

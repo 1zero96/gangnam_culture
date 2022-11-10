@@ -6,14 +6,11 @@
   margin-bottom: 100px;
 }
 
-.menu_title {
-  clear: both;
-  height: 50px;
-  margin-bottom: 60px;
-}
-.menu_txt {
+.title {
   width: 1050px;
   margin: auto;
+  margin-bottom: 40px;
+  padding-top: 40px;
   padding-bottom: 20px;
   font-size: 26px;
   border-bottom: 1px solid #dddddd;
