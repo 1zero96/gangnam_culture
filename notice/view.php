@@ -19,8 +19,33 @@
 <body>
   <header>
     <?php
-        include '../inc/header.php'
-      ?>
+        include '../inc/header.php';
+        // 데이터 가져오기
+        $n_idx = $_GET["n_idx"];
+        
+        // DB 연결
+        include "../inc/dbcon.php";
+        
+        // 쿼리 작성
+        $sql = "select * from notice where idx=$n_idx;";
+        // echo $sql;
+        // exit;
+        
+        // 쿼리 전송
+        $result = mysqli_query($dbcon, $sql);
+        
+        // DB에서 데이터 가져오기
+        $array = mysqli_fetch_array($result);
+        
+        // 조회수 업데이트
+        $cnt = $array["cnt"]+1;
+        /* echo $cnt;
+        exit; */
+        $sql = "update notice set cnt = $cnt where idx = $n_idx;";
+        /* echo $sql;
+        exit; */
+        mysqli_query($dbcon, $sql);
+    ?>
   </header>
   <div class="menu_wrap">
     <div class="menu_bar">
@@ -40,8 +65,6 @@
             <li><a href="board6_3.html">단임강사 모집공고</a></li>
             <li><a href="board6_4.html">직원채용 공고</a></li>
             <li><a href="board6_5.html">FAQ</a></li>
-            <!-- <li><a href="#">관람후기</a></li>
-              <li><a href="#">고객의 소리</a></li> -->
           </ul>
         </div>
       </div>
@@ -53,9 +76,7 @@
         </div>
         <div class="board_wrap">
           <div class="board_head">
-            <h3>
-              제목 들어갑니다
-            </h3>
+            <h3> <?php echo $array["n_title"]; ?></h3>
           </div>
           <div class="board_body">
             <table class="board_table">
@@ -63,24 +84,41 @@
                 공지사항 상세페이지 : 등록일, 조회수, 내용, 첨부파일
               </caption>
               <colgroup>
-                <col width="20%" />
-                <col width="30%" />
-                <col width="20%" />
-                <col width="30%" />
+                <col width="10%" />
+                <col width="15%" />
+                <col width="10%" />
+                <col width="15%" />
+                <col width="10%" />
+                <col width="15%" />
               </colgroup>
               <thead>
                 <tr>
-                  <td scope="row" class="txtc">등록일</td>
-                  <td class="b_left">%등록일쿼리넣으샘%</td>
-                  <td scope="row" class="txtc">조회수</td>
-                  <td class="b_left1">%조회수%</td>
+                  <th scope="row" class="txtc">작성자</th>
+                  <td class="b_left">
+                    <?php echo $array["writer"]; ?>
+                  </td>
+                  <th scope="row" class="txtc">날짜</th>
+                  <td class="b_left1">
+                    <?php 
+                    $w_date = substr($array["w_date"], 0, 10);
+                    echo $w_date; 
+                    ?>
+                  </td>
+                  <th scope="row" class="txtc">조회수</th>
+                  <td class="b_left1"><?php echo $cnt; ?></td>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td colspan="4" class="bd_contwrap">
                     <div class="board_content">
-                      %내용%
+                      <?php 
+                        // textarea의 엔터를 br로 변경
+                        // str_repalce("어떤 문자를", "어떤 문자로", "어떤 값에서");
+                        // $n_content = str_replace("\n", "<br>", $array["n_content"]);
+                        // $n_content = str_replace(" ", "&nbsp;", $n_content);
+                        echo $array["n_content"]; 
+                    ?>
                     </div>
                   </td>
                 </tr>
@@ -95,7 +133,7 @@
             </table>
             <div class="btm_btns1">
               <div class="btm_btns2">
-                <button type="button">목록</button>
+                <button type="button" onclick="location.href='list.php'">목록</button>
               </div>
             </div>
           </div>

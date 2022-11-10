@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../CSS/header.css" />
   <link rel="stylesheet" href="../CSS/topmenu.css" />
   <link rel="stylesheet" href="../CSS/board.css" />
+  <link rel="stylesheet" href="../CSS/footer.css" />
   <script src="../JS/jquery-3.6.1.min.js"></script>
   <script defer src="../JS/header.js"></script>
 </head>
@@ -17,8 +18,64 @@
 <body>
   <header>
     <?php
-        include '../inc/header.php'
-      ?>
+        include '../inc/header.php';
+    // DB 연결
+    include "../inc/dbcon.php";
+
+    // 쿼리 작성
+    $sql = "select * from notice;";
+
+    // 쿼리 전송
+    $result = mysqli_query($dbcon, $sql);
+
+    /** 전체 데이터 가져오기 */
+    $total = mysqli_num_rows($result);
+
+    /** paging : 한 페이지 당 보여질 목록 수 */
+    $list_num = 5;
+
+    /** 한 블럭 당 페이지 수 */
+    $page_num = 5;
+
+    /** 현재 페이지의 번호 */
+    $page = isset($_GET["page"])? $_GET["page"] : 1;
+
+    /** 전체 페이지 수 = 전체 데이터 / 페이지 당 목록 수,  ceil : 올림값, floor : 내림값, round : 반올림 */
+    $total_page = ceil($total / $list_num);
+    // echo "전체 페이지수 : ".$total_page;
+    // exit;
+
+    /** $total_block = 전체 블럭 수 = 전체 페이지 수 / 블럭 당 페이지 수 */
+    $total_block = ceil($total_page / $page_num);
+
+    /** 현재 블럭 번호 = 현재 페이지 번호 / 블럭 당 페이지 수 */
+    $now_block = ceil($page / $page_num);
+
+    /** 블럭 당 시작 페이지 번호 = (해당 글의 블럭 번호 - 1) * 블럭 당 페이지 수 + 1 */
+    $s_pageNum = ($now_block - 1) * $page_num + 1;
+
+    if($s_pageNum <= 0){
+      $s_pageNum = 1;
+    };
+
+    /** 블럭 당 마지막 페이지 번호 = 현재 블럭 번호 * 블럭 당 페이지 수 */
+    $e_pageNum = $now_block * $page_num;
+
+    // 블럭 당 마지막 페이지 번호가 전체 페이지 수를 넘지 않도록
+    if($e_pageNum > $total_page){
+      $e_pageNum = $total_page;
+    };
+
+    /** 이전 블럭 이동시 첫 페이지 */
+    $prev_page=($now_block*$page_num)-$page_num;
+    
+    /** 다음 블럭 이동시 첫 페이지 */
+    $next_page=($now_block*$page_num)+1;
+
+    /** 마지막 페이지의 번호 */
+    $last_page=($now_block*$page_num); 
+    ?>
+
   </header>
   <div class="menu_wrap">
     <div class="menu_bar">
@@ -49,7 +106,8 @@
         </div>
         <div class="notice_board_List">
           <div class="bd_top">
-            <p class="total">Total <span class="color-main">338</span>건 1 페이지</p>
+            <p class="total">Total <span class="color-main"><?php echo $total; ?></span>건 <?php echo $page;?> 페이지</p>
+
             <div class="board_control">
               <select name="viewCnt" id="viewCnt" class="select" title="한번에 보여지는 갯수 선택">
                 <option value="10">10개씩</option>
@@ -73,36 +131,92 @@
               </tr>
             </thead>
             <tbody>
+              <?php
+            // paging : 해당 페이지의 글 시작 번호 = (현재 페이지 번호 - 1) * 페이지 당 보여질 목록 수
+            $start = ($page - 1) * $list_num;
+
+            // paging : 시작번호부터 페이지 당 보여질 목록수 만큼 데이터 구하는 쿼리 작성
+            // limit 몇번부터, 몇 개
+            $sql = "select * from notice order by idx desc limit $start, $list_num;";
+            // echo $sql;
+            /* exit; */
+
+            // DB에 데이터 전송
+            $result = mysqli_query($dbcon, $sql);
+
+            // DB에서 데이터 가져오기
+            // pager : 글번호(역순)
+            // 전체데이터 - ((현재 페이지 번호 -1) * 페이지 당 목록 수)
+            $i = $total - (($page - 1) * $list_num);
+            while($array = mysqli_fetch_array($result)){
+            ?>
               <tr>
-                <td class="txtc">11</td>
-                <td id="board_t">
-                  <a href="#">2022 아트프라이즈 강남 운영 용역 선정 공고</a>
+                <td class="txtc"><?php echo $i; ?></td>
+                <td id="board_t" class="txtc">
+                  <a href="view.php?n_idx=<?php echo $array["idx"]; ?>">
+                    <?php echo $array["n_title"]; ?>
+                  </a>
                 </td>
-                <td></td>
-                <td class="txtc">2022-09-15</td>
-                <td class="txtc">100</td>
+                <td class="txtc"><?php echo $array["writer"]; ?></td>
+                <?php $w_date = substr($array["w_date"], 0, 10); ?>
+                <td class="txtc"><?php echo $w_date; ?></td>
+                <td class="txtc"><?php echo $array["cnt"]; ?></td>
               </tr>
+              <?php
+                $i--;
+            }; 
+            ?>
             </tbody>
           </table>
           <div class="board_foot">
-            <ul class="page_num">
-              <li class="list1"><span>1</span></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li><a href="#">6</a></li>
-              <li><a href="#">7</a></li>
-              <li><a href="#">8</a></li>
-              <li><a href="#">9</a></li>
-              <li><a href="#">10</a></li>
-              <li class="btn_page">
-                <img src="../images/btn_next.png" alt="다음페이지로 이동" />
-              </li>
-              <li class="btn_page">
-                <img src="../images/btn_last.png" alt="마지막 페이지로 이동" />
-              </li>
-            </ul>
+            <p class="pager">
+              <?php
+              if($now_block == 1){
+              ?>
+              <a href="list.php?page=1">이이전</a>
+              <?php } else {?>
+              <a href="list.php?page=<?php echo $prev_page; ?>">이이전</a>
+              <?php }; ?>
+
+              <?php
+              // pager : 이전 페이지
+              if($page <= 1){
+              ?>
+              <!-- <a href="list.php?page=1">이전</a> -->
+              <?php } else{ ?>
+              <a href="list.php?page=<?php echo ($page - 1); ?>">이전</a>
+              <?php }; ?>
+
+              <?php
+              // pager : 페이지 번호 출력
+              for($print_page = $s_pageNum;  $print_page <= $e_pageNum; $print_page++){
+              ?>
+              <a href="list.php?page=<?php echo $print_page; ?>"><?php echo $print_page; ?></a>
+              <?php }; ?>
+
+              <?php
+              // pager : 다음 페이지
+              if($page >= $total_page){
+              ?>
+              <a href="list.php?page=<?php echo $total_page; ?>">다음</a>
+              <?php } else{ ?>
+              <a href="list.php?page=<?php echo ($page + 1); ?>">다음</a>
+              <?php }; ?>
+
+              <?php
+              if($now_block == $total_block){
+              ?>
+              <?php } else{ ?>
+              <a href="list.php?page=<?php echo $next_page; ?>">다다음</a>
+              <?php };?>
+            </p>
+            <?php if($s_id == "admin"){ ?>
+            <div class="wrt_btn">
+              <button type="button" onclick="location.href='write.php'">글쓰기</button>
+              <?php } else{ ?>
+
+              <?php }; ?>
+            </div>
           </div>
         </div>
       </div>

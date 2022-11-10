@@ -10,11 +10,11 @@ $n_content = $_POST["n_content"];
 $w_date = date("Y-m-d");
 
 // 값 확인
-/* echo "<p> 제목 : ".$n_title."</p>";
-echo "<p> 내용 : ".$n_content."</p>";
-echo "<p> 작성자 : ".$s_name."</p>";
-echo "<p> 가입일 : ".$w_date."</p>";
-exit; */
+// echo "<p> 제목 : ".$n_title."</p>";
+// echo "<p> 내용 : ".$n_content."</p>";
+// echo "<p> 작성자 : ".$s_name."</p>";
+// echo "<p> 가입일 : ".$w_date."</p>";
+// exit;
 
 // DB 연결
 include "../inc/dbcon.php";
@@ -25,8 +25,8 @@ $sql .= "n_title, n_content, writer, w_date";
 $sql .= ") values(";
 $sql .= "'$n_title', '$n_content', '$s_name', '$w_date'";
 $sql .= ");";
-/* echo $sql;
-exit; */
+// echo $sql;
+// exit;
 
 // 데이터베이스에 쿼리 전송
 mysqli_query($dbcon, $sql);

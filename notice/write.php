@@ -29,8 +29,24 @@
 
     });
   });
+
+  function notice_check() {
+    var n_title = document.getElementById("n_title");
+    var n_content = document.getElementById("n_content");
+
+    if (!n_title.value) {
+      alert("제목을 입력하세요.");
+      n_title.focus();
+      return false;
+    };
+
+    if (!n_content.value) {
+      alert("내용을 입력하세요.");
+      n_content.focus();
+      return false;
+    };
+  };
   </script>
-  <link rel="stylesheet" href="../CSS/summernote-lite.css">
 </head>
 
 <body>
@@ -87,7 +103,7 @@
                       <label for="writer">작성자 *</label>
                     </th>
                     <td>
-                      <input type="text" name="n_title" id="n_title" name="writer" autofocus
+                      <input type="text" name="writer" id="writer" name="writer" autofocus
                         value="<?php echo $s_name; ?>" />
                     </td>
                   </tr>
@@ -96,7 +112,7 @@
                   <tr>
                     <td colspan="4" class="bd_contwrap">
                       <div class="board_content">
-                        <textarea id="summernote" name="editordata"></textarea>
+                        <textarea id="summernote" name="n_content"></textarea>
                       </div>
                     </td>
                   </tr>
@@ -111,7 +127,7 @@
               </table>
               <div class="btm_btns1">
                 <div class="btm_btns2">
-                  <button type="button" id="btn_save">저장</button>
+                  <button type="submit" id="btn_save" onclick="notice_check()">저장</button>
                   <button type="button">목록</button>
                 </div>
               </div>
