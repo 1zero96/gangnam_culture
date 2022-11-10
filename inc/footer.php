@@ -141,7 +141,7 @@
 
       <div class="footer_bottom">
         <div class="footer_logo">
-          <img src="../images/logo2.jpg" alt="" />
+          <img src="http://localhost/gangnam_culture/images/logo2.jpg" alt="" />
         </div>
         <address class="fb_txt1">
           06088 서울특별시 강남구 선를로 668, 5층 강남문화재단
