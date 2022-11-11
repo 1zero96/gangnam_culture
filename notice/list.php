@@ -24,15 +24,20 @@
 
     // 쿼리 작성
     $sql = "select * from notice;";
+    $t_sql = "select count(*) from notice;";
 
     // 쿼리 전송
     $result = mysqli_query($dbcon, $sql);
-
+    $t_result = mysqli_query($dbcon, $t_sql);
+    $row = mysqli_fetch_row($t_result);
+    
     /** 전체 데이터 가져오기 */
     $total = mysqli_num_rows($result);
+    $total_count = $row[0];
+
 
     /** paging : 한 페이지 당 보여질 목록 수 */
-    $list_num = 5;
+    $list_num = 10;
 
     /** 한 블럭 당 페이지 수 */
     $page_num = 5;
@@ -42,12 +47,14 @@
 
     /** 전체 페이지 수 = 전체 데이터 / 페이지 당 목록 수,  ceil : 올림값, floor : 내림값, round : 반올림 */
     $total_page = ceil($total / $list_num);
-    // echo "전체 페이지수 : ".$total_page;
-    // exit;
+
+    /** 글번호 */
+    $print_num = $total_count - $list_num*($page-1);
+
 
     /** $total_block = 전체 블럭 수 = 전체 페이지 수 / 블럭 당 페이지 수 */
     $total_block = ceil($total_page / $page_num);
-
+    
     /** 현재 블럭 번호 = 현재 페이지 번호 / 블럭 당 페이지 수 */
     $now_block = ceil($page / $page_num);
 
@@ -71,9 +78,6 @@
     
     /** 다음 블럭 이동시 첫 페이지 */
     $next_page=($now_block*$page_num)+1;
-
-    /** 마지막 페이지의 번호 */
-    $last_page=($now_block*$page_num); 
     ?>
 
   </header>
@@ -125,7 +129,7 @@
               <tr>
                 <th class="row1">번호</th>
                 <th class="row2">제목</th>
-                <th class="row3">첨부</th>
+                <th class="row3">작성자</th>
                 <th class="row4">등록일</th>
                 <th class="row5">조회</th>
               </tr>
@@ -153,7 +157,7 @@
               <tr>
                 <td class="txtc"><?php echo $i; ?></td>
                 <td id="board_t" class="txtc">
-                  <a href="view.php?n_idx=<?php echo $array["idx"]; ?>">
+                  <a href="view.php?n_idx=<?php echo $array["idx"]?>&no=<?= $i ?>">
                     <?php echo $array["n_title"]; ?>
                   </a>
                 </td>
@@ -171,43 +175,45 @@
           <div class="board_foot">
             <p class="pager">
               <?php
-              if($now_block == 1){
+              if($page == 1){
               ?>
-              <a href="list.php?page=1">이이전</a>
-              <?php } else {?>
-              <a href="list.php?page=<?php echo $prev_page; ?>">이이전</a>
-              <?php }; ?>
-
+              <?php } else if($now_block == 1){?>
+              <a href="list.php?page=1"><img src="../images/btn_first.png" alt="이이전"></a>
+              <?php } else { ?>
+              <a href="list.php?page=<?php echo $prev_page; ?>"><img src="../images/btn_first.png" alt="이이전"></a>
+              <?php }
+              ?>
               <?php
               // pager : 이전 페이지
               if($page <= 1){
               ?>
               <!-- <a href="list.php?page=1">이전</a> -->
               <?php } else{ ?>
-              <a href="list.php?page=<?php echo ($page - 1); ?>">이전</a>
+              <a href="list.php?page=<?php echo ($page - 1); ?>"><img src="../images/btn_prev.png" alt="이전"></a>
               <?php }; ?>
 
               <?php
               // pager : 페이지 번호 출력
               for($print_page = $s_pageNum;  $print_page <= $e_pageNum; $print_page++){
               ?>
-              <a href="list.php?page=<?php echo $print_page; ?>"><?php echo $print_page; ?></a>
+              <a id="page<?php echo $print_page; ?>"
+                href="list.php?page=<?php echo $print_page; ?>"><?php echo $print_page; ?></a>
               <?php }; ?>
 
               <?php
               // pager : 다음 페이지
               if($page >= $total_page){
               ?>
-              <a href="list.php?page=<?php echo $total_page; ?>">다음</a>
+              <a href="list.php?page=<?php echo $total_page; ?>"><img src="../images/btn_next.png" alt="다음"></a>
               <?php } else{ ?>
-              <a href="list.php?page=<?php echo ($page + 1); ?>">다음</a>
+              <a href="list.php?page=<?php echo ($page + 1); ?>"><img src="../images/btn_next.png" alt="다음"></a>
               <?php }; ?>
 
               <?php
               if($now_block == $total_block){
               ?>
               <?php } else{ ?>
-              <a href="list.php?page=<?php echo $next_page; ?>">다다음</a>
+              <a href="list.php?page=<?php echo $next_page; ?>"><img src="../images/btn_last.png" alt="다다음"></a>
               <?php };?>
             </p>
             <?php if($s_id == "admin"){ ?>
@@ -218,6 +224,12 @@
               <?php }; ?>
             </div>
           </div>
+          <?php echo '<script>
+          let page_num = document.getElementById("page' .$page .'");
+          page_num.style.color= "#006ab6";
+          page_num.style.fontWeight = "bold";
+          page_num.style.borderBottom = "1px solid #006ab6";
+          </script>'; ?>
         </div>
       </div>
     </div>

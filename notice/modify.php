@@ -18,63 +18,36 @@
   <script defer src="../JS/header.js"></script>
   <script>
   $(document).ready(function() {
-        //여기 아래 부분
-        $('#summernote').summernote({
-            width: 770,
-            height: 300, // 에디터 높이
-            minHeight: null, // 최소 높이
-            maxHeight: null, // 최대 높이
-            maxweight: 700,
-            focus: true, // 에디터 로딩후 포커스를 맞출지 여부
-            lang: "ko-KR", // 한글 설정
-            placeholder: '최대 2048자까지 쓸 수 있습니다' //placeholder 설정
-            callbacks: {
-              onImageUpload: function(files) { //이미지 업로드 처리
-                RealTimeImageUpdate(files, this);
-              },
-              onChange: function(contents, $editable) { //텍스트 글자수 및 이미지등록개수
-                setContentsLength(contents, 0);
-              }
-            });
-        });
+    //여기 아래 부분
+    $('#summernote').summernote({
+      width: 770,
+      height: 300, // 에디터 높이
+      minHeight: null, // 최소 높이
+      maxHeight: null, // 최대 높이
+      maxweight: 700,
+      focus: true, // 에디터 로딩후 포커스를 맞출지 여부
+      lang: "ko-KR", // 한글 설정
+      placeholder: '최대 2048자까지 쓸 수 있습니다' //placeholder 설정
 
-      function setContentsLength(str, index) {
-        var status = false;
-        var textCnt = 0; //총 글자수
-        var maxCnt = 100; //최대 글자수
-        var editorText = f_SkipTags_html(str); //에디터에서 태그를 삭제하고 내용만 가져오기
-        editorText = editorText.replace(/\s/gi, ""); //줄바꿈 제거
-        editorText = editorText.replace(/&nbsp;/gi, ""); //공백제거
+    });
+  });
 
-        textCnt = editorText.length;
-        if (maxCnt > 0) {
-          if (textCnt > maxCnt) {
-            status = true;
-          }
-        }
+  function notice_check() {
+    var n_title = document.getElementById("n_title");
+    var n_content = document.getElementById("n_content");
 
-        if (status) {
-          var msg = "등록오류 : 글자수는 최대 " + maxCnt + "까지 등록이 가능합니다. / 현재 글자수 : " + textCnt + "자";
-          console.log(msg);
-        }
-      }
+    if (!n_title.value) {
+      alert("제목을 입력하세요.");
+      n_title.focus();
+      return false;
+    };
 
-      function notice_check() {
-        var n_title = document.getElementById("n_title");
-        var n_content = document.getElementById("n_content");
-
-        if (!n_title.value) {
-          alert("제목을 입력하세요.");
-          n_title.focus();
-          return false;
-        };
-
-        if (!n_content.value) {
-          alert("내용을 입력하세요.");
-          n_content.focus();
-          return false;
-        };
-      };
+    if (!n_content.value) {
+      alert("내용을 입력하세요.");
+      n_content.focus();
+      return false;
+    };
+  };
   </script>
 </head>
 
@@ -83,6 +56,24 @@
     <?php
         include '../inc/header.php';
         include "../inc/admin_check.php";
+        // 데이터 가져오기
+          $n_idx = $_GET["n_idx"];
+          $no = $_GET["no"];
+
+        // DB 연결
+          include "../inc/dbcon.php";
+
+        // 쿼리 작성
+          $sql = "select * from notice where idx = $n_idx;";
+
+        // 쿼리 전송
+          $result = mysqli_query($dbcon, $sql);
+
+        // DB에서 데이터 가져오기
+          $array = mysqli_fetch_array($result);
+
+        // DB 종료
+          mysqli_close($dbcon);
       ?>
   </header>
   <div class="menu_wrap">
@@ -113,7 +104,8 @@
           </div>
         </div>
         <div class="board_wrap">
-          <form name="notice_form" action="insert.php" method="post" onsubmit="return notice_check()">
+          <form name="notice_form" action="edit.php?n_idx=<?php echo $n_idx;?>&no=<?php echo $no;?>" method="post"
+            onsubmit="return notice_check()">
             <div class="board_body">
               <table>
                 <caption class="hidden">
@@ -124,8 +116,8 @@
                       <label for="n_title">제목 *</label>
                     </th>
                     <td>
-                      <input type="text" name="n_title" id="n_title" name="n_title" placeholder="제목을 입력하세요."
-                        autofocus />
+                      <input type="text" name="n_title" id="n_title" name="n_title"
+                        value="<?php echo $array["n_title"]; ?>" autofocus />
                     </td>
                   </tr>
                   <!-- <tr class="board_title">
@@ -142,7 +134,9 @@
                   <tr>
                     <td colspan="4" class="bd_contwrap">
                       <div class="board_content">
-                        <textarea id="summernote" name="n_content"></textarea>
+                        <textarea id="summernote" name="n_content">
+                          <?php echo $array["n_content"]; ?>
+                        </textarea>
                       </div>
                     </td>
                   </tr>

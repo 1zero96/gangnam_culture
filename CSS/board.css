@@ -195,6 +195,7 @@ ul.tabs li.on {
 .board_List {
   width: 800px;
   border-top: 2px solid #2162af;
+  margin-bottom: 30px;
 }
 
 .board_List th {
@@ -291,7 +292,7 @@ table .row4:after {
   background-color: #2162af;
   position: relative;
   left: 710px;
-  bottom: 10px;
+  bottom: 30px;
 }
 
 .wrt_btn button {
@@ -306,6 +307,19 @@ table .row4:after {
 
 .btn_page {
   margin: 5px;
+}
+
+.pager {
+  margin: auto;
+  text-align: center;
+}
+
+.pager a {
+  padding: 0 10px;
+}
+
+.pager img {
+  padding-top: 5px;
 }
 
 .search_bar {
