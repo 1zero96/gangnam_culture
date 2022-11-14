@@ -18,63 +18,56 @@
   <script defer src="../JS/header.js"></script>
   <script>
   $(document).ready(function() {
-        //여기 아래 부분
-        $('#summernote').summernote({
-            width: 770,
-            height: 300, // 에디터 높이
-            minHeight: null, // 최소 높이
-            maxHeight: null, // 최대 높이
-            maxweight: 700,
-            focus: true, // 에디터 로딩후 포커스를 맞출지 여부
-            lang: "ko-KR", // 한글 설정
-            placeholder: '최대 2048자까지 쓸 수 있습니다' //placeholder 설정
-            callbacks: {
-              onImageUpload: function(files) { //이미지 업로드 처리
-                RealTimeImageUpdate(files, this);
-              },
-              onChange: function(contents, $editable) { //텍스트 글자수 및 이미지등록개수
-                setContentsLength(contents, 0);
-              }
-            });
-        });
+    //여기 아래 부분
+    $('#summernote').summernote({
+      width: 770,
+      height: 300, // 에디터 높이
+      minHeight: null, // 최소 높이
+      maxHeight: null, // 최대 높이
+      maxweight: 700,
+      focus: true, // 에디터 로딩후 포커스를 맞출지 여부
+      lang: "ko-KR", // 한글 설정
+      placeholder: '최대 2048자까지 쓸 수 있습니다' //placeholder 설정
+    });
+  });
 
-      function setContentsLength(str, index) {
-        var status = false;
-        var textCnt = 0; //총 글자수
-        var maxCnt = 100; //최대 글자수
-        var editorText = f_SkipTags_html(str); //에디터에서 태그를 삭제하고 내용만 가져오기
-        editorText = editorText.replace(/\s/gi, ""); //줄바꿈 제거
-        editorText = editorText.replace(/&nbsp;/gi, ""); //공백제거
+  function setContentsLength(str, index) {
+    var status = false;
+    var textCnt = 0; //총 글자수
+    var maxCnt = 100; //최대 글자수
+    var editorText = f_SkipTags_html(str); //에디터에서 태그를 삭제하고 내용만 가져오기
+    editorText = editorText.replace(/\s/gi, ""); //줄바꿈 제거
+    editorText = editorText.replace(/&nbsp;/gi, ""); //공백제거
 
-        textCnt = editorText.length;
-        if (maxCnt > 0) {
-          if (textCnt > maxCnt) {
-            status = true;
-          }
-        }
-
-        if (status) {
-          var msg = "등록오류 : 글자수는 최대 " + maxCnt + "까지 등록이 가능합니다. / 현재 글자수 : " + textCnt + "자";
-          console.log(msg);
-        }
+    textCnt = editorText.length;
+    if (maxCnt > 0) {
+      if (textCnt > maxCnt) {
+        status = true;
       }
+    }
 
-      function notice_check() {
-        var n_title = document.getElementById("n_title");
-        var n_content = document.getElementById("n_content");
+    if (status) {
+      var msg = "등록오류 : 글자수는 최대 " + maxCnt + "까지 등록이 가능합니다. / 현재 글자수 : " + textCnt + "자";
+      console.log(msg);
+    }
+  }
 
-        if (!n_title.value) {
-          alert("제목을 입력하세요.");
-          n_title.focus();
-          return false;
-        };
+  function notice_check() {
+    var n_title = document.getElementById("n_title");
+    var n_content = document.getElementById("n_content");
 
-        if (!n_content.value) {
-          alert("내용을 입력하세요.");
-          n_content.focus();
-          return false;
-        };
-      };
+    if (!n_title.value) {
+      alert("제목을 입력하세요.");
+      n_title.focus();
+      return false;
+    };
+
+    if (!n_content.value) {
+      alert("내용을 입력하세요.");
+      n_content.focus();
+      return false;
+    };
+  };
   </script>
 </head>
 

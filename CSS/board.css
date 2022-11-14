@@ -347,3 +347,7 @@ table .row4:after {
   top: 0;
   left: 397px;
 }
+
+.search_result {
+  font-weight: bold;
+}
