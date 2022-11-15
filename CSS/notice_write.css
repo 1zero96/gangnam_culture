@@ -267,11 +267,13 @@ td.down_link {
 }
 
 #n_title {
+  padding: 5px 16px;
   width: 630px;
   height: 30px;
   border: 1px solid #dddddd;
   position: relative;
   left: 25px;
+  font-size: 18px;
 }
 
 #btn_save {

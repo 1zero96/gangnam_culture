@@ -9,11 +9,10 @@
   <link rel="stylesheet" href="../CSS/reset.css" />
   <link rel="stylesheet" href="../CSS/header.css" />
   <link rel="stylesheet" href="../CSS/topmenu.css" />
-  <link rel="stylesheet" href="../CSS/board6-1.css" />
+  <link rel="stylesheet" href="../CSS/view.css" />
   <link rel="stylesheet" href="../CSS/footer.css" />
   <script src="../JS/jquery-3.6.1.min.js"></script>
   <script defer src="../JS/header.js"></script>
-
 </head>
 
 <body>
@@ -22,20 +21,29 @@
         include '../inc/header.php';
         // 데이터 가져오기
         $n_idx = $_GET["n_idx"];
-        
+        $no = $_GET["no"];
+
         // DB 연결
         include "../inc/dbcon.php";
         
         // 쿼리 작성
         $sql = "select * from notice where idx=$n_idx;";
+        $count_sql = "SELECT count(*) from notice";
+        $p_sql = "SELECT * FROM notice WHERE idx < $n_idx ORDER BY idx DESC LIMIT 1;";
+        $n_sql = "SELECT * FROM notice WHERE idx > $n_idx ORDER BY idx ASC LIMIT 1;";
         // echo $sql;
         // exit;
         
         // 쿼리 전송
         $result = mysqli_query($dbcon, $sql);
+        $count_result = mysqli_query($dbcon, $count_sql);
+        $p_result = mysqli_query($dbcon, $p_sql);
+        $n_result = mysqli_query($dbcon, $n_sql);
         
         // DB에서 데이터 가져오기
         $array = mysqli_fetch_array($result);
+        $p_array = mysqli_fetch_array($p_result);
+        $n_array = mysqli_fetch_array($n_result);
         
         // 조회수 업데이트
         $cnt = $array["cnt"]+1;
@@ -79,17 +87,18 @@
             <h3> <?php echo $array["n_title"]; ?></h3>
           </div>
           <div class="board_body">
-            <table class="board_table">
+            <table class="board_table" style="table-layout: fixed">
               <caption hidden>
                 공지사항 상세페이지 : 등록일, 조회수, 내용, 첨부파일
               </caption>
+              <!-- 12 / 20 -->
               <colgroup>
-                <col width="10%" />
-                <col width="15%" />
-                <col width="10%" />
-                <col width="15%" />
-                <col width="10%" />
-                <col width="15%" />
+                <col width="12%" />
+                <col width="20%" />
+                <col width="12%" />
+                <col width="20%" />
+                <col width="12%" />
+                <col width="20%" />
               </colgroup>
               <thead>
                 <tr>
@@ -110,7 +119,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td colspan="4" class="bd_contwrap">
+                  <td colspan="6" class="bd_contwrap">
                     <div class="board_content">
                       <?php 
                         // textarea의 엔터를 br로 변경
@@ -129,10 +138,40 @@
                     <button type="button">다운로드</button>
                   </td>
                 </tr>
+                <tr class="page_prev">
+                  <th scope="row" class="txtc">이전글</th>
+                  <td colspan="4" class="b_left1 ">
+                    <?php if(empty($p_array['idx'])){ ?>
+                    <span>이전 글이 없습니다.</span>
+                    <?php } else { ?>
+                    <a href="view.php?n_idx=<?= $p_array['idx']?>&no=<?= $no - 1 ?>"><?= $p_array['n_title'] ?></a>
+                    <?php } ?>
+                  </td>
+                  <?php $w_date = substr($array["w_date"], 0, 10); ?>
+                  <td class="no_date txtc">
+                    <?php echo empty($p_array['idx']) ? '.' : $w_date ?>
+                  </td>
+                </tr>
+                <tr class="page_next">
+                  <th scope="row" class="txtc">다음글</th>
+                  <td colspan="4" class="b_left1">
+                    <?php if(empty($n_array['idx'])){ ?>
+                    <span>다음 글이 없습니다.</span>
+                    <?php } else { ?>
+                    <a href="view.php?n_idx=<?= $p_array['idx']?>&no=<?= $no + 1 ?>"><?= $n_array['n_title'] ?></a>
+                    <?php } ?>
+                  </td>
+                  <td class="no_date txtc">
+                    <?php echo empty($p_array['idx']) ? '.' : $w_date ?>
+                  </td>
+                </tr>
               </tbody>
             </table>
             <div class="btm_btns1">
               <div class="btm_btns2">
+                <button type="button"
+                  onclick="location.href='modify.php?n_idx=<?php echo $n_idx;?>&no=<?php echo $no;?>'">수정</button>
+                <button type="button" onclick="remove_notice()">삭제</button>
                 <button type="button" onclick="location.href='list.php'">목록</button>
               </div>
             </div>
@@ -146,6 +185,14 @@
       include '../inc/footer.php'
     ?>
   </footer>
+  <script>
+  function remove_notice() {
+    var ck = confirm("정말 삭제하시겠습니까?");
+    if (ck) {
+      location.href = "delete.php?n_idx=<?php echo $n_idx; ?>";
+    };
+  };
+  </script>
 </body>
 
 </html>
