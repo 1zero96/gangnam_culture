@@ -222,13 +222,12 @@
               // pager : 다음 페이지
               if($page >= $total_page){
               ?>
-              <a href="list.php?page=<?php echo $total_page; ?>"><img src="../images/btn_next.png" alt="다음"></a>
               <?php } else{ ?>
               <a href="list.php?page=<?php echo ($page + 1); ?>"><img src="../images/btn_next.png" alt="다음"></a>
               <?php }; ?>
 
               <?php
-              if($now_block == $total_block){
+              if($now_block == $total_block || $page = 1){
               ?>
               <?php } else{ ?>
               <a href="list.php?page=<?php echo $next_page; ?>"><img src="../images/btn_last.png" alt="다다음"></a>

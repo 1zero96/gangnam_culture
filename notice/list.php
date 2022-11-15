@@ -113,9 +113,9 @@
         <div class="aside_body">
           <ul class="aside_menu">
             <li><a id="board1" href="#">공지사항</a></li>
-            <li><a href="board6_2.html">타기관 공지사항</a></li>
-            <li><a href="board6_3.html">단임강사 모집공고</a></li>
-            <li><a href="board6_4.html">직원채용 공고</a></li>
+            <li><a href="../notice2/list.php">타기관 공지사항</a></li>
+            <li><a href="../employ/list.php">직원채용 공고</a></li>
+            <li><a href="board6_4.html">자유 게시판</a></li>
             <li><a href="board6_5.html">FAQ</a></li>
           </ul>
         </div>
@@ -222,13 +222,13 @@
               // pager : 다음 페이지
               if($page >= $total_page){
               ?>
-              <a href="list.php?page=<?php echo $total_page; ?>"><img src="../images/btn_next.png" alt="다음"></a>
+              <!-- <a href="list.php?page=<?php echo $total_page; ?>"><img src="../images/btn_next.png" alt="다음"></a> -->
               <?php } else{ ?>
               <a href="list.php?page=<?php echo ($page + 1); ?>"><img src="../images/btn_next.png" alt="다음"></a>
               <?php }; ?>
 
               <?php
-              if($now_block == $total_block){
+              if($now_block == $total_block || $page = 1){
               ?>
               <?php } else{ ?>
               <a href="list.php?page=<?php echo $next_page; ?>"><img src="../images/btn_last.png" alt="다다음"></a>

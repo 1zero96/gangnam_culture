@@ -114,7 +114,7 @@
           <ul class="aside_menu">
             <li><a href="../notice/list.php">공지사항</a></li>
             <li><a id="board1" href="#">타기관 공지사항</a></li>
-            <li><a href="board6_3.html">직원채용 공고</a></li>
+            <li><a href="../employ/list.php">직원채용 공고</a></li>
             <li><a href="board6_4.html">자유 게시판</a></li>
             <li><a href="board6_5.html">FAQ</a></li>
           </ul>
@@ -222,7 +222,6 @@
               // pager : 다음 페이지
               if($page >= $total_page){
               ?>
-              <a href="list.php?page=<?php echo $total_page; ?>"><img src="../images/btn_next.png" alt="다음"></a>
               <?php } else{ ?>
               <a href="list.php?page=<?php echo ($page + 1); ?>"><img src="../images/btn_next.png" alt="다음"></a>
               <?php }; ?>
