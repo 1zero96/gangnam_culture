@@ -52,7 +52,7 @@
     }
   }
 
-  function notice_check() {
+  function notice2_check() {
     var n_title = document.getElementById("n_title");
     var n_content = document.getElementById("n_content");
 
@@ -106,7 +106,7 @@
           </div>
         </div>
         <div class="board_wrap">
-          <form name="notice_form" action="insert.php" method="post" onsubmit="return notice_check()">
+          <form name="notice2_form" action="insert.php" method="post" onsubmit="return notice2_check()">
             <div class="board_body">
               <table>
                 <caption class="hidden">
@@ -150,7 +150,7 @@
               </table>
               <div class="btm_btns1">
                 <div class="btm_btns2">
-                  <button type="submit" id="btn_save" onclick="notice_check()">저장</button>
+                  <button type="submit" id="btn_save" onclick="notice2_check()">저장</button>
                   <button type="button">목록</button>
                 </div>
               </div>

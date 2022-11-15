@@ -27,10 +27,10 @@
         include "../inc/dbcon.php";
         
         // 쿼리 작성
-        $sql = "select * from notice where idx=$n_idx;";
-        $count_sql = "SELECT count(*) from notice";
-        $p_sql = "SELECT * FROM notice WHERE idx < $n_idx ORDER BY idx DESC LIMIT 1;";
-        $n_sql = "SELECT * FROM notice WHERE idx > $n_idx ORDER BY idx ASC LIMIT 1;";
+        $sql = "select * from notice2 where idx=$n_idx;";
+        $count_sql = "SELECT count(*) from notice2";
+        $p_sql = "SELECT * FROM notice2 WHERE idx < $n_idx ORDER BY idx DESC LIMIT 1;";
+        $n_sql = "SELECT * FROM notice2 WHERE idx > $n_idx ORDER BY idx ASC LIMIT 1;";
         // echo $sql;
         // exit;
         
@@ -49,7 +49,7 @@
         $cnt = $array["cnt"]+1;
         /* echo $cnt;
         exit; */
-        $sql = "update notice set cnt = $cnt where idx = $n_idx;";
+        $sql = "update notice2 set cnt = $cnt where idx = $n_idx;";
         /* echo $sql;
         exit; */
         mysqli_query($dbcon, $sql);
@@ -171,7 +171,7 @@
               <div class="btm_btns2">
                 <button type="button"
                   onclick="location.href='modify.php?n_idx=<?php echo $n_idx;?>&no=<?php echo $no;?>'">수정</button>
-                <button type="button" onclick="remove_notice()">삭제</button>
+                <button type="button" onclick="remove_notice2()">삭제</button>
                 <button type="button" onclick="location.href='list.php'">목록</button>
               </div>
             </div>
@@ -186,7 +186,7 @@
     ?>
   </footer>
   <script>
-  function remove_notice() {
+  function remove_notice2() {
     var ck = confirm("정말 삭제하시겠습니까?");
     if (ck) {
       location.href = "delete.php?n_idx=<?php echo $n_idx; ?>";

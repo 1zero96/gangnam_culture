@@ -23,8 +23,8 @@
     include "../inc/dbcon.php";
 
     // 쿼리 작성
-    $sql = "select * from notice;";
-    $t_sql = "select count(*) from notice;";
+    $sql = "select * from notice2;";
+    $t_sql = "select count(*) from notice2;";
 
     // 쿼리 전송
     $result = mysqli_query($dbcon, $sql);
@@ -86,13 +86,13 @@
       var view = document.getElementById('viewCnt');
       var idx = view.options.selectedIndex;
       if (idx == 0) {
-        location.href = "http://localhost/gangnam_culture/notice/search_result.php?category=n_title&search=&view=10"
+        location.href = "http://localhost/gangnam_culture/notice2/search_result.php?category=n_title&search=&view=10"
         alert('변경되었습니다.')
       } else if (idx == 1) {
-        location.href = "http://localhost/gangnam_culture/notice/search_result.php?category=n_title&search=&view=15"
+        location.href = "http://localhost/gangnam_culture/notice2/search_result.php?category=n_title&search=&view=15"
         alert('변경되었습니다.');
       } else if (idx == 2) {
-        location.href = "http://localhost/gangnam_culture/notice/search_result.php?category=n_title&search=&view=20"
+        location.href = "http://localhost/gangnam_culture/notice2/search_result.php?category=n_title&search=&view=20"
         alert('변경되었습니다.');
       }
     }
@@ -112,10 +112,10 @@
         </div>
         <div class="aside_body">
           <ul class="aside_menu">
-            <li><a id="board1" href="#">공지사항</a></li>
-            <li><a href="board6_2.html">타기관 공지사항</a></li>
-            <li><a href="board6_3.html">단임강사 모집공고</a></li>
-            <li><a href="board6_4.html">직원채용 공고</a></li>
+            <li><a href="../notice/list.php">공지사항</a></li>
+            <li><a id="board1" href="#">타기관 공지사항</a></li>
+            <li><a href="board6_3.html">직원채용 공고</a></li>
+            <li><a href="board6_4.html">자유 게시판</a></li>
             <li><a href="board6_5.html">FAQ</a></li>
           </ul>
         </div>
@@ -123,10 +123,10 @@
       <div class="content_wrap">
         <div class="menu_title">
           <div class="menu_txt">
-            <h1>공지사항</h1>
+            <h1>타기관 공지사항</h1>
           </div>
         </div>
-        <div class="notice_board_List">
+        <div class="notice2_board_List">
           <div class="bd_top">
             <p class="total">Total <span class="color-main"><?php echo $total; ?></span>건 <?php echo $page;?> 페이지</p>
 
@@ -159,7 +159,7 @@
 
             // paging : 시작번호부터 페이지 당 보여질 목록수 만큼 데이터 구하는 쿼리 작성
             // limit 몇번부터, 몇 개
-            $sql = "select * from notice order by idx desc limit $start, $list_num;";
+            $sql = "select * from notice2 order by idx desc limit $start, $list_num;";
             // echo $sql;
             /* exit; */
 
@@ -228,7 +228,7 @@
               <?php }; ?>
 
               <?php
-              if($now_block == $total_block){
+              if($now_block == $total_block || $page = 1){
               ?>
               <?php } else{ ?>
               <a href="list.php?page=<?php echo $next_page; ?>"><img src="../images/btn_last.png" alt="다다음"></a>
