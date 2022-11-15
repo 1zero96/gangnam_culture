@@ -117,7 +117,7 @@ ul.tabs li.on {
 
 #viewCnt {
   border: 1px solid black;
-  padding: 8px;
+  padding: 8px 35px 8px 8px;
 }
 .viewCntBtn {
   border: 1px solid black;
@@ -230,6 +230,9 @@ ul.tabs li.on {
 .row4 {
   position: relative;
 }
+.row5 {
+  position: relative;
+}
 
 table .row1:after {
   content: "ㅣ";
@@ -259,6 +262,16 @@ table .row3:after {
   font-weight: 300;
 }
 table .row4:after {
+  content: "ㅣ";
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #d7d7d7;
+  font-weight: 300;
+}
+
+table .row5:after {
   content: "ㅣ";
   position: absolute;
   right: -8px;
@@ -330,24 +343,36 @@ table .row4:after {
 }
 
 .search_select {
+  padding: 0 10px;
   width: 101px;
-  height: 41.2px;
+  height: 41px;
   border: 1px solid #dadada;
 }
 
 #search_txt {
+  padding: 0 10px;
   width: 282px;
-  height: 37px;
+  height: 41px;
+  box-sizing: border-box;
   border: 1px solid #dadada;
 }
 
 .search_bar img {
-  height: 41.2px;
+  height: 41px;
   position: absolute;
   top: 0;
-  left: 397px;
+  left: 390px;
 }
 
 .search_result {
   font-weight: bold;
+}
+
+.btn-like .heart-shape {
+  display: inline;
+  color: red;
+}
+.btn-like {
+  border: none;
+  background-color: inherit;
 }

@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>공지사항 &lt; 열린광장 &lt; 강남문화재단</title>
+  <title>자유 게시판 &lt; 열린광장 &lt; 강남문화재단</title>
   <link rel="stylesheet" href="../CSS/reset.css" />
   <link rel="stylesheet" href="../CSS/header.css" />
   <link rel="stylesheet" href="../CSS/topmenu.css" />
@@ -13,6 +13,22 @@
   <link rel="stylesheet" href="../CSS/footer.css" />
   <script src="../JS/jquery-3.6.1.min.js"></script>
   <script defer src="../JS/header.js"></script>
+  <script>
+  $(document).ready(function() {
+    $(".btn-like").on("click", function(e) {
+      var button = $(e.currentTarget || e.target)
+      var likeCount = button.find(".like-count")
+      var heartShape = button.find(".heart-shape")
+      $.post("../inc/like_proc.php", {
+        articleId: button.data("articleId")
+      }, function(res) {
+        var addCount = (res == "like" ? 1 : res == "unlike" ? -1 : 0)
+        likeCount.text(+likeCount.text() + addCount)
+        heartShape.text(res == "like" ? "♥" : res == "unlike" ? "♡" : "♡")
+      })
+    })
+  })
+  </script>
 </head>
 
 <body>
@@ -23,8 +39,8 @@
     include "../inc/dbcon.php";
 
     // 쿼리 작성
-    $sql = "select * from notice2;";
-    $t_sql = "select count(*) from notice2;";
+    $sql = "select * from free;";
+    $t_sql = "select count(*) from free;";
 
     // 쿼리 전송
     $result = mysqli_query($dbcon, $sql);
@@ -34,7 +50,6 @@
     /** 전체 데이터 가져오기 */
     $total = mysqli_num_rows($result);
     $total_count = $row[0];
-
 
     /** paging : 한 페이지 당 보여질 목록 수 */
     $list_num = 10;
@@ -86,22 +101,27 @@
       var view = document.getElementById('viewCnt');
       var idx = view.options.selectedIndex;
       if (idx == 0) {
-        location.href = "http://localhost/gangnam_culture/notice2/search_result.php?category=n_title&search=&view=10"
+        location.href = "http://localhost/gangnam_culture/free/search_result.php?category=f_title&search=&view=10"
         alert('변경되었습니다.')
       } else if (idx == 1) {
-        location.href = "http://localhost/gangnam_culture/notice2/search_result.php?category=n_title&search=&view=15"
+        location.href = "http://localhost/gangnam_culture/free/search_result.php?category=f_title&search=&view=15"
         alert('변경되었습니다.');
       } else if (idx == 2) {
-        location.href = "http://localhost/gangnam_culture/notice2/search_result.php?category=n_title&search=&view=20"
+        location.href = "http://localhost/gangnam_culture/free/search_result.php?category=f_title&search=&view=20"
         alert('변경되었습니다.');
       }
+    }
+
+    function no_per() {
+      alert("로그인 후 작성 가능합니다");
+      location.href = "http://localhost/gangnam_culture/login/login.php";
     }
     </script>
 
   </header>
   <div class="menu_wrap">
     <div class="menu_bar">
-      <p class="mbr_txt">홈 > 열린광장 > 타기관 공지사항</p>
+      <p class="mbr_txt">홈 > 열린광장 > 자유 게시판</p>
     </div>
   </div>
   <main id="main">
@@ -112,8 +132,8 @@
         </div>
         <div class="aside_body">
           <ul class="aside_menu">
-            <li><a href="../notice/list.php">공지사항</a></li>
-            <li><a id="board1" href="#">타기관 공지사항</a></li>
+            <li><a id="board1" href="#">공지사항</a></li>
+            <li><a href="../free2/list.php">타기관 공지사항</a></li>
             <li><a href="../employ/list.php">직원채용 공고</a></li>
             <li><a href="board6_4.html">자유 게시판</a></li>
             <li><a href="board6_5.html">FAQ</a></li>
@@ -123,10 +143,10 @@
       <div class="content_wrap">
         <div class="menu_title">
           <div class="menu_txt">
-            <h1>타기관 공지사항</h1>
+            <h1>자유 게시판</h1>
           </div>
         </div>
-        <div class="notice2_board_List">
+        <div class="free_board_List">
           <div class="bd_top">
             <p class="total">Total <span class="color-main"><?php echo $total; ?></span>건 <?php echo $page;?> 페이지</p>
 
@@ -145,11 +165,12 @@
             </caption>
             <thead>
               <tr>
-                <th class="row1">번호</th>
-                <th class="row2">제목</th>
+                <th class="row1" style="width: 70px;">번호</th>
+                <th class="row2" style="width: 365px;">제목</th>
                 <th class="row3">작성자</th>
                 <th class="row4">등록일</th>
-                <th class="row5">조회</th>
+                <th class="row5" style="width: 70px;">추천</th>
+                <th class="row6" style="width: 70px;">조회</th>
               </tr>
             </thead>
             <tbody>
@@ -159,7 +180,7 @@
 
             // paging : 시작번호부터 페이지 당 보여질 목록수 만큼 데이터 구하는 쿼리 작성
             // limit 몇번부터, 몇 개
-            $sql = "select * from notice2 order by idx desc limit $start, $list_num;";
+            $sql = "select * from free order by idx desc limit $start, $list_num;";
             // echo $sql;
             /* exit; */
 
@@ -175,13 +196,14 @@
               <tr>
                 <td class="txtc"><?php echo $i; ?></td>
                 <td id="board_t" class="txtc">
-                  <a href="view.php?n_idx=<?php echo $array["idx"]?>&no=<?= $i ?>">
-                    <?php echo $array["n_title"]; ?>
+                  <a href="view.php?f_idx=<?php echo $array["idx"]?>&no=<?= $i ?>">
+                    <?php echo $array["f_title"]; ?>
                   </a>
                 </td>
                 <td class="txtc"><?php echo $array["writer"]; ?></td>
                 <?php $w_date = substr($array["w_date"], 0, 10); ?>
                 <td class="txtc"><?php echo $w_date; ?></td>
+                <td class="txtc"><?php echo $array["like_count"]; ?></td>
                 <td class="txtc"><?php echo $array["cnt"]; ?></td>
               </tr>
               <?php
@@ -222,6 +244,7 @@
               // pager : 다음 페이지
               if($page >= $total_page){
               ?>
+              <!-- <a href="list.php?page=<?php echo $total_page; ?>"><img src="../images/btn_next.png" alt="다음"></a> -->
               <?php } else{ ?>
               <a href="list.php?page=<?php echo ($page + 1); ?>"><img src="../images/btn_next.png" alt="다음"></a>
               <?php }; ?>
@@ -233,37 +256,38 @@
               <a href="list.php?page=<?php echo $next_page; ?>"><img src="../images/btn_last.png" alt="다다음"></a>
               <?php };?>
             </p>
-            <?php if($s_id == "admin"){ ?>
+            <?php if($s_id != ""){ ?>
             <div class="wrt_btn">
               <button type="button" onclick="location.href='write.php'">글쓰기</button>
               <?php } else{ ?>
-
-              <?php }; ?>
+              <div class="wrt_btn">
+                <button type="button" onclick="no_per()">글쓰기</button>
+                <?php }; ?>
+              </div>
             </div>
-          </div>
-          <?php echo '<script>
+            <?php echo '<script>
           let page_num = document.getElementById("page' .$page .'");
           page_num.style.color= "#006ab6";
           page_num.style.fontWeight = "bold";
           page_num.style.borderBottom = "1px solid #006ab6";
           </script>'; ?>
+          </div>
         </div>
       </div>
-    </div>
-    <form action="search_result.php?" method="get">
-      <div class="search_bar">
-        <select name="category" class="search_select">
-          <option value="n_title">제목</option>
-          <option value="writer">글쓴이</option>
-          <option value="n_content">내용</option>
-        </select>
-        <input type="text" name="search" id="search_txt" placeholder="검색어를 입력하세요." />
-        <input type="hidden" name="view" />
-        <button type="submit" class="btn_search">
-          <img src="../images/search_icon.jpg" alt="" />
-        </button>
-      </div>
-    </form>
+      <form action="search_result.php?" method="get">
+        <div class="search_bar">
+          <select name="category" class="search_select">
+            <option value="f_title">제목</option>
+            <option value="writer">글쓴이</option>
+            <option value="f_content">내용</option>
+          </select>
+          <input type="text" name="search" id="search_txt" placeholder="검색어를 입력하세요." />
+          <input type="hidden" name="view" />
+          <button type="submit" class="btn_search">
+            <img src="../images/search_icon.jpg" alt="" />
+          </button>
+        </div>
+      </form>
   </main>
 
   <footer>

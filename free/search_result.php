@@ -22,22 +22,35 @@
     // DB 연결
     include "../inc/dbcon.php";
 
+    /** 카테고리 & 검색 */
+    $category = $_GET['category'];
+    $search = $_GET['search'];
+    $view = $_GET['view'];
+
     // 쿼리 작성
-    $sql = "select * from notice2;";
-    $t_sql = "select count(*) from notice2;";
+    if($category){
+      $sql = "select * from notice where $category like '%$search%' order by idx desc;";
+    }else{
+      $sql = "select * from notice";
+    };
+
+    // echo $sql;
+    // exit;
+
 
     // 쿼리 전송
     $result = mysqli_query($dbcon, $sql);
-    $t_result = mysqli_query($dbcon, $t_sql);
-    $row = mysqli_fetch_row($t_result);
-    
-    /** 전체 데이터 가져오기 */
+
+    // 전체 데이터 가져오기
     $total = mysqli_num_rows($result);
-    $total_count = $row[0];
 
 
     /** paging : 한 페이지 당 보여질 목록 수 */
-    $list_num = 10;
+    if($view){
+      $list_num = $view;
+    } else {
+      $list_num = 10;
+    }
 
     /** 한 블럭 당 페이지 수 */
     $page_num = 5;
@@ -45,11 +58,13 @@
     /** 현재 페이지의 번호 */
     $page = isset($_GET["page"])? $_GET["page"] : 1;
 
+    // $page = isset($_GET["page"])? $_GET["page"] : 1;
+
     /** 전체 페이지 수 = 전체 데이터 / 페이지 당 목록 수,  ceil : 올림값, floor : 내림값, round : 반올림 */
     $total_page = ceil($total / $list_num);
-
+    
     /** 글번호 */
-    $print_num = $total_count - $list_num*($page-1);
+    // $print_num = $total_count - $list_num*($page-1);
 
 
     /** $total_block = 전체 블럭 수 = 전체 페이지 수 / 블럭 당 페이지 수 */
@@ -80,28 +95,29 @@
     $next_page=($now_block*$page_num)+1;
     ?>
 
-
     <script>
     function sel_view() {
       var view = document.getElementById('viewCnt');
       var idx = view.options.selectedIndex;
       if (idx == 0) {
-        location.href = "http://localhost/gangnam_culture/notice2/search_result.php?category=n_title&search=&view=10"
+        location.href =
+          "http://localhost/gangnam_culture/notice/search_result.php?category=<?php echo $category?>&search=<?php echo $search?>&view=10"
         alert('변경되었습니다.')
       } else if (idx == 1) {
-        location.href = "http://localhost/gangnam_culture/notice2/search_result.php?category=n_title&search=&view=15"
+        location.href =
+          "http://localhost/gangnam_culture/notice/search_result.php?category=<?php echo $category?>&search=<?php echo $search?>&view=15"
         alert('변경되었습니다.');
       } else if (idx == 2) {
-        location.href = "http://localhost/gangnam_culture/notice2/search_result.php?category=n_title&search=&view=20"
+        location.href =
+          "http://localhost/gangnam_culture/notice/search_result.php?category=<?php echo $category?>&search=<?php echo $search?>&view=20"
         alert('변경되었습니다.');
       }
     }
     </script>
-
   </header>
   <div class="menu_wrap">
     <div class="menu_bar">
-      <p class="mbr_txt">홈 > 열린광장 > 타기관 공지사항</p>
+      <p class="mbr_txt">홈 > 열린광장 > 공지사항</p>
     </div>
   </div>
   <main id="main">
@@ -112,8 +128,8 @@
         </div>
         <div class="aside_body">
           <ul class="aside_menu">
-            <li><a href="../notice/list.php">공지사항</a></li>
-            <li><a id="board1" href="#">타기관 공지사항</a></li>
+            <li><a id="board1" href="#">공지사항</a></li>
+            <li><a href="../notice2/list.php">타기관 공지사항</a></li>
             <li><a href="../employ/list.php">직원채용 공고</a></li>
             <li><a href="board6_4.html">자유 게시판</a></li>
             <li><a href="board6_5.html">FAQ</a></li>
@@ -123,10 +139,10 @@
       <div class="content_wrap">
         <div class="menu_title">
           <div class="menu_txt">
-            <h1>타기관 공지사항</h1>
+            <h1>공지사항</h1>
           </div>
         </div>
-        <div class="notice2_board_List">
+        <div class="notice_board_List">
           <div class="bd_top">
             <p class="total">Total <span class="color-main"><?php echo $total; ?></span>건 <?php echo $page;?> 페이지</p>
 
@@ -153,16 +169,28 @@
               </tr>
             </thead>
             <tbody>
+              <?php 
+              if($category == 'title'){
+              $keyword = '제목';
+              } else if($category == 'name'){
+              $keyword = '글쓴이';
+              } else{
+              $keyword = '내용';
+              }
+              ?>
               <?php
             // paging : 해당 페이지의 글 시작 번호 = (현재 페이지 번호 - 1) * 페이지 당 보여질 목록 수
             $start = ($page - 1) * $list_num;
 
             // paging : 시작번호부터 페이지 당 보여질 목록수 만큼 데이터 구하는 쿼리 작성
             // limit 몇번부터, 몇 개
-            $sql = "select * from notice2 order by idx desc limit $start, $list_num;";
-            // echo $sql;
-            /* exit; */
+            // $sql = "select * from notice order by idx desc limit $start, $list_num;";
 
+            if($category){
+              $sql = "select * from notice where $category like '%$search%' order by idx desc limit $start, $list_num;";
+          } else{
+              $sql = "select * from notice order by idx desc limit $start, $list_num;";
+          };
             // DB에 데이터 전송
             $result = mysqli_query($dbcon, $sql);
 
@@ -170,13 +198,17 @@
             // pager : 글번호(역순)
             // 전체데이터 - ((현재 페이지 번호 -1) * 페이지 당 목록 수)
             $i = $total - (($page - 1) * $list_num);
-            while($array = mysqli_fetch_array($result)){
-            ?>
+            if($i == 0){?>
+              <span class="search_result">※검색 결과가 존재하지 않습니다.</span>
+              <?php
+            }else{ 
+              while($array = mysqli_fetch_array($result)){
+              ?>
               <tr>
                 <td class="txtc"><?php echo $i; ?></td>
                 <td id="board_t" class="txtc">
-                  <a href="view.php?n_idx=<?php echo $array["idx"]?>&no=<?= $i ?>">
-                    <?php echo $array["n_title"]; ?>
+                  <a href="view.php?f_idx=<?php echo $array["idx"]?>&no=<?= $i ?>">
+                    <?php echo $array["f_title"]; ?>
                   </a>
                 </td>
                 <td class="txtc"><?php echo $array["writer"]; ?></td>
@@ -185,8 +217,9 @@
                 <td class="txtc"><?php echo $array["cnt"]; ?></td>
               </tr>
               <?php
-                $i--;
-            }; 
+                  $i--;
+              }; 
+            }
             ?>
             </tbody>
           </table>
@@ -196,9 +229,13 @@
               if($page == 1){
               ?>
               <?php } else if($now_block == 1){?>
-              <a href="list.php?page=1"><img src="../images/btn_first.png" alt="이이전"></a>
+              <a
+                href="search_result.php?page=1&category=<?php echo $category?>&search=<?php echo $search?>&view=<?php echo $view?>"><img
+                  src="../images/btn_first.png" alt="이이전"></a>
               <?php } else { ?>
-              <a href="list.php?page=<?php echo $prev_page; ?>"><img src="../images/btn_first.png" alt="이이전"></a>
+              <a
+                href="search_result.php?page=<?php echo $prev_page; ?>&category=<?php echo $category?>&search=<?php echo $search?>&view=<?php echo $view?>"><img
+                  src="../images/btn_first.png" alt="이이전"></a>
               <?php }
               ?>
               <?php
@@ -207,7 +244,9 @@
               ?>
               <!-- <a href="list.php?page=1">이전</a> -->
               <?php } else{ ?>
-              <a href="list.php?page=<?php echo ($page - 1); ?>"><img src="../images/btn_prev.png" alt="이전"></a>
+              <a
+                href="search_result.php?page=<?php echo ($page - 1); ?>&category=<?php echo $category?>&search=<?php echo $search?>&view=<?php echo $view?>"><img
+                  src="../images/btn_prev.png" alt="이전"></a>
               <?php }; ?>
 
               <?php
@@ -215,22 +254,27 @@
               for($print_page = $s_pageNum;  $print_page <= $e_pageNum; $print_page++){
               ?>
               <a id="page<?php echo $print_page; ?>"
-                href="list.php?page=<?php echo $print_page; ?>"><?php echo $print_page; ?></a>
+                href="search_result.php?page=<?php echo $print_page; ?>&category=<?php echo $category?>&search=<?php echo $search?>&view=<?php echo $view?>"><?php echo $print_page; ?></a>
               <?php }; ?>
 
               <?php
               // pager : 다음 페이지
               if($page >= $total_page){
               ?>
+              <!-- <a href="list.php?page=<?php echo $total_page; ?>"><img src="../images/btn_next.png" alt="다음"></a> -->
               <?php } else{ ?>
-              <a href="list.php?page=<?php echo ($page + 1); ?>"><img src="../images/btn_next.png" alt="다음"></a>
+              <a
+                href="search_result.php?page=<?php echo ($page + 1); ?>&category=<?php echo $category?>&search=<?php echo $search?>&view=<?php echo $view?>"><img
+                  src="../images/btn_next.png" alt="다음"></a>
               <?php }; ?>
 
               <?php
               if($now_block == $total_block || $page = 1){
               ?>
               <?php } else{ ?>
-              <a href="list.php?page=<?php echo $next_page; ?>"><img src="../images/btn_last.png" alt="다다음"></a>
+              <a
+                href="search_result.php?page=<?php echo $next_page; ?>&category=<?php echo $category?>&search=<?php echo $search?>&view=<?php echo $view?>"><img
+                  src="../images/btn_last.png" alt="다다음"></a>
               <?php };?>
             </p>
             <?php if($s_id == "admin"){ ?>
@@ -250,12 +294,12 @@
         </div>
       </div>
     </div>
-    <form action="search_result.php?" method="get">
+    <form action="search_result.php" method="get">
       <div class="search_bar">
         <select name="category" class="search_select">
-          <option value="n_title">제목</option>
+          <option value="f_title">제목</option>
           <option value="writer">글쓴이</option>
-          <option value="n_content">내용</option>
+          <option value="f_content">내용</option>
         </select>
         <input type="text" name="search" id="search_txt" placeholder="검색어를 입력하세요." />
         <input type="hidden" name="view" />
@@ -265,7 +309,6 @@
       </div>
     </form>
   </main>
-
   <footer>
     <?php
       include '../inc/footer.php'

@@ -257,7 +257,7 @@
           <option value="writer">글쓴이</option>
           <option value="n_content">내용</option>
         </select>
-        <input type="text" name="search" id="search_txt" />
+        <input type="text" name="search" id="search_txt" placeholder="검색어를 입력하세요." />
         <input type="hidden" name="view" />
         <button type="submit" class="btn_search">
           <img src="../images/search_icon.jpg" alt="" />

@@ -296,7 +296,7 @@
     </div>
     <form action="search_result.php" method="get">
       <div class="search_bar">
-        <select name="category" class="search_select">
+        <select name="category" class="search_select" placeholder="검색어를 입력하세요.">
           <option value="n_title">제목</option>
           <option value="writer">글쓴이</option>
           <option value="n_content">내용</option>
