@@ -100,13 +100,16 @@
       var view = document.getElementById('viewCnt');
       var idx = view.options.selectedIndex;
       if (idx == 0) {
-        location.href = "http://localhost/gangnam_culture/notice/search_result.php?category=n_title&search=&view=10"
+        location.href =
+          "http://localhost/gangnam_culture/notice/search_result.php?category=<?php echo $category?>&search=<?php echo $search?>&view=10"
         alert('변경되었습니다.')
       } else if (idx == 1) {
-        location.href = "http://localhost/gangnam_culture/notice/search_result.php?category=n_title&search=&view=15"
+        location.href =
+          "http://localhost/gangnam_culture/notice/search_result.php?category=<?php echo $category?>&search=<?php echo $search?>&view=15"
         alert('변경되었습니다.');
       } else if (idx == 2) {
-        location.href = "http://localhost/gangnam_culture/notice/search_result.php?category=n_title&search=&view=20"
+        location.href =
+          "http://localhost/gangnam_culture/notice/search_result.php?category=<?php echo $category?>&search=<?php echo $search?>&view=20"
         alert('변경되었습니다.');
       }
     }
@@ -226,9 +229,13 @@
               if($page == 1){
               ?>
               <?php } else if($now_block == 1){?>
-              <a href="list.php?page=1"><img src="../images/btn_first.png" alt="이이전"></a>
+              <a
+                href="search_result.php?page=1&category=<?php echo $category?>&search=<?php echo $search?>&view=<?php echo $view?>"><img
+                  src="../images/btn_first.png" alt="이이전"></a>
               <?php } else { ?>
-              <a href="list.php?page=<?php echo $prev_page; ?>"><img src="../images/btn_first.png" alt="이이전"></a>
+              <a
+                href="search_result.php?page=<?php echo $prev_page; ?>&category=<?php echo $category?>&search=<?php echo $search?>&view=<?php echo $view?>"><img
+                  src="../images/btn_first.png" alt="이이전"></a>
               <?php }
               ?>
               <?php
@@ -237,7 +244,9 @@
               ?>
               <!-- <a href="list.php?page=1">이전</a> -->
               <?php } else{ ?>
-              <a href="list.php?page=<?php echo ($page - 1); ?>"><img src="../images/btn_prev.png" alt="이전"></a>
+              <a
+                href="search_result.php?page=<?php echo ($page - 1); ?>&category=<?php echo $category?>&search=<?php echo $search?>&view=<?php echo $view?>"><img
+                  src="../images/btn_prev.png" alt="이전"></a>
               <?php }; ?>
 
               <?php
@@ -245,7 +254,7 @@
               for($print_page = $s_pageNum;  $print_page <= $e_pageNum; $print_page++){
               ?>
               <a id="page<?php echo $print_page; ?>"
-                href="list.php?page=<?php echo $print_page; ?>"><?php echo $print_page; ?></a>
+                href="search_result.php?page=<?php echo $print_page; ?>&category=<?php echo $category?>&search=<?php echo $search?>&view=<?php echo $view?>"><?php echo $print_page; ?></a>
               <?php }; ?>
 
               <?php
@@ -254,14 +263,18 @@
               ?>
               <!-- <a href="list.php?page=<?php echo $total_page; ?>"><img src="../images/btn_next.png" alt="다음"></a> -->
               <?php } else{ ?>
-              <a href="list.php?page=<?php echo ($page + 1); ?>"><img src="../images/btn_next.png" alt="다음"></a>
+              <a
+                href="search_result.php?page=<?php echo ($page + 1); ?>&category=<?php echo $category?>&search=<?php echo $search?>&view=<?php echo $view?>"><img
+                  src="../images/btn_next.png" alt="다음"></a>
               <?php }; ?>
 
               <?php
-              if($now_block == $total_block){
+              if($now_block == $total_block || $page = 1){
               ?>
               <?php } else{ ?>
-              <a href="list.php?page=<?php echo $next_page; ?>"><img src="../images/btn_last.png" alt="다다음"></a>
+              <a
+                href="search_result.php?page=<?php echo $next_page; ?>&category=<?php echo $category?>&search=<?php echo $search?>&view=<?php echo $view?>"><img
+                  src="../images/btn_last.png" alt="다다음"></a>
               <?php };?>
             </p>
             <?php if($s_id == "admin"){ ?>
