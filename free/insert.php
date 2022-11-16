@@ -21,9 +21,9 @@ include "../inc/dbcon.php";
 
 // 쿼리 작성
 $sql = "insert into free(";
-$sql .= "f_title, f_content, writer, w_date";
+$sql .= "u_id, f_title, f_content, writer, w_date";
 $sql .= ") values(";
-$sql .= "'$f_title', '$f_content', '$s_name', '$w_date'";
+$sql .= "'$s_id', '$f_title', '$f_content', '$s_name', '$w_date'";
 $sql .= ");";
 // echo $sql;
 // exit;
