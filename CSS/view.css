@@ -348,3 +348,105 @@ td.recom_col {
 .b_left1 {
   padding: 0 10px;
 }
+
+/* 댓글 */
+.reply_view {
+  margin-top: 50px;
+  word-break: break-all;
+}
+.dap_lo {
+  font-size: 14px;
+  padding: 10px 0 10px 0;
+  border-bottom: solid 1px #dddddd;
+}
+.dap_to {
+  margin-top: 5px;
+  padding: 5px;
+}
+.rep_me {
+  font-size: 12px;
+  text-align: right;
+}
+.rep_me ul li {
+  float: left;
+  width: 30px;
+}
+
+.dat_user,
+.dat_pw,
+.reply_content {
+  border: 1px solid black;
+}
+
+.dat_delete {
+  display: none;
+}
+.dat_edit {
+  display: none;
+}
+.dap_sm {
+  position: absolute;
+  top: 10px;
+}
+.dap_edit_t {
+  width: 520px;
+  height: 70px;
+  position: absolute;
+  top: 40px;
+}
+.re_mo_bt {
+  position: absolute;
+  top: 40px;
+  right: 5px;
+  width: 90px;
+  height: 72px;
+}
+#re_content {
+  width: 700px;
+  height: 56px;
+}
+.dap_ins {
+  margin-top: 50px;
+}
+.re_bt {
+  position: absolute;
+  width: 100px;
+  height: 56px;
+  font-size: 16px;
+  margin-left: 10px;
+  background-color: #dddddd;
+}
+#foot_box {
+  height: 50px;
+}
+
+/* iframe을 숨기기 위한 css*/
+#if {
+  width: 0px;
+  height: 0px;
+  border: 0px;
+}
+
+.r_edit,
+.r_del {
+  padding: 0;
+  padding-right: 5px;
+  font-size: 12px;
+}
+
+.rep_data {
+  text-align: right;
+  position: relative;
+  bottom: 20px;
+  padding: 0 5px;
+}
+
+.dap_title {
+  height: 25px;
+}
+
+.reply_view h3 {
+  border-bottom: 2px solid #dddddd;
+  padding-bottom: 10px;
+  color: #0d4590;
+}

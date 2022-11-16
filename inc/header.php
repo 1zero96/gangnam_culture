@@ -130,9 +130,9 @@
           <a href="#">열린광장</a>
           <ul class="gnb__content">
             <li><a href="http://localhost/gangnam_culture/notice/list.php">공지사항</a></li>
-            <li><a href="#">타기관 공지사항</a></li>
-            <li><a href="#">단임강사 모집공고</a></li>
-            <li><a href="#">직원채용 공고</a></li>
+            <li><a href="http://localhost/gangnam_culture/notice2/list.php">타기관 공지사항</a></li>
+            <li><a href="http://localhost/gangnam_culture/employ/list.php">단임강사 모집공고</a></li>
+            <li><a href="http://localhost/gangnam_culture/free/list.php">자유 게시판</a></li>
             <li><a href="#">FAQ</a></li>
             <!-- <li><a href="#">하위메뉴</a></li> -->
           </ul>

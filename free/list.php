@@ -132,10 +132,10 @@
         </div>
         <div class="aside_body">
           <ul class="aside_menu">
-            <li><a id="board1" href="#">공지사항</a></li>
+            <li><a href="#">공지사항</a></li>
             <li><a href="../free2/list.php">타기관 공지사항</a></li>
             <li><a href="../employ/list.php">직원채용 공고</a></li>
-            <li><a href="board6_4.html">자유 게시판</a></li>
+            <li><a id="board1" href="board6_4.html">자유 게시판</a></li>
             <li><a href="board6_5.html">FAQ</a></li>
           </ul>
         </div>
@@ -192,12 +192,19 @@
             // 전체데이터 - ((현재 페이지 번호 -1) * 페이지 당 목록 수)
             $i = $total - (($page - 1) * $list_num);
             while($array = mysqli_fetch_array($result)){
+              /** 댓글 수 카운트 */
+              $reply_sql = "select * from reply where con_num = '".$array["idx"]."'";
+              /** 댓글 수 쿼리 전송 */
+              $rcount_sql = mysqli_query($dbcon, $reply_sql); //reply테이블에서 con_num이 board의 idx와 같은 것을 선택
+              /** 댓글 데이터 가져오기 */
+              $rep_count = mysqli_num_rows($rcount_sql); //num_rows로 정수형태로 출력
             ?>
               <tr>
                 <td class="txtc"><?php echo $i; ?></td>
                 <td id="board_t" class="txtc">
                   <a href="view.php?f_idx=<?php echo $array["idx"]?>&no=<?= $i ?>">
                     <?php echo $array["f_title"]; ?>
+                    <span class="re_ct">[<?php echo $rep_count; ?>]</span>
                   </a>
                 </td>
                 <td class="txtc"><?php echo $array["writer"]; ?></td>

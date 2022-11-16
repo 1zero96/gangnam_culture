@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../CSS/reset.css" />
   <link rel="stylesheet" href="../CSS/header.css" />
   <link rel="stylesheet" href="../CSS/topmenu.css" />
-  <link rel="stylesheet" href="../CSS/notice_write.css" />
+  <link rel="stylesheet" href="../CSS/free_write.css" />
   <link rel="stylesheet" href="../CSS/header.css">
   <link rel="stylesheet" href="../CSS/summernote/summernote-lite.css">
   <link rel="stylesheet" href="../CSS/footer.css" />
@@ -64,7 +64,7 @@
           include "../inc/dbcon.php";
 
         // 쿼리 작성
-          $sql = "select * from notice where idx = $f_idx;";
+          $sql = "select * from free where idx = $f_idx;";
 
         // 쿼리 전송
           $result = mysqli_query($dbcon, $sql);
@@ -152,7 +152,7 @@
               <div class="btm_btns1">
                 <div class="btm_btns2">
                   <button type="submit" id="btn_save" onclick="notice_check()">저장</button>
-                  <button type="button">목록</button>
+                  <button type="button" onclick="location.href='list.php'">목록</button>
                 </div>
               </div>
           </form>

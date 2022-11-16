@@ -20,9 +20,7 @@ $("document").ready(function () {
   });
 
   $(".fa01").mouseenter(function () {
-    $(".fa01 div").append(
-      "<span class='fa_txt text-shadow'>ㅣ<br>" + "자세히보기</span>"
-    );
+    $(".fa01 div").append("<span class='fa_txt text-shadow'>ㅣ<br>" + "자세히보기</span>");
     $(".fa01 p").addClass("faBlack");
     $(".fa01 div, .fa01 span").stop().animate({ top: 150, left: 210 });
     $(".fa_txt").stop().fadeIn(1000);
@@ -40,9 +38,7 @@ $("document").ready(function () {
   });
 
   $(".fa02").mouseenter(function () {
-    $(".fa02 div").append(
-      "<span class='fa_txt text-shadow'>ㅣ<br>" + "자세히보기</span>"
-    );
+    $(".fa02 div").append("<span class='fa_txt text-shadow'>ㅣ<br>" + "자세히보기</span>");
     $(".fa02 p").addClass("faBlack");
     $(".fa01 div, .fa01 span").stop().animate({ top: 165, left: -5.4 });
     $(".fa02 div, .fa02 span").stop().animate({ top: 160, left: 210 });
@@ -60,9 +56,7 @@ $("document").ready(function () {
   });
 
   $(".fa03").mouseenter(function () {
-    $(".fa03 div").append(
-      "<span class='fa_txt text-shadow'>ㅣ<br>" + "자세히보기</span>"
-    );
+    $(".fa03 div").append("<span class='fa_txt text-shadow'>ㅣ<br>" + "자세히보기</span>");
     $(".fa03 p").addClass("faBlack");
     $(".fa01 div, .fa01 span").stop().animate({ top: 165, left: -5.4 });
     $(".fa02 div, .fa02 span").stop().animate({ top: 175, left: 18 });
@@ -80,9 +74,7 @@ $("document").ready(function () {
   });
 
   $(".fa04").mouseenter(function () {
-    $(".fa04 div").append(
-      "<span class='fa_txt text-shadow'>ㅣ<br>" + "자세히보기</span>"
-    );
+    $(".fa04 div").append("<span class='fa_txt text-shadow'>ㅣ<br>" + "자세히보기</span>");
     $(".fa04 p").addClass("faBlack");
     $(".fa01 div, .fa01 span").stop().animate({ top: 165, left: -5.4 });
     $(".fa02 div, .fa02 span").stop().animate({ top: 175, left: 18 });
@@ -152,4 +144,15 @@ $(".slider").slick({
   slidesToScroll: 4,
   prevArrow: "<button type='button' class='tap-prev'>Previous</button>",
   nextArrow: "<button type='button' class='tap-next'>Next</button>",
+});
+
+/** quick menu 클릭하면 보여지고 다시 클릭하면 사라지게 하는 함수 */
+$("#quick .tit").click(function () {
+  if ($("#quick .tit").hasClass("on") === true) {
+    $("#quick ul").hide(250);
+    $("#quick .tit").removeClass("on");
+  } else {
+    $("#quick .tit").addClass("on");
+    $("#quick ul").show(250);
+  }
 });

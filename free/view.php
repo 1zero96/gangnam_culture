@@ -12,7 +12,34 @@
   <link rel="stylesheet" href="../CSS/view.css" />
   <link rel="stylesheet" href="../CSS/footer.css" />
   <script src="../JS/jquery-3.6.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
   <script defer src="../JS/header.js"></script>
+  <script>
+  $(document).ready(function() {
+    $(".dat_edit_bt").click(function() {
+      /* dat_edit_bt클래스 클릭시 동작(댓글 수정) */
+      var obj = $(this).closest(".dap_lo").find(".dat_edit");
+      obj.dialog({
+        modal: true,
+        width: 650,
+        height: 200,
+        title: "댓글 수정"
+      });
+    });
+
+    $(".dat_delete_bt").click(function() {
+      /* dat_delete_bt클래스 클릭시 동작(댓글 삭제) */
+      var obj = $(this).closest(".dap_lo").find(".dat_delete");
+      obj.dialog({
+        modal: true,
+        width: 400,
+        title: "댓글 삭제확인"
+      });
+    });
+
+  });
+  </script>
+
 </head>
 
 <body>
@@ -49,6 +76,16 @@
         $cnt = $array["cnt"]+1;
         $sql = "update free set cnt = $cnt where idx = $f_idx;";
         mysqli_query($dbcon, $sql);
+
+        $f_idx=$_GET["f_idx"];
+        $result2 = $mysqli->query("select * from free where idx=".$f_idx) or die("query error => ".$mysqli->error);
+        $rs = $result2->fetch_object();
+
+        $query="select * from memo where status=1 and bid=".$rs->idx." order by memoid asc";
+        $memo_result = $mysqli->query($query) or die("query error => ".$mysqli->error);
+        while($mrs = $memo_result->fetch_object()){
+        $memoArray[]=$mrs;
+}
     ?>
   </header>
   <div class="menu_wrap">
@@ -161,7 +198,7 @@
                     <?php } ?>
                   </td>
                   <?php $w_date = substr($array["w_date"], 0, 10); ?>
-                  <td class="no_date txtc">
+                  <td colspan="2" class="no_date txtr">
                     <?php echo empty($p_array['idx']) ? '' : $w_date ?>
                   </td>
                 </tr>
@@ -171,10 +208,10 @@
                     <?php if(empty($f_array['idx'])){ ?>
                     <span>다음 글이 없습니다.</span>
                     <?php } else { ?>
-                    <a href="view.php?f_idx=<?= $p_array['idx']?>&no=<?= $no + 1 ?>"><?= $f_array['f_title'] ?></a>
+                    <a href="view.php?f_idx=<?= $f_array['idx']?>&no=<?= $no + 1 ?>"><?= $f_array['f_title'] ?></a>
                     <?php } ?>
                   </td>
-                  <td class="no_date txtc">
+                  <td colspan="2" class="no_date txtr">
                     <?php echo empty($p_array['idx']) ? '' : $w_date ?>
                   </td>
                 </tr>
@@ -188,9 +225,41 @@
                 <button type="button" onclick="location.href='list.php'">목록</button>
               </div>
             </div>
+            <!-- 댓글 시작 -->
+            <div style="margin-top:20px;">
+              <form class="row g-3">
+                <div class="col-md-10">
+                  <textarea class="form-control" placeholder="댓글을 입력해주세요." id="memo" style="height: 60px"></textarea>
+                </div>
+                <div class="col-md-2">
+                  <button type="button" class="btn btn-secondary" id="memo_button">댓글등록</button>
+                </div>
+              </form>
+            </div>
+            <div id="memo_place">
+              <?php
+        foreach($memoArray as $ma){
+        ?>
+              <div class="card mb-4" style="max-width: 100%;margin-top:20px;">
+                <div class="row g-0">
+                  <div class="col-md-12">
+                    <div class="card-body">
+                      <p class="card-text"><?php echo $ma->memo;?></p>
+                      <p class="card-text"><small class="text-muted"><?php echo $ma->userid;?> /
+                          <?php echo $ma->regdate;?></small></p>
+                      <p class="card-text" style="text-align:right"><a href="javascript:;"
+                          onclick="memo_modi('<?php echo $ma->memoid?>')">수정</a> / <a href="javascript:;"
+                          onclick="memo_del('<?php echo $ma->memoid?>')">삭제</a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <?php }?>
+            </div>
           </div>
         </div>
       </div>
+    </div>
     </div>
   </main>
   <footer>
@@ -205,6 +274,126 @@
       location.href = "delete.php?f_idx=<?php echo $f_idx; ?>";
     };
   };
+
+  $("#memo_button").click(function() {
+    var data = {
+      memo: $('#memo').val(),
+      bid: <?php echo $f_idx;?>
+    };
+    $.ajax({
+      async: false,
+      type: 'post',
+      url: '../inc/memo_write.php',
+      data: data,
+      dataType: 'html',
+      error: function() {},
+      success: function(return_data) {
+        if (return_data == "member") {
+          alert('로그인 하십시오.');
+          return;
+        } else {
+          $("#memo_place").append(return_data);
+        }
+      }
+    });
+  });
+
+  function memo_del(memoid) {
+
+    if (!confirm('삭제하시겠습니까?')) {
+      return false;
+    }
+
+    var data = {
+      memoid: memoid
+    };
+    $.ajax({
+      async: false,
+      type: 'post',
+      url: 'memo_delete.php',
+      data: data,
+      dataType: 'json',
+      error: function() {},
+      success: function(return_data) {
+        if (return_data.result == "member") {
+          alert('로그인 하십시오.');
+          return;
+        } else if (return_data.result == "my") {
+          alert('본인이 작성한 글만 삭제할 수 있습니다.');
+          return;
+        } else if (return_data.result == "no") {
+          alert('삭제하지 못했습니다. 관리자에게 문의하십시오.');
+          return;
+        } else {
+          $("#memo_" + memoid).hide();
+        }
+      }
+    });
+
+  }
+
+  function memo_modi(memoid) {
+
+    var data = {
+      memoid: memoid
+    };
+
+    $.ajax({
+      async: false,
+      type: 'post',
+      url: 'memo_modify.php',
+      data: data,
+      dataType: 'html',
+      error: function() {},
+      success: function(return_data) {
+        if (return_data == "member") {
+          alert('로그인 하십시오.');
+          return;
+        } else if (return_data == "my") {
+          alert('본인이 작성한 글만 수정할 수 있습니다.');
+          return;
+        } else if (return_data == "no") {
+          alert('수정하지 못했습니다. 관리자에게 문의하십시오.');
+          return;
+        } else {
+          $("#memo_" + memoid).html(return_data);
+        }
+      }
+    });
+
+  }
+
+  function memo_modify(memoid) {
+
+    var data = {
+      memoid: memoid,
+      memo: $('#memo_text_' + memoid).val()
+    };
+
+    $.ajax({
+      async: false,
+      type: 'post',
+      url: 'memo_modify_update.php',
+      data: data,
+      dataType: 'html',
+      error: function() {},
+      success: function(return_data) {
+        if (return_data == "member") {
+          alert('로그인 하십시오.');
+          return;
+        } else if (return_data == "my") {
+          alert('본인이 작성한 글만 수정할 수 있습니다.');
+          return;
+        } else if (return_data == "no") {
+          alert('수정하지 못했습니다. 관리자에게 문의하십시오.');
+          return;
+        } else {
+          $("#memo_" + memoid).html(return_data);
+        }
+      }
+    });
+
+  }
   </script>
 </body>
 

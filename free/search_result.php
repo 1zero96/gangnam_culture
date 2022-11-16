@@ -29,9 +29,9 @@
 
     // 쿼리 작성
     if($category){
-      $sql = "select * from notice where $category like '%$search%' order by idx desc;";
+      $sql = "select * from free where $category like '%$search%' order by idx desc;";
     }else{
-      $sql = "select * from notice";
+      $sql = "select * from free";
     };
 
     // echo $sql;
@@ -101,15 +101,15 @@
       var idx = view.options.selectedIndex;
       if (idx == 0) {
         location.href =
-          "http://localhost/gangnam_culture/notice/search_result.php?category=<?php echo $category?>&search=<?php echo $search?>&view=10"
+          "http://localhost/gangnam_culture/free/search_result.php?category=<?php echo $category?>&search=<?php echo $search?>&view=10"
         alert('변경되었습니다.')
       } else if (idx == 1) {
         location.href =
-          "http://localhost/gangnam_culture/notice/search_result.php?category=<?php echo $category?>&search=<?php echo $search?>&view=15"
+          "http://localhost/gangnam_culture/free/search_result.php?category=<?php echo $category?>&search=<?php echo $search?>&view=15"
         alert('변경되었습니다.');
       } else if (idx == 2) {
         location.href =
-          "http://localhost/gangnam_culture/notice/search_result.php?category=<?php echo $category?>&search=<?php echo $search?>&view=20"
+          "http://localhost/gangnam_culture/free/search_result.php?category=<?php echo $category?>&search=<?php echo $search?>&view=20"
         alert('변경되었습니다.');
       }
     }
@@ -117,7 +117,7 @@
   </header>
   <div class="menu_wrap">
     <div class="menu_bar">
-      <p class="mbr_txt">홈 > 열린광장 > 공지사항</p>
+      <p class="mbr_txt">홈 > 열린광장 > 자유 게시판</p>
     </div>
   </div>
   <main id="main">
@@ -128,10 +128,10 @@
         </div>
         <div class="aside_body">
           <ul class="aside_menu">
-            <li><a id="board1" href="#">공지사항</a></li>
+            <li><a href="#">공지사항</a></li>
             <li><a href="../notice2/list.php">타기관 공지사항</a></li>
             <li><a href="../employ/list.php">직원채용 공고</a></li>
-            <li><a href="board6_4.html">자유 게시판</a></li>
+            <li><a id="board1" href="board6_4.html">자유 게시판</a></li>
             <li><a href="board6_5.html">FAQ</a></li>
           </ul>
         </div>
@@ -139,7 +139,7 @@
       <div class="content_wrap">
         <div class="menu_title">
           <div class="menu_txt">
-            <h1>공지사항</h1>
+            <h1>자유 게시판</h1>
           </div>
         </div>
         <div class="notice_board_List">
@@ -187,9 +187,9 @@
             // $sql = "select * from notice order by idx desc limit $start, $list_num;";
 
             if($category){
-              $sql = "select * from notice where $category like '%$search%' order by idx desc limit $start, $list_num;";
+              $sql = "select * from free where $category like '%$search%' order by idx desc limit $start, $list_num;";
           } else{
-              $sql = "select * from notice order by idx desc limit $start, $list_num;";
+              $sql = "select * from free order by idx desc limit $start, $list_num;";
           };
             // DB에 데이터 전송
             $result = mysqli_query($dbcon, $sql);

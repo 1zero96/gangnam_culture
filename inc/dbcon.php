@@ -3,6 +3,16 @@
 $dbcon = mysqli_connect("localhost", "root", "", "onezero") or die("접속에 실패하였습니다.");
   mysqli_set_charset($dbcon, "utf8");
 
+  $hostname="localhost";
+  $dbuserid="root";
+  $dbpasswd="";
+  $dbname="onezero";
+  
+  $mysqli = new mysqli($hostname, $dbuserid, $dbpasswd, $dbname);
+  if ($mysqli->connect_errno) {
+      die('Connect Error: '.$mysqli->connect_error);
+  }
+
   // DB연결
   /* mysql_connect('호스트','사용자','비밀번호');
   mysql_select_db(DB연결객체, 'DB명'); */
