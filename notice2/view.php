@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>공지사항 &lt; 열린광장 &lt; 강남문화재단</title>
+  <title>타기관 공지사항 &lt; 열린광장 &lt; 강남문화재단</title>
   <link rel="stylesheet" href="../CSS/reset.css" />
   <link rel="stylesheet" href="../CSS/header.css" />
   <link rel="stylesheet" href="../CSS/topmenu.css" />
@@ -57,7 +57,7 @@
   </header>
   <div class="menu_wrap">
     <div class="menu_bar">
-      <p class="mbr_txt">홈 > 열린광장 > 공지사항</p>
+      <p class="mbr_txt">홈 > 열린광장 > 타기관 공지사항</p>
     </div>
   </div>
   <main id="main">
@@ -68,18 +68,18 @@
         </div>
         <div class="aside_body">
           <ul class="aside_menu">
-            <li><a id="board1" href="#">공지사항</a></li>
-            <li><a href="board6_2.html">타기관 공지사항</a></li>
-            <li><a href="board6_3.html">단임강사 모집공고</a></li>
-            <li><a href="board6_4.html">직원채용 공고</a></li>
-            <li><a href="board6_5.html">FAQ</a></li>
+            <li><a href="../notice/list.php">공지사항</a></li>
+            <li><a id="board1" href="#">타기관 공지사항</a></li>
+            <li><a href="../employ/list.php">직원채용 공고</a></li>
+            <li><a href="../free/list.php">자유 게시판</a></li>
+            <li><a href="../faq/list.php">FAQ</a></li>
           </ul>
         </div>
       </div>
       <div class="content_wrap">
         <div class="menu_title">
           <div class="menu_txt">
-            <h1>공지사항</h1>
+            <h1>타기관 공지사항</h1>
           </div>
         </div>
         <div class="board_wrap">

@@ -450,3 +450,57 @@ td.recom_col {
   padding-bottom: 10px;
   color: #0d4590;
 }
+
+.col-md-10 {
+  display: inline-block;
+}
+
+.form-control {
+  height: 65px;
+  border: 1px solid rgb(221, 221, 221);
+  width: 673px;
+  box-sizing: border-box;
+  position: relative;
+  padding: 10px;
+}
+
+#memo_button {
+  position: absolute;
+  width: 120px;
+  height: 60px;
+  border: 1px solid #dddddd;
+  background-color: #0d4590;
+  color: white;
+  right: 0px;
+  top: 0px;
+  border-radius: 0.3em;
+}
+
+.card-body {
+  border: 1px solid #dddddd;
+  box-sizing: border-box;
+  padding: 10px;
+  height: 70px;
+}
+
+/* .reply_txt2 {
+} */
+
+.reply_txt3 {
+  font-size: 13px;
+  text-align: right;
+  position: relative;
+  bottom: 20px;
+}
+
+.modi_btn {
+  padding: 8px 15px;
+  background-color: #dddddd;
+  border-radius: 0.3em;
+  float: right;
+}
+
+.col-md-2 {
+  height: 30px;
+  color: white;
+}

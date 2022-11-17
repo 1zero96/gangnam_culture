@@ -115,8 +115,8 @@
             <li><a id="board1" href="#">공지사항</a></li>
             <li><a href="../notice2/list.php">타기관 공지사항</a></li>
             <li><a href="../employ/list.php">직원채용 공고</a></li>
-            <li><a href="board6_4.html">자유 게시판</a></li>
-            <li><a href="board6_5.html">FAQ</a></li>
+            <li><a href="../free/list.php">자유 게시판</a></li>
+            <li><a href="../faq/list.php">FAQ</a></li>
           </ul>
         </div>
       </div>
@@ -159,7 +159,7 @@
 
             // paging : 시작번호부터 페이지 당 보여질 목록수 만큼 데이터 구하는 쿼리 작성
             // limit 몇번부터, 몇 개
-            $sql = "select * from notice order by idx desc limit $start, $list_num;";
+            $sql = "select * from notice order by status desc, idx desc limit $start, $list_num;";
             // echo $sql;
             /* exit; */
 
@@ -171,9 +171,19 @@
             // 전체데이터 - ((현재 페이지 번호 -1) * 페이지 당 목록 수)
             $i = $total - (($page - 1) * $list_num);
             while($array = mysqli_fetch_array($result)){
+              $top = "<img src='../images/br_top.png' alt='top' title='top'";;
             ?>
               <tr>
-                <td class="txtc"><?php echo $i; ?></td>
+                <td class="txtc">
+                  <?php 
+                  if($array["status"] == 0){
+                    echo $i;
+                  } else {
+                    echo $top;
+                  }
+                  ?>
+
+                </td>
                 <td id="board_t" class="txtc">
                   <a href="view.php?n_idx=<?php echo $array["idx"]?>&no=<?= $i ?>">
                     <?php echo $array["n_title"]; ?>

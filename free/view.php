@@ -84,7 +84,7 @@
         $query="select * from memo where status=1 and bid=".$rs->idx." order by memoid asc";
         $memo_result = $mysqli->query($query) or die("query error => ".$mysqli->error);
         while($mrs = $memo_result->fetch_object()){
-        $memoArray[]=$mrs;
+        $memoArray[] = $mrs;
 }
     ?>
   </header>
@@ -101,11 +101,11 @@
         </div>
         <div class="aside_body">
           <ul class="aside_menu">
-            <li><a id="board1" href="#">공지사항</a></li>
-            <li><a href="board6_2.html">타기관 공지사항</a></li>
-            <li><a href="board6_3.html">단임강사 모집공고</a></li>
-            <li><a href="board6_4.html">직원채용 공고</a></li>
-            <li><a href="board6_5.html">FAQ</a></li>
+            <li><a href="../notice/list.php">공지사항</a></li>
+            <li><a href="../notice2/list.php">타기관 공지사항</a></li>
+            <li><a href="../employ/list.php">직원채용 공고</a></li>
+            <li><a id="board1" href="#">자유 게시판</a></li>
+            <li><a href="faq/list.php">FAQ</a></li>
           </ul>
         </div>
       </div>
@@ -122,9 +122,8 @@
           <div class="board_body">
             <table class="board_table" style="table-layout: fixed">
               <caption hidden>
-                공지사항 상세페이지 : 등록일, 조회수, 내용, 첨부파일
+                자유게시판 상세페이지 : 등록일, 조회수, 내용, 첨부파일
               </caption>
-              <!-- 12 / 20 -->
               <colgroup>
                 <col width="15%" />
                 <col width="15%" />
@@ -161,10 +160,6 @@
                   <td colspan="6" class="bd_contwrap">
                     <div class="board_content">
                       <?php 
-                        // textarea의 엔터를 br로 변경
-                        // str_repalce("어떤 문자를", "어떤 문자로", "어떤 값에서");
-                        // $n_content = str_replace("\n", "<br>", $array["n_content"]);
-                        // $n_content = str_replace(" ", "&nbsp;", $n_content);
                         echo $array["f_content"]; 
                     ?>
                     </div>
@@ -226,7 +221,7 @@
               </div>
             </div>
             <!-- 댓글 시작 -->
-            <div style="margin-top:20px;">
+            <div style="margin-top:20px; position: relative">
               <form class="row g-3">
                 <div class="col-md-10">
                   <textarea class="form-control" placeholder="댓글을 입력해주세요." id="memo" style="height: 60px"></textarea>
@@ -236,20 +231,21 @@
                 </div>
               </form>
             </div>
-            <div id="memo_place">
+            <div id="memo_place" tabindex="0">
               <?php
-        foreach($memoArray as $ma){
-        ?>
-              <div class="card mb-4" style="max-width: 100%;margin-top:20px;">
+              foreach($memoArray as $ma){
+              ?>
+              <div class="card mb-4" id="memo_<?php echo $ma->memoid?>" style="max-width: 100%;margin-top:20px;">
                 <div class="row g-0">
                   <div class="col-md-12">
                     <div class="card-body">
-                      <p class="card-text"><?php echo $ma->memo;?></p>
-                      <p class="card-text"><small class="text-muted"><?php echo $ma->userid;?> /
-                          <?php echo $ma->regdate;?></small></p>
-                      <p class="card-text" style="text-align:right"><a href="javascript:;"
-                          onclick="memo_modi('<?php echo $ma->memoid?>')">수정</a> / <a href="javascript:;"
-                          onclick="memo_del('<?php echo $ma->memoid?>')">삭제</a></p>
+                      <p class="card-text reply_txt1"><?php echo $ma->memo;?></p>
+                      <p class="card-text reply_txt2"><small class="text-muted"><?php echo $ma->userid;?>
+                          /<?php echo $ma->regdate;?></small></p>
+                      <p class="card-text reply_txt3">
+                        <a href="javascript:;" onclick="memo_modi('<?php echo $ma->memoid?>')">수정</a> / <a
+                          href="javascript:;" onclick="memo_del('<?php echo $ma->memoid?>')">삭제</a>
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -293,6 +289,7 @@
           return;
         } else {
           $("#memo_place").append(return_data);
+          $("#memo_place").focus();
         }
       }
     });
@@ -310,7 +307,7 @@
     $.ajax({
       async: false,
       type: 'post',
-      url: 'memo_delete.php',
+      url: '../inc/memo_delete.php',
       data: data,
       dataType: 'json',
       error: function() {},
@@ -341,7 +338,7 @@
     $.ajax({
       async: false,
       type: 'post',
-      url: 'memo_modify.php',
+      url: '../inc/memo_modify.php',
       data: data,
       dataType: 'html',
       error: function() {},
@@ -373,7 +370,7 @@
     $.ajax({
       async: false,
       type: 'post',
-      url: 'memo_modify_update.php',
+      url: '../inc/memo_modify_update.php',
       data: data,
       dataType: 'html',
       error: function() {},

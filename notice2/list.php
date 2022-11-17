@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>공지사항 &lt; 열린광장 &lt; 강남문화재단</title>
+  <title>타기관 공지사항 &lt; 열린광장 &lt; 강남문화재단</title>
   <link rel="stylesheet" href="../CSS/reset.css" />
   <link rel="stylesheet" href="../CSS/header.css" />
   <link rel="stylesheet" href="../CSS/topmenu.css" />
@@ -115,8 +115,8 @@
             <li><a href="../notice/list.php">공지사항</a></li>
             <li><a id="board1" href="#">타기관 공지사항</a></li>
             <li><a href="../employ/list.php">직원채용 공고</a></li>
-            <li><a href="board6_4.html">자유 게시판</a></li>
-            <li><a href="board6_5.html">FAQ</a></li>
+            <li><a href="../free/list.php">자유 게시판</a></li>
+            <li><a href="../faq/list.php">FAQ</a></li>
           </ul>
         </div>
       </div>

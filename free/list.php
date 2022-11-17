@@ -13,22 +13,6 @@
   <link rel="stylesheet" href="../CSS/footer.css" />
   <script src="../JS/jquery-3.6.1.min.js"></script>
   <script defer src="../JS/header.js"></script>
-  <script>
-  $(document).ready(function() {
-    $(".btn-like").on("click", function(e) {
-      var button = $(e.currentTarget || e.target)
-      var likeCount = button.find(".like-count")
-      var heartShape = button.find(".heart-shape")
-      $.post("../inc/like_proc.php", {
-        articleId: button.data("articleId")
-      }, function(res) {
-        var addCount = (res == "like" ? 1 : res == "unlike" ? -1 : 0)
-        likeCount.text(+likeCount.text() + addCount)
-        heartShape.text(res == "like" ? "♥" : res == "unlike" ? "♡" : "♡")
-      })
-    })
-  })
-  </script>
 </head>
 
 <body>
@@ -132,11 +116,11 @@
         </div>
         <div class="aside_body">
           <ul class="aside_menu">
-            <li><a href="#">공지사항</a></li>
-            <li><a href="../free2/list.php">타기관 공지사항</a></li>
+            <li><a href="../notice/list.php">공지사항</a></li>
+            <li><a href="../notice2/list.php">타기관 공지사항</a></li>
             <li><a href="../employ/list.php">직원채용 공고</a></li>
-            <li><a id="board1" href="board6_4.html">자유 게시판</a></li>
-            <li><a href="board6_5.html">FAQ</a></li>
+            <li><a id="board1" href="#">자유 게시판</a></li>
+            <li><a href="../faq/list.php">FAQ</a></li>
           </ul>
         </div>
       </div>
@@ -190,25 +174,38 @@
             // DB에서 데이터 가져오기
             // pager : 글번호(역순)
             // 전체데이터 - ((현재 페이지 번호 -1) * 페이지 당 목록 수)
+
             $i = $total - (($page - 1) * $list_num);
             while($array = mysqli_fetch_array($result)){
+
               /** 댓글 수 카운트 */
-              $reply_sql = "select * from reply where con_num = '".$array["idx"]."'";
+              // $reply_sql = "select * from reply where con_num = '".$array["idx"]."'";
+              $reply_sql = "select * from memo where status='1' AND bid = '".$array["idx"]."'";
               /** 댓글 수 쿼리 전송 */
               $rcount_sql = mysqli_query($dbcon, $reply_sql); //reply테이블에서 con_num이 board의 idx와 같은 것을 선택
               /** 댓글 데이터 가져오기 */
               $rep_count = mysqli_num_rows($rcount_sql); //num_rows로 정수형태로 출력
+              
+              /** 새로 올라온 게시글 NEW */
+              $timenow = date("Y-m-d");
+              $w_date = substr($array["w_date"], 0, 10);
+              if($w_date == $timenow){
+                $img = "<img src='../images/new.png' alt='new' title='new'";
+              }else{
+                $img = "";
+              }
+  
             ?>
               <tr>
                 <td class="txtc"><?php echo $i; ?></td>
                 <td id="board_t" class="txtc">
                   <a href="view.php?f_idx=<?php echo $array["idx"]?>&no=<?= $i ?>">
                     <?php echo $array["f_title"]; ?>
-                    <span class="re_ct">[<?php echo $rep_count; ?>]</span>
+                    <span class="re_ct">[<?php echo $rep_count;?>]</span>
+                    <?php echo $img ?>
                   </a>
                 </td>
                 <td class="txtc"><?php echo $array["writer"]; ?></td>
-                <?php $w_date = substr($array["w_date"], 0, 10); ?>
                 <td class="txtc"><?php echo $w_date; ?></td>
                 <td class="txtc"><?php echo $array["like_count"]; ?></td>
                 <td class="txtc"><?php echo $array["cnt"]; ?></td>

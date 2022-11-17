@@ -14,7 +14,7 @@ $idx = $_GET['idx'];
     $sql_check2 = "SELECT * FROM like_ok WHERE like_post_id='$idx' and like_user='$s_id'";
     $res_check2 = mysqli_fetch_array(mysqli_query($dbcon, $sql_check2));
     if($res_check2){
-        echo "<script>alert('이미 공감한 게시글입니다!');";
+        echo "<script>alert('이미 추천한 게시글입니다!');";
         echo "window.history.back()</script>";
         exit;
     }
