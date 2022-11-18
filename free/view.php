@@ -233,6 +233,7 @@
             </div>
             <div id="memo_place" tabindex="0">
               <?php
+              ini_set( 'display_errors', '0' );
               foreach($memoArray as $ma){
               ?>
               <div class="card mb-4" id="memo_<?php echo $ma->memoid?>" style="max-width: 100%;margin-top:20px;">

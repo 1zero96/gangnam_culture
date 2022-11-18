@@ -123,7 +123,7 @@
           <!--탭 메뉴 내용 시작부분-->
           <div id="tab-1" class="tab-content on">
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               <span>&nbsp;티켓 예매는 어떻게 하나요?</span>
             </button>
             <div class="panel">
@@ -142,7 +142,7 @@
               </p>
             </div>
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               &nbsp;예매 수수료는 얼마인가요?
             </button>
             <div class="panel">
@@ -152,7 +152,7 @@
               </p>
             </div>
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               &nbsp;공연 예매를 했는데, 휴대폰으로 예매번호가 오지 않습니다.
             </button>
             <div class="panel">
@@ -167,7 +167,7 @@
               </p>
             </div>
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               &nbsp;예매 시 결제 수단에는 어떤 것들이 있나요?
             </button>
             <div class="panel">
@@ -178,7 +178,7 @@
               </p>
             </div>
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               &nbsp;무통장 입금 결제의 방법은?
             </button>
             <div class="panel">
@@ -202,7 +202,7 @@
               </p>
             </div>
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               &nbsp;신용카드 결제 후 영수증을 어떻게 받나요?
             </button>
             <div class="panel">
@@ -217,7 +217,7 @@
               </p>
             </div>
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               &nbsp;현금영수증을 받고 싶은데 어떻게 해야하죠?
             </button>
             <div class="panel">
@@ -231,7 +231,7 @@
               </p>
             </div>
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               &nbsp;부분 취소 및 예매 변경을 할 수 있나요?
             </button>
             <div class="panel">
@@ -246,56 +246,56 @@
           </div>
           <div id="tab-2" class="tab-content">
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               <span>&nbsp;티켓 예매는 어떻게 하나요?</span>
             </button>
             <div class="panel">
               <p>답변</p>
             </div>
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               &nbsp;질문1
             </button>
             <div class="panel">
               <p>답변2</p>
             </div>
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               &nbsp;질문1
             </button>
             <div class="panel">
               <p>답변3</p>
             </div>
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               &nbsp;질문1
             </button>
             <div class="panel">
               <p>답변4</p>
             </div>
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               &nbsp;질문1
             </button>
             <div class="panel">
               <p>답변5</p>
             </div>
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               &nbsp;질문1
             </button>
             <div class="panel">
               <p>답변6</p>
             </div>
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               &nbsp;질문1
             </button>
             <div class="panel">
               <p>답변7</p>
             </div>
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               &nbsp;질문1
             </button>
             <div class="panel">
@@ -304,56 +304,56 @@
           </div>
           <div id="tab-3" class="tab-content">
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               <span>&nbsp;티켓 예매는 어떻게 하나요?</span>
             </button>
             <div class="panel">
               <p>답변</p>
             </div>
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               &nbsp;질문1
             </button>
             <div class="panel">
               <p>답변2</p>
             </div>
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               &nbsp;질문1
             </button>
             <div class="panel">
               <p>답변3</p>
             </div>
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               &nbsp;질문1
             </button>
             <div class="panel">
               <p>답변4</p>
             </div>
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               &nbsp;질문1
             </button>
             <div class="panel">
               <p>답변5</p>
             </div>
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               &nbsp;질문1
             </button>
             <div class="panel">
               <p>답변6</p>
             </div>
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               &nbsp;질문1
             </button>
             <div class="panel">
               <p>답변7</p>
             </div>
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               &nbsp;질문1
             </button>
             <div class="panel">
@@ -362,56 +362,56 @@
           </div>
           <div id="tab-4" class="tab-content">
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               <span>&nbsp;티켓 예매는 어떻게 하나요?</span>
             </button>
             <div class="panel">
               <p>답변</p>
             </div>
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               &nbsp;질문1
             </button>
             <div class="panel">
               <p>답변2</p>
             </div>
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               &nbsp;질문1
             </button>
             <div class="panel">
               <p>답변3</p>
             </div>
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               &nbsp;질문1
             </button>
             <div class="panel">
               <p>답변4</p>
             </div>
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               &nbsp;질문1
             </button>
             <div class="panel">
               <p>답변5</p>
             </div>
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               &nbsp;질문1
             </button>
             <div class="panel">
               <p>답변6</p>
             </div>
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               &nbsp;질문1
             </button>
             <div class="panel">
               <p>답변7</p>
             </div>
             <button class="accordion">
-              <span><img src="images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
+              <span><img src="../images/bottom_arrow.png" alt="" width="20px" height="20px" /></span>
               &nbsp;질문1
             </button>
             <div class="panel">
@@ -420,37 +420,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="board_foot" style="margin-left: 25%">
-      <ul class="page_num">
-        <li class="list1"><span>1</span></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#">6</a></li>
-        <li><a href="#">7</a></li>
-        <li><a href="#">8</a></li>
-        <li><a href="#">9</a></li>
-        <li><a href="#">10</a></li>
-        <li class="btn_page">
-          <img src="images/btn_next.png" alt="다음페이지로 이동" />
-        </li>
-        <li class="btn_page">
-          <img src="images/btn_last.png" alt="마지막 페이지로 이동" />
-        </li>
-      </ul>
-    </div>
-    <div class="search_bar">
-      <select class="search_select">
-        <option>제목</option>
-        <option>내용</option>
-        <option>제목+내용</option>
-      </select>
-      <input type="text" name="search_txt" id="search_txt" />
-      <button type="button">
-        <img src="images/search_icon.jpg" alt="" />
-      </button>
     </div>
   </main>
   <footer>

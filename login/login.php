@@ -109,116 +109,19 @@
               </button>
             </div>
             <div class="login_box_footer">
-              <span class="login_box_txt1"><a href="#">회원가입</a></span>
-              <span class="login_box_txt2"><a href="#">아이디/비밀번호 찾기</a></span>
+              <span class="login_box_txt1"><a href="../members/join.php">회원가입</a></span>
+              <span class="login_box_txt2"><a href="me_find.php">아이디/비밀번호 찾기</a></span>
             </div>
           </div>
         </div>
       </div>
     </div>
   </main>
-  <div class="footer_wrap">
-    <footer class="footer">
-      <div class="banner_controls">
-        <div class="controls_direction">
-          <a href="#">
-            <div class="banner_prev"></div>
-          </a>
-          <a href="#">
-            <div class="banner_next"></div>
-          </a>
-        </div>
-      </div>
-      <div class="terms">
-        <h2 class="hidden">사이트 이용안내</h2>
-        <ul class="footer_menu">
-          <li>
-            <a class="ftm_1" href="">개인정보처리방침</a>
-          </li>
-          <li>
-            <a class="ftm_2" href="#">이용약관</a>
-          </li>
-          <li>
-            <a class="ftm_3" href="#">이메일 무단 수집거부</a>
-          </li>
-          <li>
-            <a class="ftm_4" href="#">오시는길</a>
-          </li>
-          <li>
-            <a class="ftm_5" href="#">사이트맵</a>
-          </li>
-          <form>
-            <fieldset class="site_wrap">
-              <select id="f_select" class="familySite select" title="유관기관 사이트 목록">
-                <option value selected>유관기관사이트</option>
-                <option value="https://www.gangnam.go.kr/">
-                  강남구 홈페이지
-                </option>
-                <option value="https://health.gangnam.go.kr/">
-                  강남구 보건소
-                </option>
-                <option value="https://www.gangnam.go.kr/office/welfare">
-                  강남 복지재단
-                </option>
-                <option value="https://www.gangnam.go.kr/office/gjhope">
-                  강남 지역자활센터
-                </option>
-                <option value="https://www.gangnam.go.kr/office/longlearno">
-                  강남 평생학습
-                </option>
-                <option value="https://edu.ingang.go.kr/">
-                  강남구청 인터넷수능방송
-                </option>
-                <option value="https://visitgangnam.net/">
-                  강남 관광안내
-                </option>
-                <option value="https://medicaltour.gangnam.go.kr/2021">
-                  강남 의료관광
-                </option>
-                <option value="https://www.gncouncil.go.kr/kr/">
-                  강남 구의회
-                </option>
-              </select>
-              <a href="#" class="ft_btn" onclick="move_family_site()" title="유관기관 사이트 새창으로 열림">이동</a>
-            </fieldset>
-            <script>
-            function move_family_site() {
-              if (document.getElementById("f_select").value != "")
-                window.open(document.getElementById("f_select").value);
-            }
-            </script>
-          </form>
-        </ul>
-      </div>
-
-      <div class="footer_bottom">
-        <div class="footer_logo">
-          <img src="../images/logo2.jpg" alt="" />
-        </div>
-        <address class="fb_txt1">
-          06088 서울특별시 강남구 선를로 668, 5층 강남문화재단
-        </address>
-        <p>
-          <span class="fb_txt2">
-            [경영관리부] 경영지원팀 02-6712-0541~52 | 문화센터팀 1833-8009 |
-            시설관리팀 02-6712-0575 |&nbsp;힐링센터팀 02-6712-0570 |
-            독서진흥팀 1644-3227
-          </span>
-        </p>
-        <p>
-          <span class="fb_txt3">
-            [문화사업부] 문화정책팀 02-6712-0511~5 | 기획홍보팀 02-6712-0521~4
-            | 공연전시팀 02-6712-0531~5&nbsp;
-          </span>
-        </p>
-        <p>
-          <span class="fb_txt4">COPYRIGHT ⓒ 강남구청. ALL RIGHTS RESERVED.. /</span>
-          <a class="fb_txt5" href="https://www.freepik.com/vectors/design">Design vector created by freepik -
-            www.freepik.com</a>
-        </p>
-      </div>
-    </footer>
-  </div>
+  <footer>
+    <?php
+      include '../inc/footer.php'
+    ?>
+  </footer>
 </body>
 
 </html>
