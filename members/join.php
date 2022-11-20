@@ -8,19 +8,25 @@
   <title>강남문화재단 회원가입</title>
   <link rel="stylesheet" href="../CSS/reset.css" />
   <link rel="stylesheet" href="../CSS/header.css" />
-  <link rel="stylesheet" href="../CSS/signup.css" />
+  <link rel="stylesheet" href="../CSS/topmenu.css" />
+  <link rel="stylesheet" href="../CSS/join.css" />
   <link rel="stylesheet" href="../CSS/footer.css" />
   <script src="../JS/jquery-3.6.1.min.js"></script>
   <script defer src="../JS/header.js"></script>
-  <script defer src="../JS/signup.js"></script>
+  <script defer src="../JS/join.js"></script>
 </head>
 
 <body>
   <header>
     <?php
-      include '../header.php'
+      include '../inc/header.php'
     ?>
   </header>
+  <div class="menu_wrap">
+    <div class="menu_bar">
+      <p class="mbr_txt">홈 > 열린광장 > 회원가입</p>
+    </div>
+  </div>
   <main id="main">
     <div class="menu__title">
       <h1 class="title">회원가입</h1>
@@ -284,7 +290,7 @@
   </main>
   <footer>
     <?php
-      include '../footer.php'
+      include '../inc/footer.php'
     ?>
   </footer>
 </body>

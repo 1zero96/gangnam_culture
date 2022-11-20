@@ -19,14 +19,14 @@
   <header>
     <?php
         include '../inc/header.php';
-    // DB 연결
+    /** DB 연결 */
     include "../inc/dbcon.php";
 
-    // 쿼리 작성
+    /** 쿼리 작성 */
     $sql = "select * from notice;";
     $t_sql = "select count(*) from notice;";
 
-    // 쿼리 전송
+    /** 쿼리 전송 */
     $result = mysqli_query($dbcon, $sql);
     $t_result = mysqli_query($dbcon, $t_sql);
     $row = mysqli_fetch_row($t_result);
@@ -68,7 +68,7 @@
     /** 블럭 당 마지막 페이지 번호 = 현재 블럭 번호 * 블럭 당 페이지 수 */
     $e_pageNum = $now_block * $page_num;
 
-    // 블럭 당 마지막 페이지 번호가 전체 페이지 수를 넘지 않도록
+    /** 블럭 당 마지막 페이지 번호가 전체 페이지 수를 넘지 않도록 함 */
     if($e_pageNum > $total_page){
       $e_pageNum = $total_page;
     };
@@ -86,17 +86,29 @@
       var view = document.getElementById('viewCnt');
       var idx = view.options.selectedIndex;
       if (idx == 0) {
-        location.href = "http://localhost/gangnam_culture/notice/search_result.php?category=n_title&search=&view=10"
+        location.href =
+          "http://localhost/gangnam_culture/notice/search_result.php?category=<?php $category?>&n_list=n_title&search=&view=10"
         alert('변경되었습니다.')
       } else if (idx == 1) {
-        location.href = "http://localhost/gangnam_culture/notice/search_result.php?category=n_title&search=&view=15"
+        location.href =
+          "http://localhost/gangnam_culture/notice/search_result.php?category=<?php $category?>&n_list=n_title&search=&view=15"
         alert('변경되었습니다.');
       } else if (idx == 2) {
-        location.href = "http://localhost/gangnam_culture/notice/search_result.php?category=n_title&search=&view=20"
+        location.href =
+          "http://localhost/gangnam_culture/notice/search_result.php?category=<?php $category?>&n_list=n_title&search=&view=20"
         alert('변경되었습니다.');
       }
     }
     </script>
+
+    <?php echo '<script>
+          window.onload = function(){
+            let page_num = document.getElementById("page' .$page .'");
+            page_num.style.color= "#006ab6";
+            page_num.style.fontWeight = "bold";
+            page_num.style.borderBottom = "1px solid #006ab6";
+          }
+          </script>'; ?>
 
   </header>
   <div class="menu_wrap">
@@ -146,12 +158,42 @@
             <thead>
               <tr>
                 <th class="row1">번호</th>
-                <th class="row2">제목</th>
-                <th class="row3">작성자</th>
-                <th class="row4">등록일</th>
-                <th class="row5">조회</th>
+                <th class="row2">
+                  <select name="" id="category">
+                    <option value="division">구분</option>
+                    <option value="show">공연</option>
+                    <option value="exhibition">전시</option>
+                    <option value="education">교육</option>
+                    <option value="event">행사</option>
+                    <option value="etc">기타</option>
+                  </select>
+                  <button type="button" class="cate_btn">선택</button>
+                </th>
+                <th class="row3">제목</th>
+                <th class="row4">작성자</th>
+                <th class="row5" style="width: 119px;">등록일</th>
+                <th class="row6">조회</th>
               </tr>
             </thead>
+            <script>
+            $(function() {
+              $(".cate_btn").on("click", function() {
+                if ($("#category").val() == "show") {
+                  location.href = "search_result.php?page=1&category=show&n_list=&search=&view=";
+                } else if ($("#category").val() == "exhibition") {
+                  location.href = "search_result.php?page=1&category=exhibition&n_list=&search=&view=";
+                } else if ($("#category").val() == "education") {
+                  location.href = "search_result.php?page=1&category=education&n_list=&search=&view=";
+                } else if ($("#category").val() == "event") {
+                  location.href = "search_result.php?page=1&category=event&n_list=&search=&view=";
+                } else if ($("#category").val() == "etc") {
+                  location.href = "search_result.php?page=1&category=etc&n_list=&search=&view=";
+                } else {
+                  location.href = "search_result.php?page=1&category=&n_list=&search=&view=";
+                }
+              })
+            });
+            </script>
             <tbody>
               <?php
             // paging : 해당 페이지의 글 시작 번호 = (현재 페이지 번호 - 1) * 페이지 당 보여질 목록 수
@@ -172,6 +214,22 @@
             $i = $total - (($page - 1) * $list_num);
             while($array = mysqli_fetch_array($result)){
               $top = "<img src='../images/br_top.png' alt='top' title='top'";;
+              $category = $array["category"];
+              if($category == "show"){
+                $category = "공연";
+              }
+              if($category == "exhibition"){
+                $category = "전시";
+              }
+              if($category == "education"){
+                $category = "교육";
+              }
+              if($category == "event"){
+                $category = "행사";
+              }
+              if($category == "etc"){
+                $category = "기타";
+              }
             ?>
               <tr>
                 <td class="txtc">
@@ -182,7 +240,14 @@
                     echo $top;
                   }
                   ?>
-
+                </td>
+                <td class="txtc">
+                  <?php 
+                if($array["status"] == 0){
+                  echo $category;
+                }else{
+                  echo "<span class='notice'>공지</span>";
+                }?>
                 </td>
                 <td id="board_t" class="txtc">
                   <a href="view.php?n_idx=<?php echo $array["idx"]?>&no=<?= $i ?>">
@@ -203,12 +268,13 @@
           <div class="board_foot">
             <p class="pager">
               <?php
-              if($page == 1){
+              // pager : 블록 첫 페이지로(첫번째 블록에선 1페이지로 감)
+              if($page == 1 ){
               ?>
               <?php } else if($now_block == 1){?>
-              <a href="list.php?page=1"><img src="../images/btn_first.png" alt="이이전"></a>
+              <a href="list.php?page=1"><img src="../images/btn_first.png"></a>
               <?php } else { ?>
-              <a href="list.php?page=<?php echo $prev_page; ?>"><img src="../images/btn_first.png" alt="이이전"></a>
+              <a href="list.php?page=<?php echo $prev_page; ?>"><img src="../images/btn_first.png"></a>
               <?php }
               ?>
               <?php
@@ -232,13 +298,13 @@
               // pager : 다음 페이지
               if($page >= $total_page){
               ?>
-              <!-- <a href="list.php?page=<?php echo $total_page; ?>"><img src="../images/btn_next.png" alt="다음"></a> -->
               <?php } else{ ?>
               <a href="list.php?page=<?php echo ($page + 1); ?>"><img src="../images/btn_next.png" alt="다음"></a>
               <?php }; ?>
 
               <?php
-              if($now_block == $total_block || $page = 1){
+              // pager : 다음 블록 마지막페이지로
+              if($now_block == $total_block || $total_page <= 1){
               ?>
               <?php } else{ ?>
               <a href="list.php?page=<?php echo $next_page; ?>"><img src="../images/btn_last.png" alt="다다음"></a>
@@ -252,18 +318,13 @@
               <?php }; ?>
             </div>
           </div>
-          <?php echo '<script>
-          let page_num = document.getElementById("page' .$page .'");
-          page_num.style.color= "#006ab6";
-          page_num.style.fontWeight = "bold";
-          page_num.style.borderBottom = "1px solid #006ab6";
-          </script>'; ?>
         </div>
       </div>
     </div>
     <form action="search_result.php?" method="get">
       <div class="search_bar">
-        <select name="category" class="search_select">
+        <input type="hidden" name="category" />
+        <select name="n_list" class="search_select">
           <option value="n_title">제목</option>
           <option value="writer">글쓴이</option>
           <option value="n_content">내용</option>
@@ -276,7 +337,6 @@
       </div>
     </form>
   </main>
-
   <footer>
     <?php
       include '../inc/footer.php'

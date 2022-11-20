@@ -151,7 +151,7 @@
               <tr>
                 <th class="row1" style="width: 70px;">번호</th>
                 <th class="row2" style="width: 365px;">제목</th>
-                <th class="row3">작성자</th>
+                <th class="row3" style="width: 70px;">작성자</th>
                 <th class="row4">등록일</th>
                 <th class="row5" style="width: 70px;">추천</th>
                 <th class="row6" style="width: 70px;">조회</th>
