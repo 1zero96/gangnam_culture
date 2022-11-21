@@ -1,0 +1,317 @@
+th,
+td,
+.pager {
+  padding: 10px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.mem_list_set th::after {
+  content: "ㅣ";
+  position: absolute;
+  color: #dddddd;
+}
+
+.mem_list_set th.bid::after {
+  margin-left: 20px;
+}
+
+.mem_list_set th.n_title::after {
+  margin-left: 295px;
+}
+
+.mem_list_set th.writer::after {
+  margin-left: 22px;
+}
+
+.mem_list_set th.hit::after {
+  margin-left: 20px;
+}
+
+.mem_list_set th.birth::after {
+  margin-left: 19px;
+}
+
+.mem_list_set th.mobile::after {
+  margin-left: 21px;
+}
+
+.mem_list_set th.email::after {
+  margin-left: 43px;
+}
+
+.mem_list_set th.address::after {
+  margin-left: 128px;
+}
+
+.mem_list_set th.reg_date::after {
+  margin-left: 24px;
+}
+
+.mem_list_set .pager {
+  width: 1440px;
+}
+
+.mem_list_title {
+  border-top: 2px solid #999;
+  border-bottom: 1px solid #999;
+}
+
+.mem_list_content {
+  border-bottom: 1px solid #999;
+}
+
+.bid {
+  width: 80px;
+}
+
+.n_title {
+  width: 630px;
+}
+
+.writer {
+  width: 100px;
+}
+
+.hit {
+  width: 80px;
+}
+
+.modify {
+  width: 250px;
+}
+
+table a:hover {
+  color: rgb(255, 128, 0);
+}
+
+.mem_list_set {
+  margin-top: 10px;
+}
+
+.mem_list_set button {
+  padding: 0;
+}
+
+/* main */
+
+#main {
+  width: 1194px;
+  margin: auto;
+  margin-bottom: 100px;
+}
+
+.table_title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.table-top {
+  position: relative;
+  top: 4px;
+  left: 5px;
+}
+
+.table_icon {
+  position: relative;
+  top: 3px;
+}
+
+/** tab Menu */
+ul.tabs {
+  margin: 10px;
+}
+
+ul.tabs li {
+  display: inline-block;
+  padding: 15px 84px;
+  font-size: 18px;
+  border: 1px solid #dddddd;
+  cursor: pointer;
+}
+
+ul.tabs li.on {
+  display: inline-block;
+  padding: 15px 92px;
+  font-size: 18px;
+  border: 1px solid #dddddd;
+  background-color: #006fbb;
+  color: white;
+  cursor: pointer;
+}
+
+.tab-content {
+  display: none;
+  padding: 15px;
+  margin-top: 30px;
+  font-size: 18px;
+}
+
+.tab-content.on {
+  display: inherit;
+}
+
+#tab2 {
+  line-height: 25px;
+}
+
+#tab2 > span {
+  font-weight: bold;
+  color: red;
+}
+
+.form_wrap {
+  margin: 0;
+  overflow: hidden;
+  border-top: 2px solid #006fbb;
+}
+
+.form {
+  width: 1020px;
+}
+.menu__title {
+  padding: 80px 15px 25px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.menu__title > img {
+  vertical-align: top;
+}
+
+.menu__title > h2 {
+  display: inline-block;
+  font-size: 26px;
+}
+
+.form__table {
+  width: 1194px;
+}
+
+.form__table th {
+  vertical-align: middle;
+  padding: 0.6rem 0.8rem;
+  text-align: left;
+  border-bottom: 1px solid #d7d7d7;
+}
+
+.form__table td {
+  vertical-align: middle;
+  padding: 0.6rem;
+  border-bottom: 1px solid #d7d7d7;
+  word-break: keep-all;
+}
+
+.form__table td input {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #c5c5c5;
+
+  /* height: 29px; */
+}
+
+.form__table td input.id_Check {
+  margin-top: 6px;
+  cursor: pointer;
+  padding: 2px 10px;
+  background-color: #d7d7d7;
+}
+
+.form__table td input + a {
+  margin: 6px 0;
+  cursor: pointer;
+  padding: 6px 10px;
+  background-color: #d7d7d7;
+  border-radius: 5px;
+}
+
+#email_sel {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #c5c5c5;
+}
+
+#ps_code {
+  margin-bottom: 6px;
+}
+
+#addr_b {
+  width: 500px;
+}
+
+#addr_d {
+  width: 500px;
+}
+
+#btn_jc {
+  margin: auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+.btn_join {
+  width: 174px;
+  height: 62px;
+  border: 2px solid black;
+  box-sizing: border-box;
+  font-size: 26px;
+  margin-right: 30px;
+}
+
+.btn_cancle {
+  width: 174px;
+  height: 62px;
+  font-size: 26px;
+}
+
+.btn_cancle > a {
+  display: block;
+  width: 174px;
+  height: 62px;
+  text-align: center;
+  line-height: 62px;
+  background: #dfdfdf;
+}
+
+.hide {
+  display: none;
+}
+
+.msgRed {
+  color: Red;
+}
+
+.msgBlu {
+  color: Blue;
+}
+
+.notice_down {
+  color: red;
+  font-weight: bold;
+}
+.notice_up {
+  color: #006fbb;
+}
+
+.pager {
+  padding: 30px;
+  margin: auto;
+  text-align: center;
+}
+
+.pager a {
+  padding: 0 10px;
+}
+
+.pager img {
+  padding-top: 5px;
+}
+
+/** event (board 2-3) **/
+
+h2.pagesum {
+  border-bottom: 1px solid #dddddd;
+  padding: 8px;
+}

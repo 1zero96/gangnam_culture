@@ -271,6 +271,7 @@
 }
 
 .table_bottom td {
+  font-weight: bold;
   vertical-align: middle;
 }
 
@@ -281,7 +282,7 @@
 .table_bottom td:nth-child(1)::after {
   content: "ㅣ";
   position: absolute;
-  left: 152px;
+  left: 92px;
   color: #d7d7d7;
   font-weight: 300;
 }
@@ -299,6 +300,8 @@
 
 .page_prev th {
   padding: 5px;
+  border-bottom: 1px solid white;
+  background: #dddd;
 }
 
 .page_next {
@@ -307,6 +310,8 @@
 
 .page_next th {
   padding: 5px;
+  border-bottom: 1px solid white;
+  background: #dddd;
 }
 
 td.down_col {
@@ -503,4 +508,13 @@ td.recom_col {
 .col-md-2 {
   height: 30px;
   color: white;
+}
+
+.down_link > span {
+  padding: 15px;
+}
+
+.file > a {
+  border: 1px solid;
+  padding: 5px 10px;
 }

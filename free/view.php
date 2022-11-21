@@ -47,17 +47,17 @@
     <?php
         include '../inc/header.php';
         // 데이터 가져오기
-        $f_idx = $_GET["f_idx"];
+        $bid = $_GET["bid"];
         $no = $_GET["no"];
 
         // DB 연결
         include "../inc/dbcon.php";
         
         // 쿼리 작성
-        $sql = "select * from free where idx=$f_idx;";
+        $sql = "select * from free where bid=$bid;";
         $count_sql = "SELECT count(*) from free";
-        $p_sql = "SELECT * FROM free WHERE idx < $f_idx ORDER BY idx DESC LIMIT 1;";
-        $f_sql = "SELECT * FROM free WHERE idx > $f_idx ORDER BY idx ASC LIMIT 1;";
+        $p_sql = "SELECT * FROM free WHERE bid < $bid ORDER BY bid DESC LIMIT 1;";
+        $f_sql = "SELECT * FROM free WHERE bid > $bid ORDER BY bid ASC LIMIT 1;";
         // echo $sql;
         // exit;
         
@@ -73,15 +73,15 @@
         $f_array = mysqli_fetch_array($f_result);
         
         // 조회수 업데이트
-        $cnt = $array["cnt"]+1;
-        $sql = "update free set cnt = $cnt where idx = $f_idx;";
+        $hit = $array["hit"]+1;
+        $sql = "update free set hit = $hit where bid = $bid;";
         mysqli_query($dbcon, $sql);
 
-        $f_idx=$_GET["f_idx"];
-        $result2 = $mysqli->query("select * from free where idx=".$f_idx) or die("query error => ".$mysqli->error);
+        $bid=$_GET["bid"];
+        $result2 = $mysqli->query("select * from free where bid=".$bid) or die("query error => ".$mysqli->error);
         $rs = $result2->fetch_object();
 
-        $query="select * from memo where status=1 and bid=".$rs->idx." order by memoid asc";
+        $query="select * from memo where status=1 and bid=".$rs->bid." order by memoid asc";
         $memo_result = $mysqli->query($query) or die("query error => ".$mysqli->error);
         while($mrs = $memo_result->fetch_object()){
         $memoArray[] = $mrs;
@@ -152,7 +152,7 @@
                     <?php echo $array["like_count"]; ?>
                   </td>
                   <th scope="row" class="txtc">조회수</th>
-                  <td class="b_left1"><?php echo $cnt; ?></td>
+                  <td class="b_left1"><?php echo $hit; ?></td>
                 </tr>
               </thead>
               <tbody>
@@ -175,39 +175,39 @@
                     if($s_id != $array['writer']){ ?>
                   <td colspan="1" class="txtr recom_col">
                     <button class="recom_btn" type="button"
-                      onclick="window.location.href='../inc/like_ok.php?idx=<?=$array['idx']?>'">좋아요 &#128077;</button>
+                      onclick="window.location.href='../inc/like_ok.php?bid=<?=$array['bid']?>'">좋아요 &#128077;</button>
                   </td>
                   <td colspan="2" class="txtr recom_col">
                     <button class="recom_btn" type="button"
-                      onclick="window.location.href='../inc/unlike_ok.php?idx=<?=$array['idx']?>'">취소</button>
+                      onclick="window.location.href='../inc/unlike_ok.php?bid=<?=$array['bid']?>'">취소</button>
                   </td>
                   <?php } ?>
                 </tr>
                 <tr class="page_prev">
                   <th scope="row" class="txtc">이전글</th>
                   <td colspan="4" class="b_left1 ">
-                    <?php if(empty($p_array['idx'])){ ?>
+                    <?php if(empty($p_array['bid'])){ ?>
                     <span>이전 글이 없습니다.</span>
                     <?php } else { ?>
-                    <a href="view.php?f_idx=<?= $p_array['idx']?>&no=<?= $no - 1 ?>"><?= $p_array['f_title'] ?></a>
+                    <a href="view.php?bid=<?= $p_array['bid']?>&no=<?= $no - 1 ?>"><?= $p_array['f_title'] ?></a>
                     <?php } ?>
                   </td>
                   <?php $w_date = substr($array["w_date"], 0, 10); ?>
                   <td colspan="2" class="no_date txtr">
-                    <?php echo empty($p_array['idx']) ? '' : $w_date ?>
+                    <?php echo empty($p_array['bid']) ? '' : $w_date ?>
                   </td>
                 </tr>
                 <tr class="page_next">
                   <th scope="row" class="txtc">다음글</th>
                   <td colspan="4" class="b_left1">
-                    <?php if(empty($f_array['idx'])){ ?>
+                    <?php if(empty($f_array['bid'])){ ?>
                     <span>다음 글이 없습니다.</span>
                     <?php } else { ?>
-                    <a href="view.php?f_idx=<?= $f_array['idx']?>&no=<?= $no + 1 ?>"><?= $f_array['f_title'] ?></a>
+                    <a href="view.php?bid=<?= $f_array['bid']?>&no=<?= $no + 1 ?>"><?= $f_array['f_title'] ?></a>
                     <?php } ?>
                   </td>
                   <td colspan="2" class="no_date txtr">
-                    <?php echo empty($p_array['idx']) ? '' : $w_date ?>
+                    <?php echo empty($p_array['bid']) ? '' : $w_date ?>
                   </td>
                 </tr>
               </tbody>
@@ -215,7 +215,7 @@
             <div class="btm_btns1">
               <div class="btm_btns2">
                 <button type="button"
-                  onclick="location.href='modify.php?f_idx=<?php echo $f_idx;?>&no=<?php echo $no;?>'">수정</button>
+                  onclick="location.href='modify.php?bid=<?php echo $bid;?>&no=<?php echo $no;?>'">수정</button>
                 <button type="button" onclick="remove_free()">삭제</button>
                 <button type="button" onclick="location.href='list.php'">목록</button>
               </div>
@@ -268,14 +268,14 @@
   function remove_free() {
     var ck = confirm("정말 삭제하시겠습니까?");
     if (ck) {
-      location.href = "delete.php?f_idx=<?php echo $f_idx; ?>";
+      location.href = "delete.php?bid=<?php echo $bid; ?>";
     };
   };
 
   $("#memo_button").click(function() {
     var data = {
       memo: $('#memo').val(),
-      bid: <?php echo $f_idx;?>
+      bid: <?php echo $bid;?>
     };
     $.ajax({
       async: false,

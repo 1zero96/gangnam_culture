@@ -44,21 +44,21 @@
 
     function setContentsLength(str, index) {
       var status = false;
-      var textCnt = 0; //총 글자수
-      var maxCnt = 100; //최대 글자수
+      var texthit = 0; //총 글자수
+      var maxhit = 100; //최대 글자수
       var editorText = f_SkipTags_html(str); //에디터에서 태그를 삭제하고 내용만 가져오기
       editorText = editorText.replace(/\s/gi, ""); //줄바꿈 제거
       editorText = editorText.replace(/&nbsp;/gi, ""); //공백제거
 
-      textCnt = editorText.length;
-      if (maxCnt > 0) {
-        if (textCnt > maxCnt) {
+      texthit = editorText.length;
+      if (maxhit > 0) {
+        if (texthit > maxhit) {
           status = true;
         }
       }
 
       if (status) {
-        var msg = "등록오류 : 글자수는 최대 " + maxCnt + "까지 등록이 가능합니다. / 현재 글자수 : " + textCnt + "자";
+        var msg = "등록오류 : 글자수는 최대 " + maxhit + "까지 등록이 가능합니다. / 현재 글자수 : " + texthit + "자";
         console.log(msg);
       }
     }
@@ -189,9 +189,7 @@
                   <tr class="table_bottom">
                     <td scope="row">첨부</td>
                     <td colspan="3" class="down_link">
-                      <input type="file" name="upfile">
-                      <!-- <span class="file"><a href="#">선택된 파일 없음</a></span>
-                      <button type="button">파일선택</button> -->
+                      <input type="file" name="up_file" id="up_file"></input>
                     </td>
                   </tr>
                 </tbody>

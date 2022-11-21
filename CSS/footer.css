@@ -27,7 +27,8 @@
 #f_select {
   width: 200px;
   height: 44px;
-  background: white;
+  background: white url(../images/select.png) no-repeat 90% 50%;
+  padding: 10px;
   border: 1px solid gray;
   margin-left: 34px;
 }

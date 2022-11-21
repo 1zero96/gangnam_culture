@@ -18,17 +18,17 @@
   /* 제이쿼리 */
   $(document).ready(function() {
     /* tab Menu */
-    $("#tabs li").click(function() {
-      let tab = $("#tabs li").index(this);
-      if ($(this).hasClass("on") === false) {
-        $(this).addClass("on");
-        $(this).siblings().removeClass("on");
-      }
-      if ($(".container > div").eq(tab).hasClass("on") === false) {
-        $(".container > div").eq(tab).addClass("on");
-        $(".container > div").eq(tab).siblings().removeClass("on");
-      }
-    });
+    // $("#tabs li").click(function() {
+    //   let tab = $("#tabs li").index(this);
+    //   if ($(this).hasClass("on") === false) {
+    //     $(this).addClass("on");
+    //     $(this).siblings().removeClass("on");
+    //   }
+    //   if ($(".container > div").eq(tab).hasClass("on") === false) {
+    //     $(".container > div").eq(tab).addClass("on");
+    //     $(".container > div").eq(tab).siblings().removeClass("on");
+    //   }
+    // });
   });
 
   function edit_form_check() {
@@ -77,71 +77,10 @@
 
       /** 쿼리 작성 */
       $sql = "select * from members where idx = '$s_idx' ";
-      $t_sql = "select (select count(*) from notice where u_id = 'admin') ";
-      $t_sql .= " + (select count(*) from free where u_id = 'admin') ";
-      $t_sql .= "FROM DUAL;";
-      $sql2 = "(select * from notice where u_id = '$s_id' )";
-      $sql2 .= "UNION ALL";
-      $sql2 .= "(select * from free where u_id = '$s_id' )";
   
       /** 쿼리 실행 */
       $result = mysqli_query($dbcon, $sql);
-      $result2 = mysqli_query($dbcon, $sql2);
-      $t_result = mysqli_query($dbcon, $t_sql);
-      $row = mysqli_fetch_row($t_result);
   
-      /** 전체 데이터 가져오기 */
-      $total = mysqli_num_rows($result2);
-      $total_count = $row[0];
-  
-      /** paging : 한 페이지 당 보여질 목록 수 */
-      $list_num = 10;
-  
-      /** 한 블럭 당 페이지 수 */
-      $page_num = 5;
-  
-      /** 현재 페이지의 번호 */
-      $page = isset($_GET["page"])? $_GET["page"] : 1;
-  
-      /** 전체 페이지 수 = 전체 데이터 / 페이지 당 목록 수,  ceil : 올림값, floor : 내림값, round : 반올림 */
-      $total_page = ceil($total / $list_num);
-  
-      /** 글번호 */
-      $print_num = $total_count - $list_num*($page-1);
-  
-  
-      /** $total_block = 전체 블럭 수 = 전체 페이지 수 / 블럭 당 페이지 수 */
-      $total_block = ceil($total_page / $page_num);
-      
-      /** 현재 블럭 번호 = 현재 페이지 번호 / 블럭 당 페이지 수 */
-      $now_block = ceil($page / $page_num);
-  
-      /** 블럭 당 시작 페이지 번호 = (해당 글의 블럭 번호 - 1) * 블럭 당 페이지 수 + 1 */
-      $s_pageNum = ($now_block - 1) * $page_num + 1;
-  
-      if($s_pageNum <= 0){
-        $s_pageNum = 1;
-      };
-  
-      /** 블럭 당 마지막 페이지 번호 = 현재 블럭 번호 * 블럭 당 페이지 수 */
-      $e_pageNum = $now_block * $page_num;
-  
-      /** 블럭 당 마지막 페이지 번호가 전체 페이지 수를 넘지 않도록 함 */
-      if($e_pageNum > $total_page){
-        $e_pageNum = $total_page;
-      };
-  
-      /** 이전 블럭 이동시 첫 페이지 */
-      $prev_page=($now_block*$page_num)-$page_num;
-      
-      /** 다음 블럭 이동시 첫 페이지 */
-      $next_page=($now_block*$page_num)+1;
-
-
-  /** 쿼리 작성 */
-  $sql = "select * from members where idx = '$s_idx' ";
-
-
   /** DB에서 데이터 가져오기(*select) */
   // mysqli_fetch_row(쿼리실행문) -- 필드순서
   // mysqli_fetch_array(쿼리실행문) -- 필드이름
@@ -160,10 +99,18 @@
     </div>
     <div class="container">
       <ul id="tabs" class="tabs">
-        <li class="tab_menu on">회원정보수정</li>
-        <li class="tab_menu">내 게시글</li>
-        <li class="tab_menu">예매내역</li>
-        <li class="tab_menu">회원탈퇴</li>
+        <a href="#">
+          <li class="tab_menu on">회원정보 수정</li>
+        </a>
+        <a href="member_post.php">
+          <li class="tab_menu">내 게시글</li>
+        </a>
+        <a href="member_ticket.php">
+          <li class="tab_menu">예매내역</li>
+        </a>
+        <a href="member_delete.php">
+          <li class="tab_menu">회원탈퇴</li>
+        </a>
       </ul>
       <div id="tab1" class="tab-content on">
         <div class="table_title">
@@ -384,154 +331,10 @@
           </form>
         </div>
       </div>
-      <div id="tab2" class="tab-content">
-        <table class="board_List">
-          <caption class="hidden">
-            게시판 리스트
-          </caption>
-          <thead>
-            <tr>
-              <th class="row1">번호</th>
-              <th class="row3">제목</th>
-              <th class="row4">작성자</th>
-              <th class="row5" style="width: 119px;">등록일</th>
-              <th class="row6">조회</th>
-            </tr>
-          </thead>
-          <script>
-          $(function() {
-            $(".cate_btn").on("click", function() {
-              if ($("#category").val() == "show") {
-                location.href = "search_result.php?page=1&category=show&n_list=&search=&view=";
-              } else if ($("#category").val() == "exhibition") {
-                location.href = "search_result.php?page=1&category=exhibition&n_list=&search=&view=";
-              } else if ($("#category").val() == "education") {
-                location.href = "search_result.php?page=1&category=education&n_list=&search=&view=";
-              } else if ($("#category").val() == "event") {
-                location.href = "search_result.php?page=1&category=event&n_list=&search=&view=";
-              } else if ($("#category").val() == "etc") {
-                location.href = "search_result.php?page=1&category=etc&n_list=&search=&view=";
-              } else {
-                location.href = "search_result.php?page=1&category=&n_list=&search=&view=";
-              }
-            })
-          });
-          </script>
-          <tbody>
-            <?php
-            // paging : 해당 페이지의 글 시작 번호 = (현재 페이지 번호 - 1) * 페이지 당 보여질 목록 수
-            $start = ($page - 1) * $list_num;
-
-            // paging : 시작번호부터 페이지 당 보여질 목록수 만큼 데이터 구하는 쿼리 작성
-            // limit 몇번부터, 몇 개
-
-            $sql2 = "(select * from notice where u_id = '$s_id' )";
-            $sql2 .= "UNION ALL";
-            $sql2 .= "(select * from free where u_id = '$s_id' )";
-            $sql2 .= "order by w_date desc limit $start, $list_num;";
-
-            // DB에 데이터 전송
-            $result = mysqli_query($dbcon, $sql2);
-
-            // DB에서 데이터 가져오기
-            // pager : 글번호(역순)
-            // 전체데이터 - ((현재 페이지 번호 -1) * 페이지 당 목록 수)
-            $i = $total - (($page - 1) * $list_num);
-            while($array = mysqli_fetch_array($result)){
-            ?>
-            <tr>
-              <td class="txtc">
-                <?php 
-                  if($array["status"] == 0){
-                    echo $i;
-                  } else {
-                  }
-                  ?>
-              </td>
-              <td id="board_t" class="txtc">
-                <a href="view.php?n_idx=<?php echo $array["idx"]?>&no=<?= $i ?>">
-                  <?php echo $array["n_title"]; ?>
-                </a>
-              </td>
-              <td class="txtc"><?php echo $array["writer"]; ?></td>
-              <?php $w_date = substr($array["w_date"], 0, 10); ?>
-              <td class="txtc"><?php echo $w_date; ?></td>
-              <td class="txtc"><?php echo $array["cnt"]; ?></td>
-            </tr>
-            <?php
-                $i--;
-            }; 
-            ?>
-          </tbody>
-        </table>
-        <div class="board_foot">
-          <p class="pager">
-            <?php
-              // pager : 블록 첫 페이지로(첫번째 블록에선 1페이지로 감)
-              if($page == 1 ){
-              ?>
-            <?php } else if($now_block == 1){?>
-            <a href="member_info.php?page=1"><img src="../images/btn_first.png"></a>
-            <?php } else { ?>
-            <a href="member_info.php?page=<?php echo $prev_page; ?>"><img src="../images/btn_first.png"></a>
-            <?php }
-              ?>
-            <?php
-              // pager : 이전 페이지
-              if($page <= 1){
-              ?>
-            <!-- <a href="list.php?page=1">이전</a> -->
-            <?php } else{ ?>
-            <a href="member_info.php?page=<?php echo ($page - 1); ?>"><img src="../images/btn_prev.png" alt="이전"></a>
-            <?php }; ?>
-
-            <?php
-              // pager : 페이지 번호 출력
-              for($print_page = $s_pageNum;  $print_page <= $e_pageNum; $print_page++){
-              ?>
-            <a id="page<?php echo $print_page; ?>"
-              href="member_info.php?page=<?php echo $print_page; ?>"><?php echo $print_page; ?></a>
-            <?php }; ?>
-
-            <?php
-              // pager : 다음 페이지
-              if($page >= $total_page){
-              ?>
-            <?php } else{ ?>
-            <a href="member_info.php?page=<?php echo ($page + 1); ?>"><img src="../images/btn_next.png" alt="다음"></a>
-            <?php }; ?>
-
-            <?php
-              // pager : 다음 블록 마지막페이지로
-              if($now_block == $total_block || $total_page <= 1){
-              ?>
-            <?php } else{ ?>
-            <a href="member_info.php?page=<?php echo $next_page; ?>"><img src="../images/btn_last.png" alt="다다음"></a>
-            <?php };?>
-          </p>
-          <?php if($s_id == "admin"){ ?>
-          <div class="wrt_btn">
-            <button type="button" onclick="location.href='write.php'">글쓰기</button>
-            <?php } else{ ?>
-
-            <?php }; ?>
-          </div>
-        </div>
-      </div>
+      <div id="tab2" class="tab-content"></div>
     </div>
     <div id="tab3" class="tab-content"></div>
-    <div id="tab4" class="tab-content">
-      <span>다음의 내용을 유의하시기 바랍니다.</span><br /><br />
-      <p>1) 회원탈퇴는 본인 인증 확인 후, 탈퇴가 가능합니다.</p>
-      <p>2) sns 회원 탈퇴는 본인 인증 절차 없이 바로 탈퇴 됩니다.</p>
-      <hr />
-      <div id="btn_jc">
-        <button type="button" id="btn_join" class="btn_join" onclick="mem_del()">회원탈퇴</button>
-        <span class="btn_cancle">
-          <a href="#">취소</a>
-        </span>
-      </div>
-    </div>
+    <div id="tab4" class="tab-content"></div>
   </main>
   <footer>
     <?php

@@ -57,14 +57,14 @@
         include '../inc/header.php';
         include "../inc/admin_check.php";
         // 데이터 가져오기
-          $f_idx = $_GET["f_idx"];
+          $bid = $_GET["bid"];
           $no = $_GET["no"];
 
         // DB 연결
           include "../inc/dbcon.php";
 
         // 쿼리 작성
-          $sql = "select * from free where idx = $f_idx;";
+          $sql = "select * from free where bid = $bid;";
 
         // 쿼리 전송
           $result = mysqli_query($dbcon, $sql);
@@ -104,7 +104,7 @@
           </div>
         </div>
         <div class="board_wrap">
-          <form name="notice_form" action="edit.php?f_idx=<?php echo $f_idx;?>&no=<?php echo $no;?>" method="post"
+          <form name="notice_form" action="edit.php?bid=<?php echo $bid;?>&no=<?php echo $no;?>" method="post"
             onsubmit="return notice_check()">
             <div class="board_body">
               <table>

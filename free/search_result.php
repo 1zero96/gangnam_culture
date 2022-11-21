@@ -29,7 +29,7 @@
 
     // 쿼리 작성
     if($category){
-      $sql = "select * from free where $category like '%$search%' order by idx desc;";
+      $sql = "select * from free where $category like '%$search%' order by bid desc;";
     }else{
       $sql = "select * from free";
     };
@@ -97,17 +97,17 @@
 
     <script>
     function sel_view() {
-      var view = document.getElementById('viewCnt');
-      var idx = view.options.selectedIndex;
-      if (idx == 0) {
+      var view = document.getElementById('viewhit');
+      var bid = view.options.selectedIndex;
+      if (bid == 0) {
         location.href =
           "http://localhost/gangnam_culture/free/search_result.php?category=<?php echo $category?>&search=<?php echo $search?>&view=10"
         alert('변경되었습니다.')
-      } else if (idx == 1) {
+      } else if (bid == 1) {
         location.href =
           "http://localhost/gangnam_culture/free/search_result.php?category=<?php echo $category?>&search=<?php echo $search?>&view=15"
         alert('변경되었습니다.');
-      } else if (idx == 2) {
+      } else if (bid == 2) {
         location.href =
           "http://localhost/gangnam_culture/free/search_result.php?category=<?php echo $category?>&search=<?php echo $search?>&view=20"
         alert('변경되었습니다.');
@@ -147,12 +147,12 @@
             <p class="total">Total <span class="color-main"><?php echo $total; ?></span>건 <?php echo $page;?> 페이지</p>
 
             <div class="board_control">
-              <select name="viewCnt" id="viewCnt" class="select" title="한번에 보여지는 갯수 선택">
+              <select name="viewhit" id="viewhit" class="select" title="한번에 보여지는 갯수 선택">
                 <option value="15">10개씩</option>
                 <option value="20">15개씩</option>
                 <option value="25">20개씩</option>
               </select>
-              <input type="button" class="viewCntBtn" value="보기" onclick="sel_view()" />
+              <input type="button" class="viewhitBtn" value="보기" onclick="sel_view()" />
             </div>
           </div>
           <table class="board_List">
@@ -184,12 +184,12 @@
 
             // paging : 시작번호부터 페이지 당 보여질 목록수 만큼 데이터 구하는 쿼리 작성
             // limit 몇번부터, 몇 개
-            // $sql = "select * from notice order by idx desc limit $start, $list_num;";
+            // $sql = "select * from notice order by bid desc limit $start, $list_num;";
 
             if($category){
-              $sql = "select * from free where $category like '%$search%' order by idx desc limit $start, $list_num;";
+              $sql = "select * from free where $category like '%$search%' order by bid desc limit $start, $list_num;";
           } else{
-              $sql = "select * from free order by idx desc limit $start, $list_num;";
+              $sql = "select * from free order by bid desc limit $start, $list_num;";
           };
             // DB에 데이터 전송
             $result = mysqli_query($dbcon, $sql);
@@ -207,14 +207,14 @@
               <tr>
                 <td class="txtc"><?php echo $i; ?></td>
                 <td id="board_t" class="txtc">
-                  <a href="view.php?f_idx=<?php echo $array["idx"]?>&no=<?= $i ?>">
+                  <a href="view.php?f_bid=<?php echo $array["bid"]?>&no=<?= $i ?>">
                     <?php echo $array["f_title"]; ?>
                   </a>
                 </td>
                 <td class="txtc"><?php echo $array["writer"]; ?></td>
                 <?php $w_date = substr($array["w_date"], 0, 10); ?>
                 <td class="txtc"><?php echo $w_date; ?></td>
-                <td class="txtc"><?php echo $array["cnt"]; ?></td>
+                <td class="txtc"><?php echo $array["hit"]; ?></td>
               </tr>
               <?php
                   $i--;

@@ -84,16 +84,16 @@
     <script>
     function sel_view() {
       var view = document.getElementById('viewCnt');
-      var idx = view.options.selectedIndex;
-      if (idx == 0) {
+      var bid = view.options.selectedIndex;
+      if (bid == 0) {
         location.href =
           "http://localhost/gangnam_culture/notice/search_result.php?category=<?php $category?>&n_list=n_title&search=&view=10"
         alert('변경되었습니다.')
-      } else if (idx == 1) {
+      } else if (bid == 1) {
         location.href =
           "http://localhost/gangnam_culture/notice/search_result.php?category=<?php $category?>&n_list=n_title&search=&view=15"
         alert('변경되었습니다.');
-      } else if (idx == 2) {
+      } else if (bid == 2) {
         location.href =
           "http://localhost/gangnam_culture/notice/search_result.php?category=<?php $category?>&n_list=n_title&search=&view=20"
         alert('변경되었습니다.');
@@ -201,7 +201,7 @@
 
             // paging : 시작번호부터 페이지 당 보여질 목록수 만큼 데이터 구하는 쿼리 작성
             // limit 몇번부터, 몇 개
-            $sql = "select * from notice order by status desc, idx desc limit $start, $list_num;";
+            $sql = "select * from notice order by status desc, bid desc limit $start, $list_num;";
             // echo $sql;
             /* exit; */
 
@@ -229,6 +229,8 @@
               }
               if($category == "etc"){
                 $category = "기타";
+              }else{
+                $category = "";
               }
             ?>
               <tr>
@@ -250,14 +252,14 @@
                 }?>
                 </td>
                 <td id="board_t" class="txtc">
-                  <a href="view.php?n_idx=<?php echo $array["idx"]?>&no=<?= $i ?>">
+                  <a href="view.php?bid=<?php echo $array["bid"]?>&no=<?= $i ?>">
                     <?php echo $array["n_title"]; ?>
                   </a>
                 </td>
                 <td class="txtc"><?php echo $array["writer"]; ?></td>
                 <?php $w_date = substr($array["w_date"], 0, 10); ?>
                 <td class="txtc"><?php echo $w_date; ?></td>
-                <td class="txtc"><?php echo $array["cnt"]; ?></td>
+                <td class="txtc"><?php echo $array["hit"]; ?></td>
               </tr>
               <?php
                 $i--;

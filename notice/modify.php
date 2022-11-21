@@ -20,14 +20,25 @@
   $(document).ready(function() {
     //여기 아래 부분
     $('#summernote').summernote({
-      width: 770,
+      width: 770, // 에디터 넓이
       height: 300, // 에디터 높이
       minHeight: null, // 최소 높이
       maxHeight: null, // 최대 높이
-      maxweight: 700,
       focus: true, // 에디터 로딩후 포커스를 맞출지 여부
       lang: "ko-KR", // 한글 설정
-      placeholder: '최대 2048자까지 쓸 수 있습니다' //placeholder 설정
+      placeholder: '내용을 등록합니다.', //placeholder 설정
+      toolbar: [
+        ['fontsize', ['fontsize']],
+        ['style', ['bold', 'italic', 'underline', 'strikethrough', 'clear']],
+        ['color', ['forecolor', 'color']],
+        ['table', ['table']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['height', ['height']],
+        // ['insert', ['picture', 'link', 'video']],
+      ],
+      fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', '맑은 고딕', '궁서', '굴림체', '굴림', '돋움체',
+        '바탕체'
+      ],
 
     });
   });
@@ -57,14 +68,14 @@
         include '../inc/header.php';
         include "../inc/admin_check.php";
         // 데이터 가져오기
-          $n_idx = $_GET["n_idx"];
+          $bid = $_GET["bid"];
           $no = $_GET["no"];
 
         // DB 연결
           include "../inc/dbcon.php";
 
         // 쿼리 작성
-          $sql = "select * from notice where idx = $n_idx;";
+          $sql = "select * from notice where bid = $bid;";
 
         // 쿼리 전송
           $result = mysqli_query($dbcon, $sql);
@@ -104,20 +115,59 @@
           </div>
         </div>
         <div class="board_wrap">
-          <form name="notice_form" action="edit.php?n_idx=<?php echo $n_idx;?>&no=<?php echo $no;?>" method="post"
-            onsubmit="return notice_check()">
+          <form name="notice_form" action="edit.php?bid=<?php echo $bid;?>&no=<?php echo $no;?>" method="post"
+            enctype="multipart/form-data" onsubmit="return notice_check()">
             <div class="board_body">
               <table>
                 <caption class="hidden">
                 </caption>
+                <colgroup>
+                  <col width="20%">
+                  <col width="30%">
+                  <col width="20%">
+                  <col width="30%">
+                </colgroup>
                 <thead>
                   <tr class="board_title">
-                    <th scope="row">
-                      <label for="n_title">제목 *</label>
+                    <th> 카테고리
                     </th>
                     <td>
-                      <input type="text" name="n_title" id="n_title" name="n_title"
-                        value="<?php echo $array["n_title"]; ?>" autofocus />
+                      <select name="category" id="category">
+                        <option value="division" <?php if($array["category"] == "division") echo " selected"; ?>>선택
+                        </option>
+                        <option value="show" <?php if($array["category"] == "show") echo " selected"; ?>>공연</option>
+                        <option value="exhibition" <?php if($array["category"] == "exhibition") echo " selected"; ?>>전시
+                        </option>
+                        <option value="education" <?php if($array["category"] == "education") echo " selected"; ?>>교육
+                        </option>
+                        <option value="event" <?php if($array["category"] == "event") echo " selected"; ?>>행사</option>
+                        <option value="etc" <?php if($array["category"] == "etc") echo " selected"; ?>>기타</option>
+                      </select>
+                    </td>
+                    <th>공지등록
+                    <td>
+                      <label class="switch">
+                        <input type="checkbox" name="n_check" class="n_check">
+                        <span class="slider round" style=""></span>
+                      </label>
+                      <p style="<?php if($array["status"] == "1") echo " display: none"; ?>">OFF</p>
+                      <p style="<?php if($array["status"] == "0") echo " display: none"; ?>">ON</p>
+                    </td>
+                    <script>
+                    var check = $("input[type='checkbox']");
+                    <?php if($array["status"] == 1){ ?>
+                    check.trigger('click');
+                    <?php } ?>
+                    check.click(function() {
+                      $(".board_title td > p").toggle();
+                    });
+                    </script>
+                  </tr>
+                  <tr class="board_content">
+                    <th> 제목 </th>
+                    <td colspan="3">
+                      <input type="text" name="n_title" id="n_title" name="n_title" placeholder="제목을 입력하세요."
+                        value="<?php echo $array["n_title"]?>" autofocus />
                     </td>
                   </tr>
                   <!-- <tr class="board_title">
@@ -134,17 +184,17 @@
                   <tr>
                     <td colspan="4" class="bd_contwrap">
                       <div class="board_content">
-                        <textarea id="summernote" name="n_content">
-                          <?php echo $array["n_content"]; ?>
+                        <textarea id="summernote" class="n_content" name="n_content">
+                        <?php echo $array["n_content"]?>
                         </textarea>
+                        <input type="hidden" name="tempFolder" id="tempFolder" value="임시폴더명" />
                       </div>
                     </td>
                   </tr>
                   <tr class="table_bottom">
-                    <td scope="row">첨부</td>
+                    <td scope="row">첨부파일 [<?php echo $array["f_name"]?>]</td>
                     <td colspan="3" class="down_link">
-                      <span class="file"><a href="#">선택된 파일 없음</a></span>
-                      <button type="button">파일선택</button>
+                      <input type="file" name="up_file" id="up_file"></input>
                     </td>
                   </tr>
                 </tbody>
@@ -152,7 +202,7 @@
               <div class="btm_btns1">
                 <div class="btm_btns2">
                   <button type="submit" id="btn_save" onclick="notice_check()">저장</button>
-                  <button type="button">목록</button>
+                  <button type="button" onclick="history.back();">목록</button>
                 </div>
               </div>
           </form>

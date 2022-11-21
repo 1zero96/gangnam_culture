@@ -25,7 +25,7 @@ ul.tabs {
 
 ul.tabs li {
   display: inline-block;
-  padding: 15px 92px;
+  padding: 15px 96px;
   font-size: 18px;
   border: 1px solid #dddddd;
   cursor: pointer;
@@ -186,4 +186,227 @@ ul.tabs li.on {
 
 .msgBlu {
   color: Blue;
+}
+
+.board_List a:hover {
+  color: #006fbb;
+}
+
+#board1 {
+  background: #0d4590;
+  color: #fff;
+}
+
+.aside_menu li a:hover {
+  background: #f4f4f4;
+}
+
+.board_List {
+  margin: auto;
+  text-align: center;
+  width: 1160px;
+  border-top: 2px solid #2162af;
+  margin-bottom: 30px;
+}
+
+.board_List th {
+  padding: 0.7813rem;
+  border-bottom: 1px solid #808285;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.board_List td {
+  border-bottom: 1px solid #d7d7d7;
+  max-width: 100px;
+  max-height: 25px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 15px 20px;
+}
+
+.row1 {
+  position: relative;
+}
+
+.row2 {
+  position: relative;
+}
+
+.row3 {
+  width: 340px;
+  position: relative;
+}
+.row4 {
+  position: relative;
+}
+.row5 {
+  position: relative;
+}
+
+table .row1:after {
+  content: "ㅣ";
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #d7d7d7;
+  font-weight: 300;
+}
+table .row2:after {
+  content: "ㅣ";
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #d7d7d7;
+  font-weight: 300;
+}
+table .row3:after {
+  content: "ㅣ";
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #d7d7d7;
+  font-weight: 300;
+}
+table .row4:after {
+  content: "ㅣ";
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #d7d7d7;
+  font-weight: 300;
+}
+
+table .row5:after {
+  content: "ㅣ";
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #d7d7d7;
+  font-weight: 300;
+}
+
+.page_num {
+  width: 420px;
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.page_num li {
+  width: 28px;
+  height: 34px;
+  text-align: center;
+  padding-top: 4px;
+}
+
+.wrt_btn {
+  text-align: center;
+  padding: 4px;
+  width: 90px;
+  height: 35px;
+  border-radius: 0.25em;
+  background-color: #2162af;
+  position: relative;
+  left: 710px;
+  bottom: 40px;
+}
+
+.wrt_btn button {
+  color: white;
+}
+
+.list1 {
+  border-bottom: 1px solid #2162af;
+  color: #2162af;
+  box-sizing: border-box;
+}
+
+.btn_page {
+  margin: 5px;
+}
+
+.pager {
+  margin: auto;
+  text-align: center;
+}
+
+.pager a {
+  padding: 0 10px;
+}
+
+.pager img {
+  padding-top: 5px;
+}
+
+.search_bar {
+  width: 1000px;
+  height: 100px;
+  margin: 25px auto 0 310px;
+  position: relative;
+}
+
+.search_select {
+  padding: 0 10px;
+  width: 101px;
+  height: 41px;
+  border: 1px solid #dadada;
+}
+
+#search_txt {
+  padding: 0 10px;
+  width: 282px;
+  height: 41px;
+  box-sizing: border-box;
+  border: 1px solid #dadada;
+}
+
+.search_bar img {
+  height: 41px;
+  position: absolute;
+  top: 0;
+  left: 390px;
+}
+
+.search_result {
+  font-weight: bold;
+}
+
+.btn-like .heart-shape {
+  display: inline;
+  color: red;
+}
+.btn-like {
+  border: none;
+  background-color: inherit;
+}
+
+.re_ct {
+  color: #0d4590;
+}
+
+#category {
+  text-align: center;
+  padding-right: 20px;
+  font-weight: bold;
+  background: url(../images/select.png) no-repeat 90% 50%;
+  background-size: 10px 10px;
+}
+
+.cate_btn {
+  border: 1px solid;
+  font-size: 12px;
+}
+
+.notice {
+  background-color: #2162af;
+  color: white;
+  padding: 5px 10px;
 }
