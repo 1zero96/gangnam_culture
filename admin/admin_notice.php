@@ -125,10 +125,18 @@ if($e_pageNum > $total_page){
     </div>
     <div class="container">
       <ul id="tabs" class="tabs">
-        <li class="tab_menu">회원정보관리</li>
-        <li class="tab_menu on">공지사항 관리</li>
-        <li class="tab_menu">회원 예매내역</li>
-        <li class="tab_menu">프로그램신청현황</li>
+        <a href="admin_info.php">
+          <li class="tab_menu">회원정보관리</li>
+        </a>
+        <a href="#">
+          <li class="tab_menu on">공지사항 관리</li>
+        </a>
+        <a href="admin_show.php">
+          <li class="tab_menu">공연 등록관리</li>
+        </a>
+        <a href="#">
+          <li class="tab_menu">회원 예매내역</li>
+        </a>
       </ul>
       <div id="tab1" class="tab-content"></div>
       <div id="tab2" class="tab-content on">

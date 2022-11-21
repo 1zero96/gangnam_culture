@@ -20,12 +20,13 @@
 
 /** tab Menu */
 ul.tabs {
+  text-align: center;
   margin: 10px;
 }
 
 ul.tabs li {
   display: inline-block;
-  padding: 15px 96px;
+  padding: 15px 92px;
   font-size: 18px;
   border: 1px solid #dddddd;
   cursor: pointer;
@@ -33,7 +34,7 @@ ul.tabs li {
 
 ul.tabs li.on {
   display: inline-block;
-  padding: 15px 133px;
+  padding: 15px 117px;
   font-size: 18px;
   border: 1px solid #dddddd;
   background-color: #006fbb;

@@ -1,8 +1,8 @@
 th,
 td,
 .pager {
-  padding: 10px;
-  font-size: 16px;
+  padding: 5px;
+  font-size: 15px;
   text-align: center;
 }
 
@@ -66,7 +66,7 @@ td,
 }
 
 .u_name {
-  width: 70px;
+  width: 72px;
 }
 
 .u_id {
@@ -140,12 +140,13 @@ table a:hover {
 
 /** tab Menu */
 ul.tabs {
+  text-align: center;
   margin: 10px;
 }
 
 ul.tabs li {
   display: inline-block;
-  padding: 15px 84px;
+  padding: 15px 70px;
   font-size: 18px;
   border: 1px solid #dddddd;
   cursor: pointer;
@@ -153,7 +154,7 @@ ul.tabs li {
 
 ul.tabs li.on {
   display: inline-block;
-  padding: 15px 92px;
+  padding: 15px 117px;
   font-size: 18px;
   border: 1px solid #dddddd;
   background-color: #006fbb;

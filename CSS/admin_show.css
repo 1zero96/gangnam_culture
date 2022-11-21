@@ -28,8 +28,24 @@ td,
   margin-left: 20px;
 }
 
-.mem_list_set th.modify::after {
-  margin-left: -9999px;
+.mem_list_set th.birth::after {
+  margin-left: 19px;
+}
+
+.mem_list_set th.mobile::after {
+  margin-left: 21px;
+}
+
+.mem_list_set th.email::after {
+  margin-left: 43px;
+}
+
+.mem_list_set th.address::after {
+  margin-left: 128px;
+}
+
+.mem_list_set th.reg_date::after {
+  margin-left: 24px;
 }
 
 .mem_list_set .pager {
@@ -88,7 +104,8 @@ table a:hover {
 .table_title {
   font-size: 20px;
   font-weight: bold;
-  margin-bottom: 15px;
+  margin-left: 75px;
+  margin-bottom: 20px;
 }
 
 .table-top {
@@ -146,7 +163,12 @@ ul.tabs li.on {
   color: red;
 }
 
+#tab3 > .form_wrap {
+  margin: auto;
+}
+
 .form_wrap {
+  width: 1000px;
   margin: 0;
   overflow: hidden;
   border-top: 2px solid #006fbb;
@@ -170,13 +192,13 @@ ul.tabs li.on {
 }
 
 .form__table {
-  width: 1194px;
+  width: 1000px;
 }
 
 .form__table th {
   vertical-align: middle;
   padding: 0.6rem 0.8rem;
-  text-align: left;
+  text-align: center;
   border-bottom: 1px solid #d7d7d7;
 }
 
@@ -188,9 +210,12 @@ ul.tabs li.on {
 }
 
 .form__table td input {
+  box-sizing: border-box;
+  text-align: center;
   padding: 5px;
   border-radius: 5px;
   border: 1px solid #c5c5c5;
+  width: 700px;
 
   /* height: 29px; */
 }
@@ -208,6 +233,11 @@ ul.tabs li.on {
   padding: 6px 10px;
   background-color: #d7d7d7;
   border-radius: 5px;
+}
+
+#up_file {
+  box-sizing: border-box;
+  padding-left: 260px;
 }
 
 #email_sel {
@@ -229,35 +259,39 @@ ul.tabs li.on {
 }
 
 #btn_jc {
-  margin: auto;
   text-align: center;
   display: flex;
-  justify-content: center;
-  margin-top: 80px;
+  justify-content: right;
+  margin-top: 10px;
+  margin-right: 10px;
 }
 
 .btn_join {
-  width: 174px;
-  height: 62px;
-  border: 2px solid black;
+  width: 130px;
+  height: 50px;
+  border: 1px solid #dddddd;
+  color: white;
+  background: #006ab6;
+  border-radius: 0.4em;
   box-sizing: border-box;
-  font-size: 26px;
-  margin-right: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 10px;
 }
 
 .btn_cancle {
-  width: 174px;
-  height: 62px;
   font-size: 26px;
 }
 
 .btn_cancle > a {
   display: block;
-  width: 174px;
-  height: 62px;
+  width: 130px;
+  height: 50px;
   text-align: center;
-  line-height: 62px;
+  line-height: 50px;
   background: #dfdfdf;
+  border-radius: 0.4em;
+  font-size: 20px;
 }
 
 .hide {

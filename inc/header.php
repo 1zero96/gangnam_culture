@@ -50,7 +50,7 @@
           <a href="http://localhost/gangnam_culture/members/member_info.php"><span class="admin_page">마이페이지</span></a>
         </li>
         <li class="topMenu__txt4">
-          <a href="http://localhost/gangnam_culture/admin/index.php"><span class="admin_page">관리자 페이지</span></a>
+          <a href="http://localhost/gangnam_culture/admin/admin_info.php"><span class="admin_page">관리자 페이지</span></a>
         </li>
         <li class="topMenu__txt3">
           <span class="prt_name"><?php echo $s_name; ?></span>님
