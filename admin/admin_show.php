@@ -51,7 +51,7 @@
     <div class="container">
       <ul id="tabs" class="tabs">
         <a href="admin_info.php">
-          <li class="tab_menu">회원정보관리</li>
+          <li class="tab_menu" style="width: 246.41px;">회원정보관리</li>
         </a>
         <a href="admin_notice.php">
           <li class="tab_menu">공지사항 관리</li>
@@ -59,8 +59,8 @@
         <a href="#">
           <li class="tab_menu on">공연 등록관리</li>
         </a>
-        <a href="#">
-          <li class="tab_menu">회원 예매내역</li>
+        <a href="admin_refund.php">
+          <li class="tab_menu" style="width: 246.41px">환불관리</li>
         </a>
       </ul>
       <div id="tab1" class="tab-content"></div>

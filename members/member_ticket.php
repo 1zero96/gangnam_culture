@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../CSS/reset.css" />
   <link rel="stylesheet" href="../CSS/topmenu.css" />
   <link rel="stylesheet" href="../CSS/header.css" />
-  <link rel="stylesheet" href="../CSS/member_info.css" />
+  <link rel="stylesheet" href="../CSS/member_ticket.css" />
   <link rel="stylesheet" href="../CSS/footer.css" />
   <script src="../JS/jquery-3.6.1.min.js"></script>
   <script defer src="../JS/header.js"></script>
@@ -26,21 +26,16 @@
     include "../inc/dbcon.php"; // DB 연결
 
       /** 쿼리 작성 */
-      $t_sql = "select (select count(*) from notice where u_id = 'admin') ";
-      $t_sql .= " + (select count(*) from free where u_id = 'admin') ";
-      $t_sql .= "FROM DUAL;";
-      $sql = "(select * from notice where u_id = '$s_id' )";
-      $sql .= "UNION ALL";
-      $sql .= "(select * from free where u_id = '$s_id' )";
+      $sql = "select * from ticket where u_id = '$s_id'";
   
       /** 쿼리 실행 */
       $result = mysqli_query($dbcon, $sql);
-      $t_result = mysqli_query($dbcon, $t_sql);
-      $row = mysqli_fetch_row($t_result);
+      // $t_result = mysqli_query($dbcon, $t_sql);
+      // $row = mysqli_fetch_row($t_result);
   
       /** 전체 데이터 가져오기 */
       $total = mysqli_num_rows($result);
-      $total_count = $row[0];
+      // $total_count = $row[0];
   
       /** paging : 한 페이지 당 보여질 목록 수 */
       $list_num = 10;
@@ -55,7 +50,7 @@
       $total_page = ceil($total / $list_num);
   
       /** 글번호 */
-      $print_num = $total_count - $list_num*($page-1);
+      // $print_num = $total_count - $list_num*($page-1);
   
   
       /** $total_block = 전체 블럭 수 = 전체 페이지 수 / 블럭 당 페이지 수 */
@@ -87,8 +82,6 @@
 
 
       /** 쿼리 작성 */
-      $sql = "select * from members where idx = '$s_idx' ";
-
 
       /** DB에서 데이터 가져오기(*select) */
       // mysqli_fetch_row(쿼리실행문) -- 필드순서
@@ -142,21 +135,21 @@
             게시판 리스트
           </caption>
           <colgroup>
-            <col width="5%">
-            <col width="10%">
-            <col width="50%">
-            <col width="10%">
-            <col width="15%">
-            <col width="5%">
+            <col width="8%">
+            <col width="8%">
+            <col width="38%">
+            <col width="17%">
+            <col width="17%">
+            <col width="17%">
           </colgroup>
           <thead>
             <tr>
-              <th class="row1">번호</th>
-              <th class="row2">게시판</th>
-              <th class="row3">제목</th>
-              <th class="row4">작성자</th>
-              <th class="row5" style="width: 119px;">등록일</th>
-              <th class="row6">조회</th>
+              <th class="row1">예약번호</th>
+              <th class="row2">공연번호</th>
+              <th class="row3">공연명</th>
+              <th class="row4">결제일</th>
+              <th class="row5">공연일</th>
+              <th class="row6">환불 / 취소</th>
             </tr>
           </thead>
           <tbody>
@@ -167,10 +160,8 @@
             // paging : 시작번호부터 페이지 당 보여질 목록수 만큼 데이터 구하는 쿼리 작성
             // limit 몇번부터, 몇 개
 
-            $sql2 = "(select * from notice where u_id = '$s_id' )";
-            $sql2 .= "UNION";
-            $sql2 .= "(select * from free where u_id = '$s_id' )";
-            $sql2 .= "order by w_date desc limit $start, $list_num;";
+            $sql2 = "select * from ticket where u_id = '$s_id'";
+            $sql2 .= "order by tid desc limit $start, $list_num;";
 
             // DB에 데이터 전송
             $result2 = mysqli_query($dbcon, $sql2);
@@ -180,39 +171,60 @@
             // 전체데이터 - ((현재 페이지 번호 -1) * 페이지 당 목록 수)
             $i = $total - (($page - 1) * $list_num);
             while($array = mysqli_fetch_array($result2)){
-              $board = $array["t_name"];
-              if($board == "notice"){
-                $board = "<a href='../notice/list.php'>공지사항</a>";
-              }
-              if($board == "free"){
-                $board = "<a href='../free/list.php'>자유게시판</a>";
-              }
-              if($board == "notice2"){
-                $board = "<a href='../notice2/list.php'>타기관공지</a>";
-              }
-              if($board == "faq"){
-                $board = "FAQ";
-              }
-              if($board == "other"){
-                $board = "기타";
-              }else{
-                $category = "";
-              }
+              $tid = $array["tid"]
             ?>
             <tr>
-              <td class="txtc">
-                <?php echo $i; ?>
+              <td class="txtc tid"
+                onclick="window.open('ticket_info.php?tid=<?php echo $tid?>', 'window_name', 'width=600px, height=375px, location=no, status=no, scrollbars=no')">
+                <span class="colb">
+                  <?php echo $array["tid"]; ?>
+                </span>
               </td>
-              <td class="txtc"><?php echo $board; ?></td>
+              <td class="txtc"><?php echo $array["bid"]; ?></td>
               <td id="board_t" class="txtc">
-                <a href="../<?php echo $array["t_name"]?>/view.php?bid=<?php echo $array["bid"]?>">
-                  <?php echo $array["n_title"]; ?>
-                </a>
+                <?php echo $array["h_title"]; ?>
               </td>
-              <td class="txtc"><?php echo $array["writer"]; ?></td>
-              <?php $w_date = substr($array["w_date"], 0, 10); ?>
-              <td class="txtc"><?php echo $w_date; ?></td>
-              <td class="txtc"><?php echo $array["hit"]; ?></td>
+              <td class="txtc"><?php echo $array["t_date"]; ?></td>
+              <?php $h_date = substr($array["h_date"], 0, 10); ?>
+              <td class="txtc"><?php echo $h_date; ?></td>
+              <td class="txtc">
+                <?php if($array["status"] == 0){?>
+                <button class="refund_btn" onclick="refund()">환불</button>
+                <?php } else if($array["status"] == 1) { ?>
+                <button class="ron refund_btn" onclick="alert('환불 진행중입니다 잠시만 기다려주세요.')">진행중</button>
+                <?php } else if($array["status"] == 2) {?>
+                <button class="roff refund_btn" onclick="">완료</button>
+                <?php } else { ?>
+                <button class="rfa refund_btn" onclick="">불가</button>
+                <?php } ?>
+              </td>
+              <script>
+              function refund() {
+                let ok = confirm("환불 신청 하시겠습니까?");
+                if (ok == true) {
+                  var data = {
+                    tid: <?php echo $array["tid"]?>
+                  };
+                  $.ajax({
+                    async: false,
+                    type: 'post',
+                    url: 'ticket_refund.php',
+                    data: data,
+                    dataType: 'html',
+                    error: function() {},
+                    success: function(return_data) {
+                      if (return_data == "no") {
+                        alert('관리자에게 문의해주세요');
+                        return;
+                      } else {
+                        alert('신청 되었습니다!');
+                        window.location.reload();
+                      }
+                    }
+                  });
+                }
+              }
+              </script>
             </tr>
             <?php
                 $i--;
@@ -272,7 +284,7 @@
     </div>
     </div>
   </main>
-  <footer>
+  <footer style="margin-top:280px">
     <?php
       include '../inc/footer.php'
     ?>

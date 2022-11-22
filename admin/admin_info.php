@@ -160,8 +160,8 @@ if($e_pageNum > $total_page){
         <a href="admin_show.php">
           <li class="tab_menu">공연 등록관리</li>
         </a>
-        <a href="#">
-          <li class="tab_menu">회원 예매내역</li>
+        <a href="admin_refund.php">
+          <li class="tab_menu" style="width: 246.41px">환불관리</li>
         </a>
       </ul>
       <div id="tab1" class="tab-content on">

@@ -5,7 +5,7 @@
 include "../inc/dbcon.php";
 
 // 쿼리 작성
-$sql = "select * from notice;";
+$sql = "select * from ticket where status > '0';";
 
 // 쿼리 전송
 $result = mysqli_query($dbcon, $sql);
@@ -67,7 +67,7 @@ if($e_pageNum > $total_page){
   <link rel="stylesheet" href="../CSS/reset.css" />
   <link rel="stylesheet" href="../CSS/topmenu.css" />
   <link rel="stylesheet" href="../CSS/header.css" />
-  <link rel="stylesheet" href="../CSS/admin_notice.css" />
+  <link rel="stylesheet" href="../CSS/admin_refund.css" />
   <link rel="stylesheet" href="../CSS/footer.css" />
   <script src="../JS/jquery-3.6.1.min.js"></script>
   <script defer src="../JS/header.js"></script>
@@ -100,7 +100,7 @@ if($e_pageNum > $total_page){
   include "../inc/dbcon.php"; // DB 연결
 
   /** 쿼리 작성 */
-  $sql = "select * from notice where status = '1'";
+  $sql = "select * from ticket where status = '1'";
 
   /** 쿼리 실행 */
   $result = mysqli_query($dbcon, $sql);
@@ -128,32 +128,33 @@ if($e_pageNum > $total_page){
         <a href="admin_info.php">
           <li class="tab_menu">회원정보관리</li>
         </a>
-        <a href="#">
-          <li class="tab_menu on">공지사항 관리</li>
+        <a href="admin_notice.php">
+          <li class="tab_menu">공지사항 관리</li>
         </a>
         <a href="admin_show.php">
           <li class="tab_menu">공연 등록관리</li>
         </a>
         <a href="#">
-          <li class="admin_refund.php" style="width: 246.41px">환불관리</li>
+          <li class="tab_menu on">환불관리</li>
         </a>
       </ul>
       <div id="tab1" class="tab-content"></div>
-      <div id="tab2" class="tab-content on">
+      <div id="tab2" class="tab-content"></div>
+      <div id="tab3" class="tab-content"></div>
+      <div id="tab4" class="tab-content on">
         <div class="table_title">
           <img class="table_icon" src="../images/check_button.jpg" />
-          <span class="table-top">공지사항 관리</span>
+          <span class="table-top">환불관리</span>
         </div>
         <!-- 콘텐트 -->
-        <p>전체 게시글 수 : <?php echo $total; ?> 개 ㅣ 등록된 공지사항 수 : <?php echo $total2 ?> 개
-        </p>
         <table class="mem_list_set">
           <tr class="mem_list_title">
-            <th class="bid">번호</th>
-            <th class="n_title">제목</th>
-            <th class="writer">작성자</th>
-            <th class="hit">조회</th>
-            <th class="modify">관리</th>
+            <th class="tid">예약번호</th>
+            <th class="h_title">공연명</th>
+            <th class="u_name">예매자</th>
+            <th class="t_date">예매일</th>
+            <th class="r_date">환불요청일</th>
+            <th class="modify">환불상태</th>
           </tr>
           <?php
             // paging : 해당 페이지의 글 시작 번호 = (현재 페이지 번호 - 1) * 페이지 당 보여질 목록 수
@@ -161,7 +162,7 @@ if($e_pageNum > $total_page){
 
             // paging : 시작번호부터 페이지 당 보여질 목록수 만큼 데이터 구하는 쿼리 작성
             // limit 몇번부터, 몇 개
-            $sql = "select * from notice order by status desc limit $start, $list_num;";
+            $sql = "select * from ticket order by r_date desc limit $start, $list_num;";
             // echo $sql;
             /* exit; */
 
@@ -174,21 +175,47 @@ if($e_pageNum > $total_page){
             while($array = mysqli_fetch_array($result)){
         ?>
           <tr class="mem_list_content">
-            <td><?php echo $i; ?></td>
-            <td><?php echo $array["n_title"]; ?></td>
-            <td><?php echo $array["writer"]; ?></td>
-            <td><?php echo $array["hit"]; ?></td>
+            <td><?php echo $array["tid"]; ?></td>
+            <td><?php echo $array["h_title"]; ?></td>
+            <td><?php echo $array["u_name"]; ?></td>
+            <td><?php echo $array["t_date"]; ?></td>
+            <td><?php echo $array["r_date"]; ?></td>
             <td>
-              <?php if($array["status"] == 0){ ?>
-              <button type="button" onclick="mem_del(<?php echo $array['bid']; ?>)"><span
-                  class="notice_up">[공지등록]</span></button>
-              <?php } else if($array["status"] == 1){ ?>
-              <button type="button" onclick="mem_del(<?php echo $array['bid']; ?>)"><span
-                  class="notice_down">[공지해제]</span></button>
+              <?php if($array["status"] == 1){ ?>
+              <button type="button" onclick="refund()"><span class="refund_up">[대기중]</span></button>
+              <?php } else if($array["status"] == 2){ ?>
+              <button type="button" onclick=""><span class="refund_down">[환불완료]</span></button>
               <?php } ?>
-              <a href="notice/admin_notice.php?bid=<?php echo $array["bid"]; ?>">[수정]</a>
-              <button type="button" onclick="mem_del(<?php echo $array['bid']; ?>)">[삭제]</button>
             </td>
+            <script>
+            function refund() {
+              let ok = confirm("환불 신청 하시겠습니까?");
+              if (ok == true) {
+                var data = {
+                  tid: <?php echo $array["tid"] ?>,
+                  bid: <?php echo $array["bid"] ?>,
+                  tcount: <?php echo $array["tcount"]?>
+                };
+                $.ajax({
+                  async: false,
+                  type: 'post',
+                  url: 'refund_check.php',
+                  data: data,
+                  dataType: 'html',
+                  error: function() {},
+                  success: function(return_data) {
+                    if (return_data == "no") {
+                      alert('관리자에게 문의해주세요');
+                      return;
+                    } else {
+                      alert('신청 되었습니다!');
+                      window.location.reload();
+                    }
+                  }
+                });
+              }
+            }
+            </script>
           </tr>
           <?php
                 $i++;
@@ -240,17 +267,9 @@ if($e_pageNum > $total_page){
             <a href="admin_notice.php?page=<?php echo $next_page; ?>"><img src="../images/btn_last.png" alt="다다음"></a>
             <?php };?>
           </p>
-          <?php if($s_id == "admin"){ ?>
-          <div class="wrt_btn">
-            <button type="button" onclick="location.href='write.php'">글쓰기</button>
-            <?php } else{ ?>
 
-            <?php }; ?>
-          </div>
         </div>
       </div>
-      <div id="tab3" class="tab-content"></div>
-      <div id="tab4" class="tab-content"></div>
     </div>
   </main>
   <footer>

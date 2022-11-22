@@ -94,7 +94,7 @@
 .login_box_txt1::after {
   content: "ㅣ";
   position: absolute;
-  right: 297px;
+  right: 304px;
   color: #c5c5c5c5;
 }
 
@@ -142,8 +142,8 @@
 .input_login {
   text-align: center;
   margin: auto;
-  margin-left: 13px;
-  margin-top: 25px;
+  margin-left: 2px;
+  margin-top: 28px;
 }
 .sns_group {
   margin: auto;

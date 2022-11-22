@@ -422,7 +422,7 @@
       </div>
     </div>
   </main>
-  <footer>
+  <footer style="margin-top:200px">
     <?php
       include '../inc/footer.php'
     ?>

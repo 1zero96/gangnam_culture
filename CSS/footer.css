@@ -5,7 +5,6 @@
 
 .footer_wrap {
   border-top: 1px solid #dddddd;
-  margin-top: 100px;
 }
 
 .terms {
@@ -55,7 +54,24 @@
   border: 1px solid gray;
 }
 
-.footer_menu li:after {
+/* .footer_menu li:after {
+  content: "ㅣ";
+  margin-left: 30px;
+} */
+
+.footer_menu li:nth-child(1):after {
+  content: "ㅣ";
+  margin-left: 30px;
+}
+.footer_menu li:nth-child(2):after {
+  content: "ㅣ";
+  margin-left: 30px;
+}
+.footer_menu li:nth-child(3):after {
+  content: "ㅣ";
+  margin-left: 30px;
+}
+.footer_menu li:nth-child(4):after {
   content: "ㅣ";
   margin-left: 30px;
 }

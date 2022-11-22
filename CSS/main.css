@@ -107,13 +107,11 @@
 }
 
 .size90 a:hover {
-  filter: invert(22%) sepia(47%) saturate(5893%) hue-rotate(190deg)
-    brightness(92%) contrast(106%);
+  filter: invert(22%) sepia(47%) saturate(5893%) hue-rotate(190deg) brightness(92%) contrast(106%);
 }
 
 .size91:hover {
-  filter: invert(22%) sepia(47%) saturate(5893%) hue-rotate(190deg)
-    brightness(92%) contrast(106%);
+  filter: invert(22%) sepia(47%) saturate(5893%) hue-rotate(190deg) brightness(92%) contrast(106%);
 }
 
 /* content_title */
@@ -1206,6 +1204,10 @@
 
 #quick ul li.q04 a {
   background: url(../images/quick_img06.png) center top no-repeat;
+}
+
+.q01:hover {
+  color: red;
 }
 
 #top {

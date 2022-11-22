@@ -119,13 +119,13 @@ $s_array = mysqli_fetch_array($s_result);
   .credit_ok {
     background: #0d4590;
     color: white;
-    width: 130px;
+    width: 129px;
     height: 45px;
     margin-right: 5px;
   }
 
   .exit {
-    width: 130px;
+    width: 129px;
     height: 45px;
     background: white;
     border: 1px solid #767575;
