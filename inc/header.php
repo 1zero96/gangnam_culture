@@ -94,7 +94,7 @@
           <ul class="gnb__content">
             <li><a href="#">이달의 일정</a></li>
             <li><a href="#">예매안내</a></li>
-            <li><a href="#">공연 안내 및 예매</a></li>
+            <li><a href="http://localhost/gangnam_culture/shows/list.php">공연 안내 및 예매</a></li>
             <li><a href="#">전시 안내 및 예매</a></li>
             <li><a href="#">축제 및 행사 안내</a></li>
           </ul>

@@ -133,6 +133,10 @@
       <div id="tab1" class="tab-content">
       </div>
       <div id="tab2" class="tab-content on">
+        <div class="table_title">
+          <img class="table_icon" src="../images/check_button.jpg" />
+          <span class="table-top">내 게시글 목록</span>
+        </div>
         <table class="board_List">
           <caption class="hidden">
             게시판 리스트

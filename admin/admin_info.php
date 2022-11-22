@@ -157,7 +157,7 @@ if($e_pageNum > $total_page){
         <a href="admin_notice.php">
           <li class="tab_menu">공지사항 관리</li>
         </a>
-        <a href="#">
+        <a href="admin_show.php">
           <li class="tab_menu">공연 등록관리</li>
         </a>
         <a href="#">

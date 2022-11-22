@@ -71,7 +71,8 @@
           <span class="table-top">공연등록</span>
         </div>
         <div class="form_wrap">
-          <form name="edit_form" action="edit.php" method="post" onsubmit="return edit_form_check()">
+          <form name="insert_form" action="show_insert.php" method="post" onsubmit="return insert_form_check()"
+            enctype="multipart/form-data">
             <fieldset>
               <table class="form__table">
                 <caption class="hidden">
@@ -97,15 +98,15 @@
                     </th>
                     <td>
                       <label for="jazz">재즈</label>
-                      <input type="radio" style="width: 25px;" name="show" id="jazz" value="jazz"></input>
+                      <input type="radio" style="width: 25px;" name="show" id="jazz" value="재즈"></input>
                       <label for="rock">락/메탈</label>
-                      <input type="radio" style="width: 25px;" name="show" id="rock" value="rock"></input>
+                      <input type="radio" style="width: 25px;" name="show" id="rock" value="락/메탈"></input>
                       <label for="indie">인디</label>
-                      <input type="radio" style="width: 25px;" name="show" id="indie" value="indie"></input>
+                      <input type="radio" style="width: 25px;" name="show" id="indie" value="인디"></input>
                       <label for="classic">클래식</label>
-                      <input type="radio" style="width: 25px;" name="show" id="classic" value="classic"></input>
+                      <input type="radio" style="width: 25px;" name="show" id="classic" value="클래식"></input>
                       <label for="other">기타</label>
-                      <input type="radio" style="width: 25px;" name="show" id="other" value="other"></input>
+                      <input type="radio" style="width: 25px;" name="show" id="other" value="기타"></input>
                     </td>
                   </tr>
                   <tr>
@@ -121,7 +122,7 @@
                       <label for="h_time">시간</label>
                     </th>
                     <td>
-                      <input type="text" name="h_time" id="h_time" title="공연시간" placeholder="공연시간을 입력해주세요." />
+                      <input type="text" name="h_time" id="h_time" title="공연시간" placeholder="ex)17:00" />
                     </td>
                   </tr>
                   <tr>
@@ -137,7 +138,7 @@
                       <label for="person">인원</label>
                     </th>
                     <td>
-                      <input type="text" id="person" name="person" title="인원" placeholder="인원수를 입력하세요." />
+                      <input type="text" id="person" name="person" title="인원" placeholder="인원 수를 입력하세요." />
                     </td>
                   </tr>
                   <tr>

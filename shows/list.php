@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="../CSS/footer.css" />
   <script src="../JS/jquery-3.6.1.min.js"></script>
   <script defer src="../JS/header.js"></script>
-
 </head>
 
 <body>
@@ -137,13 +136,14 @@
             // 전체데이터 - ((현재 페이지 번호 -1) * 페이지 당 목록 수)
             $i = $total - (($page - 1) * $list_num);
             while($array = mysqli_fetch_array($result)){
+              $bid = $array["bid"];
             ?>
           <div class="event">
             <div class="event__img">
-              <img src="../images/content1_1.jpg" alt="" width="285px" height="398px" />
+              <img src="../data/shows/<?php echo $array["f_name"]?>" alt="" width="285px" height="398px" />
             </div>
             <div class="event__list">
-              <h3>2022 목요 예술무대가 - 온담</h3>
+              <h3><?php echo $array["h_title"]; ?></h3>
               <table class="event__table">
                 <caption class="hidden">
                   상세정보
@@ -159,29 +159,43 @@
                   </tr>
                   <tr>
                     <th>일시</th>
-                    <td class="txtc"><?php echo $array["h_date"]?></td>
+                    <?php 
+                                  $date = explode(" ",$array["h_date"]);
+                                  $time = explode(":",$date[1]);
+                                  $day = $date[0];
+                                  $hour = $time[0]."시";
+                                  $min = $time[1]."분";
+                    ?>
+                    <td class="txtc"><?php echo $day?> <?php echo $hour?> <?php echo $min?></td>
                   </tr>
                   <tr>
                     <th>장소</th>
                     <td class="txtc"><?php echo $array["place"]; ?></td>
                   </tr>
-                  <tr>
+                  <!-- <tr>
                     <th>관람등급</th>
                     <td class="txtc"><?php echo $array["grade"]; ?> 이상</td>
+                  </tr> -->
+                  <tr>
+                    <th>인원</th>
+                    <td class="txtc"><?php echo $array["headcount"]; ?> <span>(잔여 :
+                        <?php echo ($array["headcount"] - $array["tcount"]) ?>석)
+                    </td>
                   </tr>
                   <tr>
-                    <th>입장료</th>
+                    <th>가격</th>
                     <td class="txtc"><?php echo $array["price"]; ?>원</td>
-                  </tr>
-                  <tr>
-                    <th>문의</th>
-                    <td>031-123-1234</td>
                   </tr>
                 </tbody>
               </table>
               <div class="event__button">
                 <button class="viewBtn" type="button">자세히보기</button>
-                <button class="credit" type="button">예매하기</button>
+                <?php if($array["headcount"] != $array["tcount"]){ ?>
+                <button id="credit" class="credit" type="button"
+                  onclick="window.open('ticket.php?bid=<?php echo $bid?>', 'window_name', 'width=820px, height=545px, location=no, status=no, scrollbars=no')">예매하기</button>
+                <?php } else { ?>
+                <button class="credit off" type="button">예매종료</button>
+                <?php } ?>
               </div>
             </div>
           </div>
@@ -234,16 +248,10 @@
               <a href="list.php?page=<?php echo $next_page; ?>"><img src="../images/btn_last.png" alt="다다음"></a>
               <?php };?>
             </p>
-            <?php if($s_id == "admin"){ ?>
-            <div class="wrt_btn">
-              <button type="button" onclick="location.href='write.php'">글쓰기</button>
-              <?php } else{ ?>
-
-              <?php }; ?>
-            </div>
           </div>
         </div>
       </div>
+    </div>
     </div>
   </main>
   <footer>
