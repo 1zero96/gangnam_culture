@@ -111,8 +111,8 @@
           <ul class="aside_menu">
             <li><a id="board1" href="#">공지사항</a></li>
             <li><a href="../notice2/list.php">타기관 공지사항</a></li>
-            <li><a href="../employ/list.php">직원채용 공고</a></li>
             <li><a href="../free/list.php">자유 게시판</a></li>
+            <li><a href="../employ/list.php">질문과 답변</a></li>
             <li><a href="../faq/list.php">FAQ</a></li>
           </ul>
         </div>
@@ -167,22 +167,12 @@
                         autofocus />
                     </td>
                   </tr>
-                  <!-- <tr class="board_title">
-                    <th scope="row">
-                      <label for="writer">작성자 *</label>
-                    </th>
-                    <td>
-                      <input type="text" name="writer" id="writer" name="writer" autofocus
-                        value="<?php echo $s_name; ?>" />
-                    </td>
-                  </tr> -->
                 </thead>
                 <tbody>
                   <tr>
                     <td colspan="4" class="bd_contwrap">
                       <div class="board_content">
                         <textarea id="summernote" class="n_content" name="n_content"></textarea>
-                        <input type="hidden" name="tempFolder" id="tempFolder" value="임시폴더명" />
                       </div>
                     </td>
                   </tr>

@@ -126,8 +126,8 @@
           <ul class="aside_menu">
             <li><a id="board1" href="#">공지사항</a></li>
             <li><a href="../notice2/list.php">타기관 공지사항</a></li>
-            <li><a href="../employ/list.php">직원채용 공고</a></li>
             <li><a href="../free/list.php">자유 게시판</a></li>
+            <li><a href="../employ/list.php">질문과 답변</a></li>
             <li><a href="../faq/list.php">FAQ</a></li>
           </ul>
         </div>

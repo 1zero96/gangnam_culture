@@ -110,7 +110,7 @@
 
 .menu_bar {
   width: 100%;
-  border-top: 1px solid #dddddd;
+  height: 52px;
   border-bottom: 1px solid #dddddd;
 }
 .mbr_txt {

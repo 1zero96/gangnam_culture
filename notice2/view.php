@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>타기관 공지사항 &lt; 열린광장 &lt; 강남문화재단</title>
+  <title>공지사항 &lt; 열린광장 &lt; 강남문화재단</title>
   <link rel="stylesheet" href="../CSS/reset.css" />
   <link rel="stylesheet" href="../CSS/header.css" />
   <link rel="stylesheet" href="../CSS/topmenu.css" />
@@ -13,6 +13,11 @@
   <link rel="stylesheet" href="../CSS/footer.css" />
   <script src="../JS/jquery-3.6.1.min.js"></script>
   <script defer src="../JS/header.js"></script>
+  <style>
+  .board_table thead tr>td:nth-child(6)::after {
+    display: none;
+  }
+  </style>
 </head>
 
 <body>
@@ -20,17 +25,18 @@
     <?php
         include '../inc/header.php';
         // 데이터 가져오기
-        $n_idx = $_GET["n_idx"];
+        $bid = $_GET["bid"];
+        ini_set( 'display_errors', '0' );
         $no = $_GET["no"];
 
         // DB 연결
         include "../inc/dbcon.php";
         
         // 쿼리 작성
-        $sql = "select * from notice2 where idx=$n_idx;";
+        $sql = "select * from notice2 where bid=$bid;";
         $count_sql = "SELECT count(*) from notice2";
-        $p_sql = "SELECT * FROM notice2 WHERE idx < $n_idx ORDER BY idx DESC LIMIT 1;";
-        $n_sql = "SELECT * FROM notice2 WHERE idx > $n_idx ORDER BY idx ASC LIMIT 1;";
+        $p_sql = "SELECT * FROM notice2 WHERE bid < $bid ORDER BY bid DESC LIMIT 1;";
+        $n_sql = "SELECT * FROM notice2 WHERE bid > $bid ORDER BY bid ASC LIMIT 1;";
         // echo $sql;
         // exit;
         
@@ -46,10 +52,10 @@
         $n_array = mysqli_fetch_array($n_result);
         
         // 조회수 업데이트
-        $cnt = $array["cnt"]+1;
-        /* echo $cnt;
+        $hit = $array["hit"]+1;
+        /* echo $hit;
         exit; */
-        $sql = "update notice2 set cnt = $cnt where idx = $n_idx;";
+        $sql = "update notice2 set hit = $hit where bid = $bid;";
         /* echo $sql;
         exit; */
         mysqli_query($dbcon, $sql);
@@ -70,8 +76,8 @@
           <ul class="aside_menu">
             <li><a href="../notice/list.php">공지사항</a></li>
             <li><a id="board1" href="#">타기관 공지사항</a></li>
-            <li><a href="../employ/list.php">직원채용 공고</a></li>
             <li><a href="../free/list.php">자유 게시판</a></li>
+            <li><a href="../employ/list.php">질문과 답변</a></li>
             <li><a href="../faq/list.php">FAQ</a></li>
           </ul>
         </div>
@@ -114,13 +120,24 @@
                     ?>
                   </td>
                   <th scope="row" class="txtc">조회수</th>
-                  <td class="b_left1"><?php echo $cnt; ?></td>
+                  <td class="b_left1"><?php echo $hit; ?></td>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td colspan="6" class="bd_contwrap">
                     <div class="board_content">
+                      <?php
+                    if($array["f_name"] && substr($array["f_type"], 0, 5) == "image"){
+                    $f_name = $array["f_name"];
+                    echo "
+                    <p>
+                      <img src=\"../data/notice2/$f_name\" alt=\"\">
+                    </p>
+                    ";
+
+                    }
+                    ?>
                       <?php 
                         // textarea의 엔터를 br로 변경
                         // str_repalce("어떤 문자를", "어떤 문자로", "어떤 값에서");
@@ -134,43 +151,56 @@
                 <tr class="table_bottom">
                   <td scope="row">첨부</td>
                   <td colspan="3" class="down_link">
-                    <span class="file"><a href="#">download.jpg</a></span>
-                    <button type="button">다운로드</button>
+                    <?php if($array["f_name"]){ ?>
+                    <span class=filename><a href="../data/notice2/<?php echo $array["f_name"]; ?>"
+                        download="<?php echo $array["f_name"]; ?>">
+                        <?php echo $array["f_name"]; ?>
+                      </a>
+                    </span>
+                    <button type="button" class="file"><a href="../data/notice2/<?php echo $array["f_name"]; ?>"
+                        download="<?php echo $array["f_name"]; ?>">
+                        다운로드
+                      </a></button>
+                    <?php } else { ?>
+                    <span style="color:#777777;">첨부된 파일이 없습니다.</span>
+                    <?php } ?>
                   </td>
                 </tr>
+                <?php if($no){?>
                 <tr class="page_prev">
                   <th scope="row" class="txtc">이전글</th>
                   <td colspan="4" class="b_left1 ">
-                    <?php if(empty($p_array['idx'])){ ?>
+                    <?php if(empty($p_array['bid'])){ ?>
                     <span>이전 글이 없습니다.</span>
                     <?php } else { ?>
-                    <a href="view.php?n_idx=<?= $p_array['idx']?>&no=<?= $no - 1 ?>"><?= $p_array['n_title'] ?></a>
+                    <a href="view.php?bid=<?= $p_array['bid']?>&no=<?= $no - 1 ?>"><?= $p_array['n_title'] ?></a>
                     <?php } ?>
                   </td>
                   <?php $w_date = substr($array["w_date"], 0, 10); ?>
                   <td class="no_date txtc">
-                    <?php echo empty($p_array['idx']) ? '.' : $w_date ?>
+                    <?php echo empty($p_array['bid']) ? '.' : $w_date ?>
                   </td>
                 </tr>
                 <tr class="page_next">
                   <th scope="row" class="txtc">다음글</th>
                   <td colspan="4" class="b_left1">
-                    <?php if(empty($n_array['idx'])){ ?>
+                    <?php if(empty($n_array['bid'])){ ?>
                     <span>다음 글이 없습니다.</span>
                     <?php } else { ?>
-                    <a href="view.php?n_idx=<?= $p_array['idx']?>&no=<?= $no + 1 ?>"><?= $n_array['n_title'] ?></a>
+                    <a href="view.php?bid=<?= $p_array['bid']?>&no=<?= $no + 1 ?>"><?= $n_array['n_title'] ?></a>
                     <?php } ?>
                   </td>
                   <td class="no_date txtc">
-                    <?php echo empty($p_array['idx']) ? '.' : $w_date ?>
+                    <?php echo empty($p_array['bid']) ? '.' : $w_date ?>
                   </td>
                 </tr>
+                <?php }?>
               </tbody>
             </table>
             <div class="btm_btns1">
               <div class="btm_btns2">
                 <button type="button"
-                  onclick="location.href='modify.php?n_idx=<?php echo $n_idx;?>&no=<?php echo $no;?>'">수정</button>
+                  onclick="location.href='modify.php?bid=<?php echo $bid;?>&no=<?php echo $no;?>'">수정</button>
                 <button type="button" onclick="remove_notice2()">삭제</button>
                 <button type="button" onclick="location.href='list.php'">목록</button>
               </div>
@@ -180,7 +210,7 @@
       </div>
     </div>
   </main>
-  <footer>
+  <footer style="margin-top: 100px;">
     <?php
       include '../inc/footer.php'
     ?>
@@ -189,7 +219,7 @@
   function remove_notice2() {
     var ck = confirm("정말 삭제하시겠습니까?");
     if (ck) {
-      location.href = "delete.php?n_idx=<?php echo $n_idx; ?>";
+      location.href = "delete.php?bid=<?php echo $bid; ?>";
     };
   };
   </script>

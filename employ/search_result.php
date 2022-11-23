@@ -29,7 +29,7 @@
 
     // 쿼리 작성
     if($category){
-      $sql = "select * from employ where $category like '%$search%' order by idx desc;";
+      $sql = "select * from employ where $category like '%$search%' order by bid desc;";
     }else{
       $sql = "select * from employ";
     };
@@ -98,16 +98,16 @@
     <script>
     function sel_view() {
       var view = document.getElementById('viewCnt');
-      var idx = view.options.selectedIndex;
-      if (idx == 0) {
+      var bid = view.options.selectedIndex;
+      if (bid == 0) {
         location.href =
           "http://localhost/gangnam_culture/employ/search_result.php?category=<?php echo $category?>&search=<?php echo $search?>&view=10"
         alert('변경되었습니다.')
-      } else if (idx == 1) {
+      } else if (bid == 1) {
         location.href =
           "http://localhost/gangnam_culture/employ/search_result.php?category=<?php echo $category?>&search=<?php echo $search?>&view=15"
         alert('변경되었습니다.');
-      } else if (idx == 2) {
+      } else if (bid == 2) {
         location.href =
           "http://localhost/gangnam_culture/employ/search_result.php?category=<?php echo $category?>&search=<?php echo $search?>&view=20"
         alert('변경되었습니다.');
@@ -130,9 +130,9 @@
           <ul class="aside_menu">
             <li><a href="../notice/list.php">공지사항</a></li>
             <li><a href="../notice2/list.php">타기관 공지사항</a></li>
-            <li><a id="board1" href="#">직원채용 공고</a></li>
-            <li><a href="board6_4.html">자유 게시판</a></li>
-            <li><a href="board6_5.html">FAQ</a></li>
+            <li><a href="../free/list.php">자유 게시판</a></li>
+            <li><a id="board1" href="#">질문과 답변</a></li>
+            <li><a href="../faq/list.php">FAQ</a></li>
           </ul>
         </div>
       </div>
@@ -184,12 +184,12 @@
 
             // paging : 시작번호부터 페이지 당 보여질 목록수 만큼 데이터 구하는 쿼리 작성
             // limit 몇번부터, 몇 개
-            // $sql = "select * from employ order by idx desc limit $start, $list_num;";
+            // $sql = "select * from employ order by bid desc limit $start, $list_num;";
 
             if($category){
-              $sql = "select * from employ where $category like '%$search%' order by idx desc limit $start, $list_num;";
+              $sql = "select * from employ where $category like '%$search%' order by bid desc limit $start, $list_num;";
           } else{
-              $sql = "select * from employ order by idx desc limit $start, $list_num;";
+              $sql = "select * from employ order by bid desc limit $start, $list_num;";
           };
             // DB에 데이터 전송
             $result = mysqli_query($dbcon, $sql);
@@ -207,7 +207,7 @@
               <tr>
                 <td class="txtc"><?php echo $i; ?></td>
                 <td id="board_t" class="txtc">
-                  <a href="view.php?n_idx=<?php echo $array["idx"]?>&no=<?= $i ?>">
+                  <a href="view.php?bid=<?php echo $array["bid"]?>&no=<?= $i ?>">
                     <?php echo $array["n_title"]; ?>
                   </a>
                 </td>

@@ -101,8 +101,8 @@
           <ul class="aside_menu">
             <li><a href="../notice/list.php">공지사항</a></li>
             <li><a href="../notice2/list.php">타기관 공지사항</a></li>
-            <li><a href="../employ/list.php">직원채용 공고</a></li>
             <li><a href="../free/list.php">자유 게시판</a></li>
+            <li><a href="../employ/list.php">질문과 답변</a></li>
             <li><a id="board1" href="#">FAQ</a></li>
           </ul>
         </div>
@@ -422,7 +422,7 @@
       </div>
     </div>
   </main>
-  <footer style="margin-top:200px">
+  <footer style="margin-top:100px">
     <?php
       include '../inc/footer.php'
     ?>

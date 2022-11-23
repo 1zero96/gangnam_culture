@@ -100,7 +100,7 @@ if($e_pageNum > $total_page){
   include "../inc/dbcon.php"; // DB 연결
 
   /** 쿼리 작성 */
-  $sql = "select * from ticket where status = '1'";
+  $sql = "select * from ticket where status > '0'";
 
   /** 쿼리 실행 */
   $result = mysqli_query($dbcon, $sql);
@@ -162,7 +162,7 @@ if($e_pageNum > $total_page){
 
             // paging : 시작번호부터 페이지 당 보여질 목록수 만큼 데이터 구하는 쿼리 작성
             // limit 몇번부터, 몇 개
-            $sql = "select * from ticket order by r_date desc limit $start, $list_num;";
+            $sql = "select * from ticket where status > '0' order by r_date desc limit $start, $list_num;";
             // echo $sql;
             /* exit; */
 

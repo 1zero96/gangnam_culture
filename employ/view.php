@@ -20,17 +20,17 @@
     <?php
         include '../inc/header.php';
         // 데이터 가져오기
-        $n_idx = $_GET["n_idx"];
+        $bid = $_GET["bid"];
         $no = $_GET["no"];
 
         // DB 연결
         include "../inc/dbcon.php";
         
         // 쿼리 작성
-        $sql = "select * from employ where idx=$n_idx;";
+        $sql = "select * from employ where bid=$bid;";
         $count_sql = "SELECT count(*) from employ";
-        $p_sql = "SELECT * FROM employ WHERE idx < $n_idx ORDER BY idx DESC LIMIT 1;";
-        $n_sql = "SELECT * FROM employ WHERE idx > $n_idx ORDER BY idx ASC LIMIT 1;";
+        $p_sql = "SELECT * FROM employ WHERE bid < $bid ORDER BY bid DESC LIMIT 1;";
+        $n_sql = "SELECT * FROM employ WHERE bid > $bid ORDER BY bid ASC LIMIT 1;";
         // echo $sql;
         // exit;
         
@@ -49,7 +49,7 @@
         $cnt = $array["cnt"]+1;
         /* echo $cnt;
         exit; */
-        $sql = "update employ set cnt = $cnt where idx = $n_idx;";
+        $sql = "update employ set cnt = $cnt where bid = $bid;";
         /* echo $sql;
         exit; */
         mysqli_query($dbcon, $sql);
@@ -70,8 +70,8 @@
           <ul class="aside_menu">
             <li><a href="../notice/list.php">공지사항</a></li>
             <li><a href="../notice2/list.php">타기관 공지사항</a></li>
-            <li><a id="board1" href="#">직원채용 공고</a></li>
             <li><a href="../free/list.php">자유 게시판</a></li>
+            <li><a id="board1" href="#">질문과 답변</a></li>
             <li><a href="../faq/list.php">FAQ</a></li>
           </ul>
         </div>
@@ -79,7 +79,7 @@
       <div class="content_wrap">
         <div class="menu_title">
           <div class="menu_txt">
-            <h1>직원채용 공고</h1>
+            <h1>질문과 답변</h1>
           </div>
         </div>
         <div class="board_wrap">
@@ -130,43 +130,56 @@
                 <tr class="table_bottom">
                   <td scope="row">첨부</td>
                   <td colspan="3" class="down_link">
-                    <span class="file"><a href="#">download.jpg</a></span>
-                    <button type="button">다운로드</button>
+                    <?php if($array["f_name"]){ ?>
+                    <span class=filename><a href="../data/employ/<?php echo $array["f_name"]; ?>"
+                        download="<?php echo $array["f_name"]; ?>">
+                        <?php echo $array["f_name"]; ?>
+                      </a>
+                    </span>
+                    <button type="button" class="file"><a href="../data/empoly/<?php echo $array["f_name"]; ?>"
+                        download="<?php echo $array["f_name"]; ?>">
+                        다운로드
+                      </a></button>
+                    <?php } else { ?>
+                    <span style="color:#777777;">첨부된 파일이 없습니다.</span>
+                    <?php } ?>
                   </td>
                 </tr>
                 <tr class="page_prev">
                   <th scope="row" class="txtc">이전글</th>
                   <td colspan="4" class="b_left1 ">
-                    <?php if(empty($p_array['idx'])){ ?>
+                    <?php if(empty($p_array['bid'])){ ?>
                     <span>이전 글이 없습니다.</span>
                     <?php } else { ?>
-                    <a href="view.php?n_idx=<?= $p_array['idx']?>&no=<?= $no - 1 ?>"><?= $p_array['n_title'] ?></a>
+                    <a href="view.php?bid=<?= $p_array['bid']?>&no=<?= $no - 1 ?>"><?= $p_array['n_title'] ?></a>
                     <?php } ?>
                   </td>
                   <?php $w_date = substr($array["w_date"], 0, 10); ?>
                   <td class="no_date txtc">
-                    <?php echo empty($p_array['idx']) ? '.' : $w_date ?>
+                    <?php echo empty($p_array['bid']) ? '.' : $w_date ?>
                   </td>
                 </tr>
                 <tr class="page_next">
                   <th scope="row" class="txtc">다음글</th>
                   <td colspan="4" class="b_left1">
-                    <?php if(empty($n_array['idx'])){ ?>
+                    <?php if(empty($n_array['bid'])){ ?>
                     <span>다음 글이 없습니다.</span>
                     <?php } else { ?>
-                    <a href="view.php?n_idx=<?= $p_array['idx']?>&no=<?= $no + 1 ?>"><?= $n_array['n_title'] ?></a>
+                    <a href="view.php?bid=<?= $p_array['bid']?>&no=<?= $no + 1 ?>"><?= $n_array['n_title'] ?></a>
                     <?php } ?>
                   </td>
                   <td class="no_date txtc">
-                    <?php echo empty($p_array['idx']) ? '.' : $w_date ?>
+                    <?php echo empty($p_array['bid']) ? '.' : $w_date ?>
                   </td>
                 </tr>
               </tbody>
             </table>
             <div class="btm_btns1">
-              <div class="btm_btns2">
+              <div class="btm_btns2" style="margin-left: 59%;">
+                <button type="button" style="background: #0d4590;"
+                  onclick="location.href='write.php?parent_id=<?php echo $array['bid']?>'">답글</button>
                 <button type="button"
-                  onclick="location.href='modify.php?n_idx=<?php echo $n_idx;?>&no=<?php echo $no;?>'">수정</button>
+                  onclick="location.href='modify.php?bid=<?php echo $bid;?>&no=<?php echo $no;?>'">수정</button>
                 <button type="button" onclick="remove_employ()">삭제</button>
                 <button type="button" onclick="location.href='list.php'">목록</button>
               </div>
@@ -176,7 +189,7 @@
       </div>
     </div>
   </main>
-  <footer>
+  <footer style="margin-top: 150px">
     <?php
       include '../inc/footer.php'
     ?>
@@ -185,7 +198,7 @@
   function remove_employ() {
     var ck = confirm("정말 삭제하시겠습니까?");
     if (ck) {
-      location.href = "delete.php?n_idx=<?php echo $n_idx; ?>";
+      location.href = "delete.php?bid=<?php echo $bid; ?>";
     };
   };
   </script>

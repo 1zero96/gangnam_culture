@@ -103,8 +103,8 @@
           <ul class="aside_menu">
             <li><a href="../notice/list.php">공지사항</a></li>
             <li><a href="../notice2/list.php">타기관 공지사항</a></li>
-            <li><a href="../employ/list.php">직원채용 공고</a></li>
             <li><a id="board1" href="#">자유 게시판</a></li>
+            <li><a href="../employ/list.php">질문과 답변</a></li>
             <li><a href="../faq/list.php">FAQ</a></li>
           </ul>
         </div>
@@ -167,9 +167,20 @@
                 </tr>
                 <tr class="table_bottom">
                   <td scope="row">첨부</td>
-                  <td colspan="4" class="down_col">
-                    <span class="file"><a href="#">download.jpg</a></span>
-                    <button class="down_btn" type="button">다운로드</button>
+                  <td colspan="3" class="down_link">
+                    <?php if($array["f_name"]){ ?>
+                    <span class=filename><a href="../data/notice/<?php echo $array["f_name"]; ?>"
+                        download="<?php echo $array["f_name"]; ?>">
+                        <?php echo $array["f_name"]; ?>
+                      </a>
+                    </span>
+                    <button type="button" class="file"><a href="../data/free/<?php echo $array["f_name"]; ?>"
+                        download="<?php echo $array["f_name"]; ?>">
+                        다운로드
+                      </a></button>
+                    <?php } else { ?>
+                    <span style="color:#777777;">첨부된 파일이 없습니다.</span>
+                    <?php } ?>
                   </td>
                   <?php 
                     if($s_id != $array['writer']){ ?>
@@ -233,7 +244,7 @@
             </div>
             <div id="memo_place" tabindex="0">
               <?php
-              ini_set( 'display_errors', '0' );
+              if(isset($memoArray)){
               foreach($memoArray as $ma){
               ?>
               <div class="card mb-4" id="memo_<?php echo $ma->memoid?>" style="max-width: 100%;margin-top:20px;">
@@ -252,6 +263,7 @@
                 </div>
               </div>
               <?php }?>
+              <?php }?>
             </div>
           </div>
         </div>
@@ -259,7 +271,7 @@
     </div>
     </div>
   </main>
-  <footer>
+  <footer style="margin-top:100px">
     <?php
       include '../inc/footer.php'
     ?>

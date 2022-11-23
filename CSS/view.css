@@ -15,7 +15,7 @@
 #main {
   width: 1194px;
   min-width: 1194px;
-  margin: 0 auto;
+  margin: 1px auto;
 }
 
 .menu_txt {
@@ -81,7 +81,7 @@
 
 .aside_menu a {
   display: block;
-  padding-top: 9.5px;
+  padding-top: 6.5px;
   padding-bottom: 10px;
   padding-left: 15px;
   box-sizing: border-box;
@@ -319,7 +319,7 @@ td.down_col {
 }
 
 td.recom_col {
-  padding: 0 15px;
+  padding: 0 117px;
 }
 
 .recom_btn {

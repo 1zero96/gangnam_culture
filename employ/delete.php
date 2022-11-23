@@ -1,6 +1,6 @@
 <?php
 // 데이터 가져오기
-$n_idx = $_GET["n_idx"];
+$bid = $_GET["bid"];
 
 // 데이터 가져오기 - 세션 활용
 // include "../inc/session.php";
@@ -10,7 +10,7 @@ include "../inc/dbcon.php";
 
 // 쿼리 작성
 // delete from 테이블명 where 필드명='값';
-$sql = "delete from employ where idx=$n_idx;";
+$sql = "delete from employ where bid=$bid;";
 
 // 쿼리 전송
 mysqli_query($dbcon, $sql);

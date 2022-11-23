@@ -5,25 +5,41 @@ include "../inc/session.php";
 // 이전 페이지에서 값 가져오기
 $n_title = $_POST["n_title"];
 $n_content = $_POST["n_content"];
+$pwd = password_hash($_POST["pwd"], PASSWORD_DEFAULT);
+
+if(isset($_POST['lockpost'])){
+    $lo_post = '1';
+}else{
+    $lo_post = '0';
+}
+
+// 파일 업로드
+if($_FILES["up_file"]["name"] != ""){
+    $tmp_name = $_FILES["up_file"]["tmp_name"];
+    $name = $_FILES["up_file"]["name"]; 
+    $up = move_uploaded_file($tmp_name, "../data/notice/$name");
+    };
+    
+    $f_name = $_FILES["up_file"]["name"];
+    $f_type = $_FILES["up_file"]["type"];
+    $f_size =  $_FILES["up_file"]["size"];
 
 // 작성일자
 $w_date = date("Y-m-d");
 
 // 값 확인
-// echo "<p> 제목 : ".$n_title."</p>";
-// echo "<p> 내용 : ".$n_content."</p>";
-// echo "<p> 작성자 : ".$s_name."</p>";
-// echo "<p> 가입일 : ".$w_date."</p>";
-// exit;
+
 
 // DB 연결
 include "../inc/dbcon.php";
 
 // 쿼리 작성
 $sql = "insert into employ(";
-$sql .= "n_title, n_content, writer, w_date";
+$sql .= "n_title, n_content, writer, pwd, w_date,";
+$sql .= "f_name, f_type, f_size, lock_post";
 $sql .= ") values(";
-$sql .= "'$n_title', '$n_content', '$s_name', '$w_date'";
+$sql .= "'$n_title', '$n_content', '$s_name', '$pwd', '$w_date', ";
+$sql .= "'$f_name', '$f_type', '$f_size', '$lo_post' ";
 $sql .= ");";
 // echo $sql;
 // exit;

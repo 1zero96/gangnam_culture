@@ -101,10 +101,10 @@
         <div class="aside_body">
           <ul class="aside_menu">
             <li><a id="board1" href="#">공지사항</a></li>
-            <li><a href="board6_2.html">타기관 공지사항</a></li>
-            <li><a href="board6_3.html">단임강사 모집공고</a></li>
-            <li><a href="board6_4.html">직원채용 공고</a></li>
-            <li><a href="board6_5.html">FAQ</a></li>
+            <li><a href="../notice2/list.php">타기관 공지사항</a></li>
+            <li><a href="../free/list.php">자유 게시판</a></li>
+            <li><a href="../employ/list.php">질문과 답변</a></li>
+            <li><a href="../faq/list.php">FAQ</a></li>
           </ul>
         </div>
       </div>
@@ -187,12 +187,11 @@
                         <textarea id="summernote" class="n_content" name="n_content">
                         <?php echo $array["n_content"]?>
                         </textarea>
-                        <input type="hidden" name="tempFolder" id="tempFolder" value="임시폴더명" />
                       </div>
                     </td>
                   </tr>
                   <tr class="table_bottom">
-                    <td scope="row">첨부파일 [<?php echo $array["f_name"]?>]</td>
+                    <td scope="row">첨부</td>
                     <td colspan="3" class="down_link">
                       <input type="file" name="up_file" id="up_file"></input>
                     </td>

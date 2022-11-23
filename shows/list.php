@@ -99,10 +99,10 @@
         <div class="aside_body">
           <ul class="aside_menu">
             <li><a href="#">이달의 일정</a></li>
-            <li><a href="board2_2.html">예매안내</a></li>
-            <li><a id="board1" href="board2_3.html">공연 안내 및 예매</a></li>
-            <li><a href="board2_4.html">전시 안내 및 예매</a></li>
-            <li><a href="board2_5.html">축제 및 행사 안내</a></li>
+            <li><a href="#">예매안내</a></li>
+            <li><a id="board1" href="#">공연 안내 및 예매</a></li>
+            <li><a href="#">전시 안내 및 예매</a></li>
+            <li><a href="#">축제 및 행사 안내</a></li>
           </ul>
         </div>
       </div>

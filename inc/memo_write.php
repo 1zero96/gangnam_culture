@@ -18,7 +18,7 @@ VALUES(".$bid.", ".$memoid.", '".$s_id."', '".$memo."', 1)";
 $result = mysqli_query($dbcon, $sql) or die($mysqli->error);
 if($result)$last_memoid = $mysqli -> insert_id;
 
-echo "<div class=\"card mb-4\" id=\"memo_".$last_memoid."\" style=\"max-width: 100%;margin-top:20px;\">
+echo "<div class=\"card mb-4\" id=\"memo_".$last_memoid."\" style=\"max-width: 100%;margin-top:20px;background:#0d459021;\">
 <div class=\"row g-0\">
     <div class=\"col-md-12\">
     <div class=\"card-body\">

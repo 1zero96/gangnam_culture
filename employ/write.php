@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="../CSS/reset.css" />
   <link rel="stylesheet" href="../CSS/header.css" />
   <link rel="stylesheet" href="../CSS/topmenu.css" />
-  <link rel="stylesheet" href="../CSS/notice_write.css" />
+  <link rel="stylesheet" href="../CSS/employ_write.css" />
   <link rel="stylesheet" href="../CSS/header.css">
   <link rel="stylesheet" href="../CSS/summernote/summernote-lite.css">
   <link rel="stylesheet" href="../CSS/footer.css" />
@@ -20,14 +20,26 @@
   $(document).ready(function() {
     //여기 아래 부분
     $('#summernote').summernote({
-      width: 770,
+      width: 770, // 에디터 넓이
       height: 300, // 에디터 높이
       minHeight: null, // 최소 높이
       maxHeight: null, // 최대 높이
-      maxweight: 700,
       focus: true, // 에디터 로딩후 포커스를 맞출지 여부
       lang: "ko-KR", // 한글 설정
-      placeholder: '최대 2048자까지 쓸 수 있습니다' //placeholder 설정
+      placeholder: '내용을 등록합니다.', //placeholder 설정
+      toolbar: [
+        ['fontsize', ['fontsize']],
+        ['style', ['bold', 'italic', 'underline', 'strikethrough', 'clear']],
+        ['color', ['forecolor', 'color']],
+        ['table', ['table']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['height', ['height']],
+        // ['insert', ['picture', 'link', 'video']],
+      ],
+      fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', '맑은 고딕', '궁서', '굴림체', '굴림', '돋움체',
+        '바탕체'
+      ],
+
     });
   });
 
@@ -91,11 +103,11 @@
         </div>
         <div class="aside_body">
           <ul class="aside_menu">
-            <li><a id="board1" href="#">공지사항</a></li>
-            <li><a href="board6_2.html">타기관 공지사항</a></li>
-            <li><a href="board6_3.html">단임강사 모집공고</a></li>
-            <li><a href="board6_4.html">직원채용 공고</a></li>
-            <li><a href="board6_5.html">FAQ</a></li>
+            <li><a href="../notice/list.php">공지사항</a></li>
+            <li><a href="../notice2/list.php">타기관 공지사항</a></li>
+            <li><a href="../free/list.php">자유 게시판</a></li>
+            <li><a id="board1" href="#">질문과 답변</a></li>
+            <li><a href="../faq/list.php">FAQ</a></li>
           </ul>
         </div>
       </div>
@@ -106,7 +118,8 @@
           </div>
         </div>
         <div class="board_wrap">
-          <form name="employ_form" action="insert.php" method="post" onsubmit="return employ_check()">
+          <form name="employ_form" action="insert.php" method="post" enctype="multipart/form-data"
+            onsubmit="return employ_check()">
             <div class="board_body">
               <table>
                 <caption class="hidden">
@@ -114,22 +127,21 @@
                 <thead>
                   <tr class="board_title">
                     <th scope="row">
-                      <label for="n_title">제목 *</label>
+                      <label for="n_title">제목 </label>
                     </th>
                     <td>
                       <input type="text" name="n_title" id="n_title" name="n_title" placeholder="제목을 입력하세요."
                         autofocus />
                     </td>
                   </tr>
-                  <!-- <tr class="board_title">
-                    <th scope="row">
-                      <label for="writer">작성자 *</label>
-                    </th>
-                    <td>
-                      <input type="text" name="writer" id="writer" name="writer" autofocus
-                        value="<?php echo $s_name; ?>" />
+                  <tr>
+                    <th>글잠금</th>
+                    <td style="padding: 0px 40px 0 26px;">
+                      <input type="password" name="pwd" id="pwd" placeholder="비밀번호">
+                      <input type="checkbox" value="1" name="lockpost" id="lockpost" style="margin-left: 15px;" />
+                      <label for="lockpost">해당 글을 잠급니다.</label>
                     </td>
-                  </tr> -->
+                  </tr>
                 </thead>
                 <tbody>
                   <tr>
@@ -142,11 +154,9 @@
                   <tr class="table_bottom">
                     <td scope="row">첨부</td>
                     <td colspan="3" class="down_link">
-                      <span class="file"><a href="#">선택된 파일 없음</a></span>
-                      <button type="button">파일선택</button>
+                      <input type="file" name="up_file" id="up_file"></input>
                     </td>
                   </tr>
-                </tbody>
               </table>
               <div class="btm_btns1">
                 <div class="btm_btns2">

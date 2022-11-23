@@ -10,7 +10,7 @@ include "../inc/dbcon.php";
 
 // 쿼리 작성
 // delete from 테이블명 where 필드명='값';
-$sql = "delete from notice2 where bid=$bid;";
+$sql = "delete from notice where bid=$bid;";
 
 // 쿼리 전송
 mysqli_query($dbcon, $sql);
@@ -22,7 +22,7 @@ mysqli_close($dbcon);
 echo "
     <script type=\"text/javascript\">
         alert(\"정상 처리되었습니다.\");
-        location.href = \"list.php\";
+        window.history.back();
     </script>
     ";
 ?>

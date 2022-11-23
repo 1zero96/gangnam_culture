@@ -100,7 +100,7 @@ if($e_pageNum > $total_page){
   include "../inc/dbcon.php"; // DB 연결
 
   /** 쿼리 작성 */
-  $sql = "select * from notice where status = '1'";
+  $sql = "select * from notice where status ='1'";
 
   /** 쿼리 실행 */
   $result = mysqli_query($dbcon, $sql);
@@ -172,22 +172,35 @@ if($e_pageNum > $total_page){
             // pager : 글번호
             $i = $start + 1;
             while($array = mysqli_fetch_array($result)){
+              $bid = $array["bid"];
         ?>
           <tr class="mem_list_content">
             <td><?php echo $i; ?></td>
-            <td><?php echo $array["n_title"]; ?></td>
+            <td>
+              <a href="http://localhost/gangnam_culture/notice/view.php?bid=<?php echo $array["bid"] ?>">
+                <?php echo $array["n_title"]; ?>
+              </a>
+            </td>
             <td><?php echo $array["writer"]; ?></td>
             <td><?php echo $array["hit"]; ?></td>
             <td>
               <?php if($array["status"] == 0){ ?>
-              <button type="button" onclick="mem_del(<?php echo $array['bid']; ?>)"><span
+              <button type="button" onclick="location.href='notice_up.php?bid=<?php echo $bid ?>'"><span
                   class="notice_up">[공지등록]</span></button>
               <?php } else if($array["status"] == 1){ ?>
-              <button type="button" onclick="mem_del(<?php echo $array['bid']; ?>)"><span
-                  class="notice_down">[공지해제]</span></button>
+              <button type="button" onclick="location.href='notice_down.php?bid=<?php echo $bid ?>'"><span class="
+                notice_down">[공지해제]</span></button>
               <?php } ?>
-              <a href="notice/admin_notice.php?bid=<?php echo $array["bid"]; ?>">[수정]</a>
+              <a href="../notice/modify.php?bid=<?php echo $array["bid"]?>&no=; ?>">[수정]</a>
               <button type="button" onclick="mem_del(<?php echo $array['bid']; ?>)">[삭제]</button>
+              <script>
+              function mem_del(params) {
+                var a = confirm("이 게시글을 삭제 하시겠습니까?");
+                if (a == true) {
+                  location.href = "notice_delete.php?bid=" + params
+                }
+              }
+              </script>
             </td>
           </tr>
           <?php

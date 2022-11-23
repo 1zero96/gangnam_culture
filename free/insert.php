@@ -6,6 +6,18 @@ include "../inc/session.php";
 $f_title = $_POST["f_title"];
 $f_content = $_POST["f_content"];
 
+// 파일 업로드
+if($_FILES["up_file"]["name"] != ""){
+    $tmp_name = $_FILES["up_file"]["tmp_name"];
+    $name = $_FILES["up_file"]["name"]; 
+    $up = move_uploaded_file($tmp_name, "../data/notice/$name");
+    };
+    
+    $f_name = $_FILES["up_file"]["name"];
+    $f_type = $_FILES["up_file"]["type"];
+    $f_size =  $_FILES["up_file"]["size"];
+    
+
 // 작성일자
 $w_date = date("Y-m-d");
 
@@ -23,7 +35,8 @@ include "../inc/dbcon.php";
 $sql = "insert into free(";
 $sql .= "u_id, f_title, f_content, writer, w_date";
 $sql .= ") values(";
-$sql .= "'$s_id', '$f_title', '$f_content', '$s_name', '$w_date'";
+$sql .= "'$s_id', '$f_title', '$f_content', '$s_name', '$w_date' ,";
+$sql .= "'$f_name', '$f_type', '$f_content'";
 $sql .= ");";
 // echo $sql;
 // exit;
