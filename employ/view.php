@@ -177,7 +177,7 @@
             <div class="btm_btns1">
               <div class="btm_btns2" style="margin-left: 59%;">
                 <button type="button" style="background: #0d4590;"
-                  onclick="location.href='write.php?parent_id=<?php echo $array['bid']?>'">답글</button>
+                  onclick="location.href='reply.php?parent_id=<?php echo $array['bid']?>'">답글</button>
                 <button type="button"
                   onclick="location.href='modify.php?bid=<?php echo $bid;?>&no=<?php echo $no;?>'">수정</button>
                 <button type="button" onclick="remove_employ()">삭제</button>

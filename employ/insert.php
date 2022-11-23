@@ -6,6 +6,7 @@ include "../inc/session.php";
 $n_title = $_POST["n_title"];
 $n_content = $_POST["n_content"];
 $pwd = password_hash($_POST["pwd"], PASSWORD_DEFAULT);
+$parent_id=$_POST["parent_id"];
 
 if(isset($_POST['lockpost'])){
     $lo_post = '1';
@@ -34,13 +35,25 @@ $w_date = date("Y-m-d");
 include "../inc/dbcon.php";
 
 // 쿼리 작성
-$sql = "insert into employ(";
-$sql .= "n_title, n_content, writer, pwd, w_date,";
-$sql .= "f_name, f_type, f_size, lock_post";
-$sql .= ") values(";
-$sql .= "'$n_title', '$n_content', '$s_name', '$pwd', '$w_date', ";
-$sql .= "'$f_name', '$f_type', '$f_size', '$lo_post' ";
-$sql .= ");";
+if($parent_id){
+    $sql = "insert into employ(";
+    $sql .= "n_title, n_content, writer, pwd, w_date,";
+    $sql .= "f_name, f_type, f_size, lock_post, parent_id";
+    $sql .= ") values(";
+    $sql .= "'$n_title', '$n_content', '$s_name', '$pwd', '$w_date', ";
+    $sql .= "'$f_name', '$f_type', '$f_size', '$lo_post', '$parent_id' ";
+    $sql .= ");";
+}else{
+    $sql = "insert into employ(";
+    $sql .= "n_title, n_content, writer, pwd, w_date,";
+    $sql .= "f_name, f_type, f_size, lock_post";
+    $sql .= ") values(";
+    $sql .= "'$n_title', '$n_content', '$s_name', '$pwd', '$w_date', ";
+    $sql .= "'$f_name', '$f_type', '$f_size', '$lo_post' ";
+    $sql .= ");";
+}
+
+
 // echo $sql;
 // exit;
 

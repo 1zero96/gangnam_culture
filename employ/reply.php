@@ -87,7 +87,19 @@
   <header>
     <?php
         include '../inc/header.php';
+        include '../inc/dbcon.php';
+        $parent_id=$_GET["parent_id"];
+
+        if($parent_id){
+
+          $sql = "select * from employ where bid=".$parent_id;
+          $result = mysqli_query($dbcon, $sql) or die("query error => ".$mysqli->error);
+          $rs = mysqli_fetch_object($result);
+          $rs->n_title = "[RE]".$rs->n_title;
+      }
+
       ?>
+
   </header>
   <div class="menu_wrap">
     <div class="menu_bar">
@@ -130,7 +142,7 @@
                     </th>
                     <td>
                       <input type="text" name="n_title" id="n_title" name="n_title" placeholder="제목을 입력하세요."
-                        autofocus />
+                        value="<?php echo $rs->n_title;?>" autofocus />
                     </td>
                   </tr>
                   <tr>
@@ -139,6 +151,7 @@
                       <input type="password" name="pwd" id="pwd" placeholder="비밀번호">
                       <input type="checkbox" value="1" name="lockpost" id="lockpost" style="margin-left: 15px;" />
                       <label for="lockpost">해당 글을 잠급니다.</label>
+                      <input type="hidden" name="parent_id" value="<?php echo $parent_id;?>">
                     </td>
                   </tr>
                 </thead>
