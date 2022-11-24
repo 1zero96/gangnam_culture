@@ -48,6 +48,7 @@
         include '../inc/header.php';
         // 데이터 가져오기
         $bid = $_GET["bid"];
+        ini_set( 'display_errors', '0' );
         $no = $_GET["no"];
 
         // DB 연결

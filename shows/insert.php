@@ -22,6 +22,7 @@ $s_array = mysqli_fetch_array($s_result);
 /** 쿼리에서 필요한 값 가져오기 */
 $h_title = $s_array["h_title"];
 $h_date =  $s_array["h_date"];
+$place = $s_array["place"];
 $credit = $s_array["price"] * $tcount; // 결제금액
 $hcount = $s_array["tcount"]; // shows 테이블의 티켓 수
 $count = $hcount + $tcount;  // 티켓 수 최신화
@@ -30,10 +31,10 @@ $t_date = date("Y-m-d H:i:s");
 /** 쿼리 작성 */
 $t_sql = "insert into ticket(";
 $t_sql .= "tcount, u_id, u_name, mobile, bid, ";
-$t_sql .= "h_title, t_date, h_date, credit";
+$t_sql .= "h_title, place, t_date, h_date, credit";
 $t_sql .= ") values(";
 $t_sql .= "'$tcount', '$u_id', '$u_name', '$mobile', '$bid',";
-$t_sql .= "'$h_title', '$t_date', '$h_date', '$credit'";
+$t_sql .= "'$h_title', '$place', '$t_date', '$h_date', '$credit'";
 $t_sql .= ");";
 
 $h_sql = "update shows set tcount ='$count' where bid ='$bid';";

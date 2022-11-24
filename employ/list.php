@@ -159,7 +159,7 @@
 
             // paging : 시작번호부터 페이지 당 보여질 목록수 만큼 데이터 구하는 쿼리 작성
             // limit 몇번부터, 몇 개
-            $sql = "select * from employ order by bid desc limit $start, $list_num;";
+            $sql = "select * from employ order by ifnull(parent_id, bid) desc limit $start, $list_num;";
             // echo $sql;
             /* exit; */
 
@@ -171,11 +171,16 @@
             // 전체데이터 - ((현재 페이지 번호 -1) * 페이지 당 목록 수)
             $i = $total - (($page - 1) * $list_num);
             while($array = mysqli_fetch_array($result)){
-              $lock = "<img src='../images/lock.png' style='padding-top: 3px;padding-left: 3px;'";
+              $lock = "<img src='../images/lock.png' style='padding-top: 3px;padding-left: 3px;'>";
+              $reply = "<img src='../images/board_re.gif' style='padding-top: 3px;padding-left: 3px;'>";
             ?>
               <tr>
                 <td class="txtc"><?php echo $i; ?></td>
                 <td id="board_t" class="txtc">
+                  <?php if($array["parent_id"]){
+                    echo "&nbsp;&nbsp;&nbsp;&nbsp;";
+                    echo $reply;
+                  } ?>
                   <?php if($array["lock_post"] == 1) {?>
                   <a href="lock_check.php?bid=<?php echo $array["bid"]?>&no=<?= $i ?>">
                     <?php echo $array["n_title"]; ?> <span><?php echo $lock ?></span>

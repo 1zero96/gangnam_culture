@@ -23,7 +23,16 @@
 <body>
   <header>
     <?php
-        include 'inc/header.php'
+        include 'inc/header.php';
+        include 'inc/dbcon.php';
+        $sql_no = "select * from notice order by bid desc limit 5;";
+        $sql_no2 = "select * from notice2 order by bid desc limit 5;";
+        $sql_f = "select * from free order by bid desc limit 5;";
+        $sql_e = "select * from employ order by bid desc limit 5;";
+        $result_no = mysqli_query($dbcon, $sql_no);
+        $result_no2 = mysqli_query($dbcon, $sql_no2);
+        $result_f = mysqli_query($dbcon, $sql_f);
+        $result_e = mysqli_query($dbcon, $sql_e);
       ?>
   </header>
   <main>
@@ -713,13 +722,16 @@
             <artice class="board_1">
               <h3 class="board_title"><span>공지</span>사항</h3>
               <ul>
+                <?php while($array = mysqli_fetch_array($result_no)){ ?>
                 <li class="board_style">
-                  <a href="#">
-                    2022년 강남예술단 찾아가는 공연 『톡톡! 음악배달부』 7월
-                    선정결과 안내</a>
-                  <span class="board1_time">2022-09-07</span>
+                  <a href="http://localhost/gangnam_culture/notice/view.php?bid=<?php echo $array["bid"] ?>">
+                    <?php echo $array["n_title"]?>
+                  </a>
+                  <?php $w_date = substr($array["w_date"], 0, 10); ?>
+                  <span class="board1_time"><?php echo $w_date?></span>
                 </li>
-                <li class="board_style">
+                <?php } ?>
+                <!-- <li class="board_style">
                   <a href="#">2022년 강남예술단 찾아가는 공연 『톡톡! 음악배달부』 7월
                     선정결과 안내</a>
                   <span class="board1_time">2022-09-02</span>
@@ -738,22 +750,26 @@
                   <a href="#">2022년 강남예술단 찾아가는 공연 『톡톡! 음악배달부』 7월
                     선정결과 안내</a>
                   <span class="board1_time">2022-04-29</span>
-                </li>
+                </li> -->
               </ul>
               <div>
-                <a class="board1_more" href="#"></a>
+                <a class="board1_more" href="notice/list.php"></a>
               </div>
             </artice>
 
             <article class="board_2">
-              <h3 class="board_title"><span>직원</span>채용</h3>
+              <h3 class="board_title"><span>타기관</span> 공지사항</h3>
               <ul>
+                <?php while($array = mysqli_fetch_array($result_no2)){ ?>
                 <li class="board_style">
-                  <a href="#">2022년 강남예술단 찾아가는 공연 『톡톡! 음악배달부』 7월
-                    선정결과 안내</a>
-                  <span class="board2_time">2022-09-07</span>
+                  <a href="http://localhost/gangnam_culture/notice2/view.php?bid=<?php echo $array["bid"] ?>">
+                    <?php echo $array["n_title"]?>
+                  </a>
+                  <?php $w_date = substr($array["w_date"], 0, 10); ?>
+                  <span class="board1_time"><?php echo $w_date?></span>
                 </li>
-                <li class="board_style">
+                <?php } ?>
+                <!-- <li class="board_style">
                   <a href="#">2022년 강남예술단 찾아가는 공연 『톡톡! 음악배달부』 7월
                     선정결과 안내</a>
                   <span class="board2_time">2022-09-02</span>
@@ -772,23 +788,27 @@
                   <a href="#">2022년 강남예술단 찾아가는 공연 『톡톡! 음악배달부』 7월
                     선정결과 안내</a>
                   <span class="board2_time">2022-04-29</span>
-                </li>
+                </li> -->
               </ul>
               <div>
-                <a class="board2_more" href="#"></a>
+                <a class="board2_more" href="notice2/list.php"></a>
               </div>
             </article>
           </div>
           <div class="board_bottom">
             <article class="board_3">
-              <h3 class="board_title"><span>언론</span>보도</h3>
+              <h3 class="board_title"><span>자유</span> 게시판</h3>
               <ul>
+                <?php while($array = mysqli_fetch_array($result_f)){ ?>
                 <li class="board_style">
-                  <a href="#">2022년 강남예술단 찾아가는 공연 『톡톡! 음악배달부』 7월
-                    선정결과 안내</a>
-                  <span class="board3_time">2022-09-07</span>
+                  <a href="http://localhost/gangnam_culture/free/view.php?bid=<?php echo $array["bid"] ?>">
+                    <?php echo $array["f_title"]?>
+                  </a>
+                  <?php $w_date = substr($array["w_date"], 0, 10); ?>
+                  <span class="board1_time"><?php echo $w_date?></span>
                 </li>
-                <li class="board_style">
+                <?php } ?>
+                <!-- <li class="board_style">
                   <a href="#">2022년 강남예술단 찾아가는 공연 『톡톡! 음악배달부』 7월
                     선정결과 안내</a>
                   <span class="board3_time">2022-09-02</span>
@@ -807,22 +827,26 @@
                   <a href="#">2022년 강남예술단 찾아가는 공연 『톡톡! 음악배달부』 7월
                     선정결과 안내</a>
                   <span class="board3_time">2022-04-29</span>
-                </li>
+                </li> -->
               </ul>
               <div>
-                <a class="board2_more" href="#"></a>
+                <a class="board2_more" href="free/list.php"></a>
               </div>
             </article>
 
             <article class="board_4">
-              <h3 class="board_title"><span>단일강사</span>모집공고</h3>
+              <h3 class="board_title"><span>질문과</span> 답변</h3>
               <ul>
+                <?php while($array = mysqli_fetch_array($result_e)){ ?>
                 <li class="board_style">
-                  <a href="#">2022년 강남예술단 찾아가는 공연 『톡톡! 음악배달부』 7월
-                    선정결과 안내</a>
-                  <span class="board4_time">2022-09-07</span>
+                  <a href="http://localhost/gangnam_culture/employ/view.php?bid=<?php echo $array["bid"] ?>">
+                    <?php echo $array["n_title"]?>
+                  </a>
+                  <?php $w_date = substr($array["w_date"], 0, 10); ?>
+                  <span class="board1_time"><?php echo $w_date?></span>
                 </li>
-                <li class="board_style">
+                <?php } ?>
+                <!-- <li class="board_style">
                   <a href="#">2022년 강남예술단 찾아가는 공연 『톡톡! 음악배달부』 7월
                     선정결과 안내</a>
                   <span class="board4_time">2022-09-02</span>
@@ -841,10 +865,10 @@
                   <a href="#">2022년 강남예술단 찾아가는 공연 『톡톡! 음악배달부』 7월
                     선정결과 안내</a>
                   <span class="board4_time">2022-04-29</span>
-                </li>
+                </li> -->
               </ul>
               <div>
-                <a class="board4_more" href="#"></a>
+                <a class="board4_more" href="employ/list.php"></a>
               </div>
             </article>
           </div>

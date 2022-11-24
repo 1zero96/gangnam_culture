@@ -95,7 +95,7 @@
           $sql = "select * from employ where bid=".$parent_id;
           $result = mysqli_query($dbcon, $sql) or die("query error => ".$mysqli->error);
           $rs = mysqli_fetch_object($result);
-          $rs->n_title = "[RE]".$rs->n_title;
+          $rs->n_title = "[답글]&nbsp;".$rs->n_title;
       }
 
       ?>

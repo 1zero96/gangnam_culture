@@ -190,6 +190,7 @@
               <td class="txtc">
                 <?php if($array["status"] == 0){?>
                 <button class="refund_btn" onclick="refund()">환불</button>
+                <input type="hidden" id="refund" value="<?php echo $array["tid"]?>">
                 <?php } else if($array["status"] == 1) { ?>
                 <button class="ron refund_btn" onclick="alert('환불 진행중입니다 잠시만 기다려주세요.')">진행중</button>
                 <?php } else if($array["status"] == 2) {?>
@@ -203,7 +204,7 @@
                 let ok = confirm("환불 신청 하시겠습니까?");
                 if (ok == true) {
                   var data = {
-                    tid: <?php echo $array["tid"]?>
+                    tid: $("#refund").val()
                   };
                   $.ajax({
                     async: false,
@@ -217,7 +218,7 @@
                         alert('관리자에게 문의해주세요');
                         return;
                       } else {
-                        alert('신청 되었습니다!');
+                        alert("환불 신청 되었습니다!");
                         window.location.reload();
                       }
                     }
