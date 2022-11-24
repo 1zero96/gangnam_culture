@@ -1,3 +1,6 @@
+<?php
+    $u_id = $_GET["u_id"];
+?>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -38,8 +41,8 @@
           <h3>환영합니다!</h3>
         </div>
         <div class="title__body">
-          <p>%admin%님 회원 가입을 축하합니다!</p>
-          <p>강남문화재단에 가입하신 아이디는 <span>%admin%</span> 입니다.</p>
+          <p><?php echo $u_id ?>님 회원 가입을 축하합니다!</p>
+          <p>강남문화재단에 가입하신 아이디는 <span><?php echo $u_id ?></span> 입니다.</p>
         </div>
         <div class="title__foot">
           <p>

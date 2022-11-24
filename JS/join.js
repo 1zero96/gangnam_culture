@@ -26,8 +26,7 @@ let email_dns = document.querySelector("#email_dns");
 let email_sel = document.querySelector("#email_sel");
 let errEmail = document.getElementById("err_email");
 
-const regPW =
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,16}/;
+const regPW = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,16}/;
 const regYear = /(19[0-9][0-9]|20\d{2})/;
 const regDay = /^((0?[1-9])|([1-2][0-9])|30|31)$/;
 const regID = /^[a-z]+[a-z0-9]{5,11}$/;
@@ -151,9 +150,7 @@ u_day.onkeyup = function () {
 
 // 전화번호 숫자만 입력되게 + '-'자동으로 입력되게 함
 const autoHyphen = (target) => {
-  target.value = target.value
-    .replace(/[^0-9]/g, "")
-    .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
+  target.value = target.value.replace(/[^0-9]/g, "").replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
 };
 
 // 전화번호 입력 안하고 다른 요소로 이동할때 메세지 띄우게 함
@@ -200,8 +197,7 @@ function form_check() {
   let addr_b = document.querySelector("#addr_b");
   let addr_d = document.querySelector("#addr_d");
   const regName = /^[가-힣a-zA-Z]+$/;
-  const regPW =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/;
+  const regPW = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}/;
   const regYear = /(19[0-9][0-9]|20\d{2})/;
   const regDay = /^((0?[1-9])|([1-2][0-9])|30|31)$/;
   const regID = /^[a-z]+[a-z0-9]{5,11}$/g;
@@ -229,8 +225,7 @@ function form_check() {
   }
   if (!isMoreThan4Length(u_id.value)) {
     errName.classList.remove("hide");
-    errID.innerHTML =
-      "* 영문자로 시작하는 6~12자 영문자 또는 숫자만 사용 가능합니다.";
+    errID.innerHTML = "* 영문자로 시작하는 6~12자 영문자 또는 숫자만 사용 가능합니다.";
     u_id.focus();
     return false;
   }

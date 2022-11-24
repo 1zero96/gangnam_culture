@@ -227,8 +227,9 @@
               }
               if($category == "etc"){
                 $category = "기타";
-              }else{
-                $category = "";
+              }
+              if($category == "division"){
+                $category = " ";
               }
             ?>
               <tr>

@@ -208,7 +208,7 @@ if($e_pageNum > $total_page){
                       alert('관리자에게 문의해주세요');
                       return;
                     } else {
-                      alert('신청 되었습니다!');
+                      alert('환불 되었습니다!');
                       window.location.reload();
                     }
                   }

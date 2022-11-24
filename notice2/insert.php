@@ -61,6 +61,9 @@ if($n_check == "on"){
   $sql .= ");";
 }
 
+// echo $sql;
+// exit;
+
 // 데이터베이스에 쿼리 전송
 mysqli_query($dbcon, $sql);
 

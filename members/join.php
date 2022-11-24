@@ -32,7 +32,7 @@
       <h1 class="title">회원가입</h1>
     </div>
     <div class="form__wrap">
-      <form name="form" class="form" action="insert.php" method="get" onsubmit="return form_check()">
+      <form name="form" class="form" action="insert.php" method="post" onsubmit="return form_check()">
         <fieldset>
           <div class="form__tit">
             <img src="../images/check_button.jpg" alt="체크아이콘" />
@@ -67,13 +67,35 @@
                 <td>
                   <input type="text" name="u_id" id="u_id" title="아이디" />
                   <span id="err_ID" class="msgRed"></span>
-                  <span class="id-failure-message hide msgRed">* 영문자로 시작하는 6~12자 영문자 또는 숫자만 사용
-                    가능합니다.</span>
-                  <span class="id-success-message hide msgBlu">사용할 수 있는 아이디 입니다.</span>
-                  <br />
-                  <input type="button" value="중복확인" class="id_Check" onclick="idCheck()" />
-                  <span>중복확인을 해주세요</span>
+                  <span id="test" class="id-failure-message msgRed hide">사용이 불가능한 아이디 입니다.</span>
+                  <span id="test2" class="id-success-message msgBlu hide">사용이 가능한 아이디 입니다.</span>
+                  <span id="test123"></span>
                 </td>
+                <script>
+                $("#u_id").change(function() {
+                  var data = {
+                    u_id: $('#u_id').val()
+                  };
+                  $.ajax({
+                    async: true,
+                    type: 'post',
+                    url: 'id_check.php',
+                    data: data,
+                    dataType: 'html',
+                    error: function() {},
+                    success: function(return_data) {
+                      if (return_data == "no") {
+                        $("#test2").addClass("hide");
+                        $("#test").removeClass("hide");
+                        return;
+                      } else if (return_data == "yes") {
+                        $("#test").addClass("hide");
+                        $("#test2").removeClass("hide");
+                      }
+                    }
+                  });
+                });
+                </script>
               </tr>
               <tr>
                 <th scope="row">
@@ -116,7 +138,7 @@
                 </th>
                 <td>
                   <input type="text" name="u_year" id="u_year" maxlength="4" />
-                  <select id="u_month" class="u_month">
+                  <select id="u_month" class="u_month" name="u_month" style="width: 50px;">
                     <option value="0">월</option>
                     <option>1</option>
                     <option>2</option>
@@ -176,8 +198,8 @@
                   <label for="ps_code">주소</label>
                 </th>
                 <td>
-                  <input type="text" name="ps_code" id="ps_code" value="" maxlength="6" title="우편번호" readonly=""
-                    placeholder="우편번호를 조회하세요." />
+                  <input type="text" name="ps_code" id="ps_code" value="" maxlength="6" title="우편번호"
+                    style="margin-bottom: 5px;" readonly="" placeholder="우편번호를 조회하세요." />
                   <a title="(새창열기)" href="javascript:DaumPostcode();void(0);" class="btn_address"
                     style="margin-left: 5px">우편번호 조회</a>
                   <span id="err_zip" class="msgRed"></span>
@@ -256,9 +278,9 @@
                 <td>
                   <span>강남문화재단에서 발송하는 이메일을
                     받아보시겠습니까?</span><br />
-                  <input type="radio" name="u_mailing" id="u_mailing1" value="y" checked="checked" title="수신동의" />
+                  <input type="radio" name="apply_mail" id="apply_mail1" value="y" checked="checked" title="수신동의" />
                   <label for="u_mailing1">예</label>
-                  <input type="radio" name="u_mailing" id="u_mailing2" value="f" title="수신거부" />
+                  <input type="radio" name="apply_mail" id="apply_mail2" value="f" title="수신거부" />
                   <label for="u_mailing2">아니오</label>
                 </td>
               </tr>
@@ -270,9 +292,9 @@
                     중요 공지사항 안내 SNS를 휴대폰으로
                     전송받으시겠습니까?</span>
                   <br />
-                  <input type="radio" name="u_sns" id="u_sns1" value="y" checked="checked" title="수신동의" />
+                  <input type="radio" name="apply_sns" id="u_sns1" value="y" checked="checked" title="수신동의" />
                   <label for="u_sns1">예</label>
-                  <input type="radio" name="u_sns" id="u_sns2" value="f" title="수신거부" />
+                  <input type="radio" name="apply_sns" id="u_sns2" value="f" title="수신거부" />
                   <label for="u_sns2">아니오</label>
                 </td>
               </tr>

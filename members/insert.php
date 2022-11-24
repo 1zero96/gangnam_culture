@@ -50,7 +50,6 @@ include "../inc/dbcon.php";
   $sql.= "'$birth','$mobile','$email','$psCode', ";
   $sql.= "'$addr_b','$addr_d','$apply_mail', ";
   $sql.= "'$apply_sns','$reg_date');";
-// echo $sql;
 
 /** 데이터 베이스에 쿼리 전송 */
 // mysqli_query("DB 연결객체","전송할 쿼리")
@@ -64,7 +63,6 @@ mysqli_close($dbcon);
 echo "
   <script type='text/javascript'>
     alert('가입을 완료했습니다.');
-    location.href='welcome.php';
-  </script>
-"
+    location.href='welcome.php?u_id=$u_id';
+  </script>"
 ?>

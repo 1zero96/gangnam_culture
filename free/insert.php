@@ -33,7 +33,9 @@ include "../inc/dbcon.php";
 
 // 쿼리 작성
 $sql = "insert into free(";
-$sql .= "u_id, f_title, f_content, writer, w_date";
+$sql .= "u_id, f_title, f_content, writer, w_date ,";
+$sql .= "f_name, f_type, f_content";
+
 $sql .= ") values(";
 $sql .= "'$s_id', '$f_title', '$f_content', '$s_name', '$w_date' ,";
 $sql .= "'$f_name', '$f_type', '$f_content'";

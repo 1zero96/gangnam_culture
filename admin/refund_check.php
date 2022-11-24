@@ -1,10 +1,6 @@
 <?php
 /** ajax 데이터 가져오기 */ 
 $tid = $_POST["tid"];
-echo $tid;
-exit;
-
-
 $tcount = $_POST["tcount"];
 $bid = $_POST["bid"];
 $r_date = date("Y-m-d H:i:s");

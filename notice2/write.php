@@ -94,7 +94,6 @@
     <?php
         include '../inc/header.php';
         include "../inc/admin_check.php";
-        $parent_id=$_GET["parent_id"];
       ?>
   </header>
   <div class="menu_wrap">
