@@ -156,3 +156,27 @@ $("#quick .tit").click(function () {
     $("#quick ul").show(250);
   }
 });
+
+// item mouseenter 하면 정보 나타나게하는 함수
+
+let item = $(".item");
+$(item).mouseenter(function () {
+  $(this).children().first().stop().fadeIn();
+});
+$(item).mouseleave(function () {
+  $(this).children().first().stop().fadeOut();
+});
+
+// item 자세히보기 클릭시 링크 이동하기
+$(".itembtn3-1").click(function () {
+  $(location).attr("href", "https://naver.com");
+});
+$(".itembtn3-2").click(function () {
+  $(location).attr("href", "https://naver.com");
+});
+$(".itembtn3-3").click(function () {
+  $(location).attr("href", "https://naver.com");
+});
+$(".itembtn3-4").click(function () {
+  $(location).attr("href", "https://naver.com");
+});

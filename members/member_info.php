@@ -15,21 +15,6 @@
   <script defer src="../JS/header.js"></script>
   <script>
   "use strict";
-  /* 제이쿼리 */
-  $(document).ready(function() {
-    /* tab Menu */
-    // $("#tabs li").click(function() {
-    //   let tab = $("#tabs li").index(this);
-    //   if ($(this).hasClass("on") === false) {
-    //     $(this).addClass("on");
-    //     $(this).siblings().removeClass("on");
-    //   }
-    //   if ($(".container > div").eq(tab).hasClass("on") === false) {
-    //     $(".container > div").eq(tab).addClass("on");
-    //     $(".container > div").eq(tab).siblings().removeClass("on");
-    //   }
-    // });
-  });
 
   function edit_form_check() {
     var pwd = document.getElementById("pwd");

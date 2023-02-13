@@ -39,7 +39,7 @@
         <?php if(!$s_idx){ ?>
         <!-- 로그인 전 -->
         <li class="topMenu__txt2">
-          <a href="http://localhost/gangnam_culture/members/join.php"><span>회원가입</span></a>
+          <a href="http://localhost/gangnam_culture/members/terms.php"><span>회원가입</span></a>
         </li>
         <li class="topMenu__txt1">
           <a href="http://localhost/gangnam_culture/login/login.php"><span>로그인</span></a>

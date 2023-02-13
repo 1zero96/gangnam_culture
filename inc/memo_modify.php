@@ -1,7 +1,6 @@
 <?php 
 include $_SERVER["DOCUMENT_ROOT"]."/gangnam_culture/inc/dbcon.php";
 include $_SERVER["DOCUMENT_ROOT"]."/gangnam_culture/inc/session.php";
-
 ini_set( 'display_errors', '0' );
 
 if(!$s_id){
@@ -10,6 +9,7 @@ if(!$s_id){
 }
 
 $memoid = $_POST['memoid'];
+$memo = $_POST['memo'];
 
 $memo_result = $mysqli->query("select * from memo where memoid=".$memoid) or die("query error => ".$mysqli->error);
 $rs = $memo_result->fetch_object();

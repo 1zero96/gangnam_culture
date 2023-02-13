@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>강남문화재단 회원가입</title>
   <link rel="stylesheet" href="../CSS/reset.css" />
+  <link rel="stylesheet" href="../CSS/topmenu.css" />
   <link rel="stylesheet" href="../CSS/header.css" />
   <link rel="stylesheet" href="../CSS/terms.css" />
   <link rel="stylesheet" href="../CSS/footer.css" />
@@ -18,17 +19,19 @@
 <body>
   <header>
     <?php
-      include '../header.php'
+      include '../inc/header.php'
     ?>
   </header>
-  <main id="main">
-    <div class="menu_title">
-      <h1 class="menu_txt">회원가입</h1>
+  <div class="menu_wrap">
+    <div class="menu_bar">
+      <p class="mbr_txt">홈 > 부가메뉴 > 이용약관</p>
     </div>
-    <h2>
+  </div>
+  <main id="main">
+    <h2 style="padding-top: 85px;">
       이용약관
       <span class="check_img">
-        <img src="./images/check_button.jpg" alt="체크아이콘" />
+        <img src="../images/check_button.jpg" alt="체크아이콘" />
       </span>
     </h2>
     <div class="box1">
@@ -345,7 +348,7 @@
     <h2>
       개인정보 수집 및 이용안내
       <span class="check_img">
-        <img src="./images/check_button.jpg" alt="체크아이콘" />
+        <img src="../images/check_button.jpg" alt="체크아이콘" />
       </span>
     </h2>
     <div class="box1">
@@ -529,7 +532,7 @@
     </div>
     <div class="next_button">
       <button type="button" onclick="pageMove()" id="moveBtn">
-        <img src="./images/next_button.jpg" alt="" style="text-align: center" ; />
+        <img src="../images/next_button.jpg" alt="" style="text-align: center" ; />
       </button>
     </div>
     <script tpye="text/javascript">
@@ -544,7 +547,7 @@
   </main>
   <footer>
     <?php
-      include '../footer.php'
+      include '../inc/footer.php'
     ?>
   </footer>
 </body>

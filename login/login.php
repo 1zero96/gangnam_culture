@@ -109,7 +109,7 @@
               </button>
             </div>
             <div class="login_box_footer">
-              <span class="login_box_txt1"><a href="../members/join.php">회원가입</a></span>
+              <span class="login_box_txt1"><a href="../members/terms.php">회원가입</a></span>
               <span class="login_box_txt2"><a href="me_find.php">아이디/비밀번호 찾기</a></span>
             </div>
           </div>

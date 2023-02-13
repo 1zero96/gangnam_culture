@@ -22,7 +22,7 @@ function pageMove() {
   // 약관 동의 확인
   let checkAll = document.getElementById("checkAll");
   if (checkAll.checked == true) {
-    window.location.href = "../3. sign_up/signup.html";
+    window.location.href = "../members/join.php";
   }
   if (checkAll.checked == false) {
     alert("약관에 동의 해주세요.");

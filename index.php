@@ -119,10 +119,10 @@
                   <div class="item item3-1">
                     <div class="content_info3-1">
                       <p>[n개의 서울] 2022 강남문화재단 ART CIRCLE</p>
-                      <br />
+                      <br>
                       <ul>
                         <li>
-                          <span>모집대상 : '강남'을 사랑하고 함께 이야기 하고<br />
+                          <span>모집대상 : '강남'을 사랑하고 함께 이야기 하고<br>
                             싶은 아마추어 예술가/창작가</span>
                         </li>
                         <li><span>모집기간 : 2022.08.01 - 22.09.12</span></li>
@@ -130,17 +130,17 @@
                           <span>신청방법 : 신청서 작성 후 이메일 발송</span>
                         </li>
                       </ul>
-                      <br />
+                      <br>
                       <div class="itembtn3-1">
-                        <span> "자세히보기"</span>
+                        <span> 자세히보기</span>
                       </div>
                     </div>
-                    <img src="images/content3_1.jpg" alt="" width="280px" height="384px" />
+                    <img src="images/content3_1.jpg" alt="" width="280" height="384">
                   </div>
                   <div class="item item3-2">
                     <div class="content_info3-2">
-                      <p>2022년 문화예술교육프로그램 <br />[나는 감상자다]</p>
-                      <br />
+                      <p>2022년 문화예술교육프로그램 <br>[나는 감상자다]</p>
+                      <br>
                       <ul>
                         <li>
                           <span>강사명 : 정유진, 정승혜, 정지혜, 이언정,
@@ -151,17 +151,17 @@
                           <span>주최 : 문화체육관광부</span>
                         </li>
                       </ul>
-                      <br />
+                      <br>
                       <div class="itembtn3-2">
-                        <span> "자세히보기"</span>
+                        <span> 자세히보기</span>
                       </div>
                     </div>
-                    <img src="images/content3_2.jpg" alt="" width="280px" height="384px" />
+                    <img src="images/content3_2.jpg" alt="" width="280" height="384">
                   </div>
                   <div class="item item3-3">
                     <div class="content_info3-3">
-                      <p>러브유어 디포 강남파빌리온<br />[LOVE YOUR DEPOT]</p>
-                      <br />
+                      <p>러브유어 디포 강남파빌리온<br>[LOVE YOUR DEPOT]</p>
+                      <br>
                       <ul>
                         <li>
                           <span>강의장소 : 강남구 수서동 520번지</span>
@@ -171,17 +171,17 @@
                           <span>주최 : 문화체육관광부, 서울시</span>
                         </li>
                       </ul>
-                      <br />
+                      <br>
                       <div class="itembtn3-3">
-                        <span> "자세히보기"</span>
+                        <span> 자세히보기</span>
                       </div>
                     </div>
-                    <img src="images/content3_3.jpg" alt="" width="280px" height="384px" />
+                    <img src="images/content3_3.jpg" alt="" width="280" height="384">
                   </div>
                   <div class="item item3-4">
                     <div class="content_info3-4">
-                      <p>[이야기가 있는 토크콘서트]<br />카라바조</p>
-                      <br />
+                      <p>[이야기가 있는 토크콘서트]<br>카라바조</p>
+                      <br>
                       <ul>
                         <li>
                           <span>출연진 : 더겐발스 뮤직 소사이어티</span>
@@ -193,17 +193,17 @@
                           <span>수강료 : 무료(선착순 예매자에 한함)</span>
                         </li>
                       </ul>
-                      <br />
+                      <br>
                       <div class="itembtn3-4">
-                        <span> "자세히보기"</span>
+                        <span> 자세히보기</span>
                       </div>
                     </div>
-                    <img src="images/content3_4.jpg" alt="" width="280px" height="384px" />
+                    <img src="images/content3_4.jpg" alt="" width="280" height="384">
                   </div>
                   <div class="item item3-5">
                     <div class="content_info3-5">
-                      <p>[이야기가 있는 토크콘서트]<br />클로드 모네</p>
-                      <br />
+                      <p>[이야기가 있는 토크콘서트]<br>클로드 모네</p>
+                      <br>
                       <ul>
                         <li>
                           <span>출연진 : 더겐발스 뮤직 소사이어티</span>
@@ -215,17 +215,17 @@
                           <span>수강료 : 무료(선착순 예매자에 한함)</span>
                         </li>
                       </ul>
-                      <br />
+                      <br>
                       <div class="itembtn3-5">
-                        <span> "자세히보기"</span>
+                        <span> 자세히보기</span>
                       </div>
                     </div>
-                    <img src="images/content3_5.jpg" alt="" width="280px" height="384px" />
+                    <img src="images/content3_5.jpg" alt="" width="280" height="384">
                   </div>
                   <div class="item item2-1">
                     <div class="content_info2-1">
-                      <p>우리동네 작음 음악회<br />[수서동 궁마을공원]</p>
-                      <br />
+                      <p>우리동네 작음 음악회<br>[수서동 궁마을공원]</p>
+                      <br>
                       <ul>
                         <li>
                           <span>출연진 : 이서연 퀸텟, 코르타도, 앙상블
@@ -236,17 +236,17 @@
                           <span>주최 : 강남문화재단, 앙상블리안, 나음아트홀</span>
                         </li>
                       </ul>
-                      <br />
+                      <br>
                       <div class="itembtn2-1">
-                        <span> "자세히보기"</span>
+                        <span> 자세히보기</span>
                       </div>
                     </div>
-                    <img src="images/content2_1.jpg" alt="" width="280px" height="384px" />
+                    <img src="images/content2_1.jpg" alt="" width="280" height="384">
                   </div>
                   <div class="item item2-2">
                     <div class="content_info2-2">
-                      <p>2022 강남페스티벌<br />[별마당 패션쇼]</p>
-                      <br />
+                      <p>2022 강남페스티벌<br>[별마당 패션쇼]</p>
+                      <br>
                       <ul>
                         <li>
                           <span>행사장소 : 스타필드 코엑스몰 별마당
@@ -259,17 +259,17 @@
                           <span>주최 : 강남구</span>
                         </li>
                       </ul>
-                      <br />
+                      <br>
                       <div class="itembtn2-2">
-                        <span> "자세히보기"</span>
+                        <span> 자세히보기</span>
                       </div>
                     </div>
-                    <img src="images/content2_2.jpg" alt="" width="280px" height="384px" />
+                    <img src="images/content2_2.jpg" alt="" width="280" height="384">
                   </div>
                   <div class="item item2-3">
                     <div class="content_info2-3">
-                      <p>2022 강남페스티벌<br />[가을의 향연]</p>
-                      <br />
+                      <p>2022 강남페스티벌<br>[가을의 향연]</p>
+                      <br>
                       <ul>
                         <li>
                           <span>행사장소 : 코엑스 K-POP 광장</span>
@@ -281,17 +281,17 @@
                           <span>주최 : 강남구, 강남문화재단, 한국무역협회</span>
                         </li>
                       </ul>
-                      <br />
+                      <br>
                       <div class="itembtn2-3">
-                        <span> "자세히보기"</span>
+                        <span> 자세히보기</span>
                       </div>
                     </div>
-                    <img src="images/content2_3.jpg" alt="" width="280px" height="384px" />
+                    <img src="images/content2_3.jpg" alt="" width="280" height="384">
                   </div>
                   <div class="item item2-4">
                     <div class="content_info2-4">
-                      <p>우리 국악 한마당<br />[라온가락뜰]</p>
-                      <br />
+                      <p>우리 국악 한마당<br>[라온가락뜰]</p>
+                      <br>
                       <ul>
                         <li>
                           <span>행사 장소 : 도산공원</span>
@@ -303,17 +303,17 @@
                           <span>가격 : 무료 공연</span>
                         </li>
                       </ul>
-                      <br />
+                      <br>
                       <div class="itembtn2-4">
-                        <span> "자세히보기"</span>
+                        <span> 자세히보기</span>
                       </div>
                     </div>
-                    <img src="images/content2_4.jpg" alt="" width="280px" height="384px" />
+                    <img src="images/content2_4.jpg" alt="" width="280" height="384">
                   </div>
                   <div class="item item1-1">
                     <div class="content_info1-1">
-                      <p>2022 목요예술무대가<br />[온담]</p>
-                      <br />
+                      <p>2022 목요예술무대가<br>[온담]</p>
+                      <br>
                       <ul>
                         <li>
                           <span>공연 장소 : 강남씨어터</span>
@@ -323,17 +323,17 @@
                           <span>예매 가격 : 무료 또는 유료(1~3만원)</span>
                         </li>
                       </ul>
-                      <br />
+                      <br>
                       <div class="itembtn1-1">
-                        <span> "자세히보기"</span>
+                        <span> 자세히보기</span>
                       </div>
                     </div>
-                    <img src="images/content1_1.jpg" alt="" width="280px" height="384px" />
+                    <img src="images/content1_1.jpg" alt="" width="280" height="384">
                   </div>
                   <div class="item item1-2">
                     <div class="content_info1-2">
-                      <p>직장인 쉼표 하나! 콘서트<br />[톡톡! 음악배달부]</p>
-                      <br />
+                      <p>직장인 쉼표 하나! 콘서트<br>[톡톡! 음악배달부]</p>
+                      <br>
                       <ul>
                         <li>
                           <span>공연 장소 : 무역센터 아셈광장</span>
@@ -343,17 +343,17 @@
                           <span>예매 가격 : 무료관람 (전체관람가)</span>
                         </li>
                       </ul>
-                      <br />
+                      <br>
                       <div class="itembtn1-2">
-                        <span> "자세히보기"</span>
+                        <span> 자세히보기</span>
                       </div>
                     </div>
-                    <img src="images/content1_2.jpg" alt="" width="280px" height="384px" />
+                    <img src="images/content1_2.jpg" alt="" width="280" height="384">
                   </div>
                   <div class="item item1-3">
                     <div class="content_info1-3">
-                      <p>18회 한마음 콘서트<br />[톡톡! 음악배달부]</p>
-                      <br />
+                      <p>18회 한마음 콘서트<br>[톡톡! 음악배달부]</p>
+                      <br>
                       <ul>
                         <li>
                           <span>공연 장소 : 자곡문화센터 4층 다목적강당</span>
@@ -365,17 +365,17 @@
                           <span>예매 가격 : 무료관람 (전체관람가)</span>
                         </li>
                       </ul>
-                      <br />
+                      <br>
                       <div class="itembtn1-3">
-                        <span> "자세히보기"</span>
+                        <span> 자세히보기</span>
                       </div>
                     </div>
-                    <img src="images/content1_3.jpg" alt="" width="280px" height="384px" />
+                    <img src="images/content1_3.jpg" alt="" width="280" height="384">
                   </div>
                   <div class="item item1-4">
                     <div class="content_info1-4">
-                      <p>18회 키즈 예술 공연<br />[계단의 아이]</p>
-                      <br />
+                      <p>18회 키즈 예술 공연<br>[계단의 아이]</p>
+                      <br>
                       <ul>
                         <li>
                           <span>공연 장소 : 강남씨어터(역삼 1문화센터 3층)</span>
@@ -387,12 +387,12 @@
                           <span>예매 가격 : 전석 5000원(6세이상)</span>
                         </li>
                       </ul>
-                      <br />
+                      <br>
                       <div class="itembtn1-4">
-                        <span> "자세히보기"</span>
+                        <span> 자세히보기</span>
                       </div>
                     </div>
-                    <img src="images/content1_4.jpg" alt="" width="280px" height="384px" />
+                    <img src="images/content1_4.jpg" alt="" width="280" height="384">
                   </div>
                 </div>
               </div>
@@ -400,8 +400,8 @@
                 <div class="slider">
                   <div class="item item1-1">
                     <div class="content_info1-1">
-                      <p>2022 목요예술무대가<br />[온담]</p>
-                      <br />
+                      <p>2022 목요예술무대가<br>[온담]</p>
+                      <br>
                       <ul>
                         <li>
                           <span>공연 장소 : 강남씨어터</span>
@@ -411,17 +411,17 @@
                           <span>예매 가격 : 무료 또는 유료(1~3만원)</span>
                         </li>
                       </ul>
-                      <br />
+                      <br>
                       <div class="itembtn1-1">
-                        <span> "자세히보기"</span>
+                        <span> 자세히보기</span>
                       </div>
                     </div>
-                    <img src="images/content1_1.jpg" alt="" width="280px" height="384px" />
+                    <img src="images/content1_1.jpg" alt="" width="280" height="384">
                   </div>
                   <div class="item item1-2">
                     <div class="content_info1-2">
-                      <p>직장인 쉼표 하나! 콘서트<br />[톡톡! 음악배달부]</p>
-                      <br />
+                      <p>직장인 쉼표 하나! 콘서트<br>[톡톡! 음악배달부]</p>
+                      <br>
                       <ul>
                         <li>
                           <span>공연 장소 : 무역센터 아셈광장</span>
@@ -431,17 +431,17 @@
                           <span>예매 가격 : 무료관람 (전체관람가)</span>
                         </li>
                       </ul>
-                      <br />
+                      <br>
                       <div class="itembtn1-2">
-                        <span> "자세히보기"</span>
+                        <span> 자세히보기</span>
                       </div>
                     </div>
-                    <img src="images/content1_2.jpg" alt="" width="280px" height="384px" />
+                    <img src="images/content1_2.jpg" alt="" width="280" height="384">
                   </div>
                   <div class="item item1-3">
                     <div class="content_info1-3">
-                      <p>18회 한마음 콘서트<br />[톡톡! 음악배달부]</p>
-                      <br />
+                      <p>18회 한마음 콘서트<br>[톡톡! 음악배달부]</p>
+                      <br>
                       <ul>
                         <li>
                           <span>공연 장소 : 자곡문화센터 4층 다목적강당</span>
@@ -453,17 +453,17 @@
                           <span>예매 가격 : 무료관람 (전체관람가)</span>
                         </li>
                       </ul>
-                      <br />
+                      <br>
                       <div class="itembtn1-3">
-                        <span> "자세히보기"</span>
+                        <span> 자세히보기</span>
                       </div>
                     </div>
-                    <img src="images/content1_3.jpg" alt="" width="280px" height="384px" />
+                    <img src="images/content1_3.jpg" alt="" width="280" height="384">
                   </div>
                   <div class="item item1-4">
                     <div class="content_info1-4">
-                      <p>18회 키즈 예술 공연<br />[계단의 아이]</p>
-                      <br />
+                      <p>18회 키즈 예술 공연<br>[계단의 아이]</p>
+                      <br>
                       <ul>
                         <li>
                           <span>공연 장소 : 강남씨어터(역삼 1문화센터 3층)</span>
@@ -475,15 +475,15 @@
                           <span>예매 가격 : 전석 5000원(6세이상)</span>
                         </li>
                       </ul>
-                      <br />
+                      <br>
                       <div class="itembtn1-4">
-                        <span> "자세히보기"</span>
+                        <span> 자세히보기</span>
                       </div>
                     </div>
-                    <img src="images/content1_4.jpg" alt="" width="280px" height="384px" />
+                    <img src="images/content1_4.jpg" alt="" width="280" height="384">
                   </div>
                   <div class="item">
-                    <img src="images/content1_1.jpg" alt="" width="280px" height="384px" />
+                    <img src="images/content1_1.jpg" alt="" width="280" height="384">
                   </div>
                 </div>
               </div>
@@ -491,8 +491,8 @@
                 <div class="slider">
                   <div class="item item2-1">
                     <div class="content_info2-1">
-                      <p>우리동네 작음 음악회<br />[수서동 궁마을공원]</p>
-                      <br />
+                      <p>우리동네 작음 음악회<br>[수서동 궁마을공원]</p>
+                      <br>
                       <ul>
                         <li>
                           <span>출연진 : 이서연 퀸텟, 코르타도, 앙상블
@@ -503,17 +503,17 @@
                           <span>주최 : 강남문화재단, 앙상블리안, 나음아트홀</span>
                         </li>
                       </ul>
-                      <br />
+                      <br>
                       <div class="itembtn2-1">
-                        <span> "자세히보기"</span>
+                        <span> 자세히보기</span>
                       </div>
                     </div>
-                    <img src="images/content2_1.jpg" alt="" width="280px" height="384px" />
+                    <img src="images/content2_1.jpg" alt="" width="280" height="384">
                   </div>
                   <div class="item item2-2">
                     <div class="content_info2-2">
-                      <p>2022 강남페스티벌<br />[별마당 패션쇼]</p>
-                      <br />
+                      <p>2022 강남페스티벌<br>[별마당 패션쇼]</p>
+                      <br>
                       <ul>
                         <li>
                           <span>행사장소 : 스타필드 코엑스몰 별마당
@@ -526,17 +526,17 @@
                           <span>주최 : 강남구</span>
                         </li>
                       </ul>
-                      <br />
+                      <br>
                       <div class="itembtn2-2">
-                        <span> "자세히보기"</span>
+                        <span> 자세히보기</span>
                       </div>
                     </div>
-                    <img src="images/content2_2.jpg" alt="" width="280px" height="384px" />
+                    <img src="images/content2_2.jpg" alt="" width="280" height="384">
                   </div>
                   <div class="item item2-3">
                     <div class="content_info2-3">
-                      <p>2022 강남페스티벌<br />[가을의 향연]</p>
-                      <br />
+                      <p>2022 강남페스티벌<br>[가을의 향연]</p>
+                      <br>
                       <ul>
                         <li>
                           <span>행사장소 : 코엑스 K-POP 광장</span>
@@ -548,17 +548,17 @@
                           <span>주최 : 강남구, 강남문화재단, 한국무역협회</span>
                         </li>
                       </ul>
-                      <br />
+                      <br>
                       <div class="itembtn2-3">
-                        <span> "자세히보기"</span>
+                        <span> 자세히보기</span>
                       </div>
                     </div>
-                    <img src="images/content2_3.jpg" alt="" width="280px" height="384px" />
+                    <img src="images/content2_3.jpg" alt="" width="280" height="384">
                   </div>
                   <div class="item item2-4">
                     <div class="content_info2-4">
-                      <p>우리 국악 한마당<br />[라온가락뜰]</p>
-                      <br />
+                      <p>우리 국악 한마당<br>[라온가락뜰]</p>
+                      <br>
                       <ul>
                         <li>
                           <span>행사 장소 : 도산공원</span>
@@ -570,17 +570,17 @@
                           <span>가격 : 무료 공연</span>
                         </li>
                       </ul>
-                      <br />
+                      <br>
                       <div class="itembtn2-4">
-                        <span> "자세히보기"</span>
+                        <span> 자세히보기</span>
                       </div>
                     </div>
-                    <img src="images/content2_4.jpg" alt="" width="280px" height="384px" />
+                    <img src="images/content2_4.jpg" alt="" width="280" height="384">
                   </div>
                   <div class="item item2-1">
                     <div class="content_info2-1">
-                      <p>우리동네 작음 음악회<br />[수서동 궁마을공원]</p>
-                      <br />
+                      <p>우리동네 작음 음악회<br>[수서동 궁마을공원]</p>
+                      <br>
                       <ul>
                         <li>
                           <span>출연진 : 이서연 퀸텟, 코르타도, 앙상블
@@ -591,12 +591,12 @@
                           <span>주최 : 강남문화재단, 앙상블리안, 나음아트홀</span>
                         </li>
                       </ul>
-                      <br />
+                      <br>
                       <div class="itembtn2-1">
-                        <span> "자세히보기"</span>
+                        <span> 자세히보기</span>
                       </div>
                     </div>
-                    <img src="images/content2_1.jpg" alt="" width="280px" height="384px" />
+                    <img src="images/content2_1.jpg" alt="" width="280" height="384">
                   </div>
                 </div>
               </div>
@@ -605,10 +605,10 @@
                   <div class="item item3-1">
                     <div class="content_info3-1">
                       <p>[n개의 서울] 2022 강남문화재단 ART CIRCLE</p>
-                      <br />
+                      <br>
                       <ul>
                         <li>
-                          <span>모집대상 : '강남'을 사랑하고 함께 이야기 하고<br />
+                          <span>모집대상 : '강남'을 사랑하고 함께 이야기 하고<br>
                             싶은 아마추어 예술가/창작가</span>
                         </li>
                         <li><span>모집기간 : 2022.08.01 - 22.09.12</span></li>
@@ -616,17 +616,17 @@
                           <span>신청방법 : 신청서 작성 후 이메일 발송</span>
                         </li>
                       </ul>
-                      <br />
+                      <br>
                       <div class="itembtn3-1">
-                        <span> "자세히보기"</span>
+                        <span> 자세히보기</span>
                       </div>
                     </div>
-                    <img src="images/content3_1.jpg" alt="" width="280px" height="384px" />
+                    <img src="images/content3_1.jpg" alt="" width="280" height="384">
                   </div>
                   <div class="item item3-2">
                     <div class="content_info3-2">
-                      <p>2022년 문화예술교육프로그램 <br />[나는 감상자다]</p>
-                      <br />
+                      <p>2022년 문화예술교육프로그램 <br>[나는 감상자다]</p>
+                      <br>
                       <ul>
                         <li>
                           <span>강사명 : 정유진, 정승혜, 정지혜, 이언정,
@@ -637,17 +637,17 @@
                           <span>주최 : 문화체육관광부</span>
                         </li>
                       </ul>
-                      <br />
+                      <br>
                       <div class="itembtn3-2">
-                        <span> "자세히보기"</span>
+                        <span> 자세히보기</span>
                       </div>
                     </div>
-                    <img src="images/content3_2.jpg" alt="" width="280px" height="384px" />
+                    <img src="images/content3_2.jpg" alt="" width="280" height="384">
                   </div>
                   <div class="item item3-3">
                     <div class="content_info3-3">
-                      <p>러브유어 디포 강남파빌리온<br />[LOVE YOUR DEPOT]</p>
-                      <br />
+                      <p>러브유어 디포 강남파빌리온<br>[LOVE YOUR DEPOT]</p>
+                      <br>
                       <ul>
                         <li>
                           <span>강의장소 : 강남구 수서동 520번지</span>
@@ -657,17 +657,17 @@
                           <span>주최 : 문화체육관광부, 서울시</span>
                         </li>
                       </ul>
-                      <br />
+                      <br>
                       <div class="itembtn3-3">
-                        <span> "자세히보기"</span>
+                        <span> 자세히보기</span>
                       </div>
                     </div>
-                    <img src="images/content3_3.jpg" alt="" width="280px" height="384px" />
+                    <img src="images/content3_3.jpg" alt="" width="280" height="384">
                   </div>
                   <div class="item item3-4">
                     <div class="content_info3-4">
-                      <p>[이야기가 있는 토크콘서트]<br />카라바조</p>
-                      <br />
+                      <p>[이야기가 있는 토크콘서트]<br>카라바조</p>
+                      <br>
                       <ul>
                         <li>
                           <span>출연진 : 더겐발스 뮤직 소사이어티</span>
@@ -679,17 +679,17 @@
                           <span>수강료 : 무료(선착순 예매자에 한함)</span>
                         </li>
                       </ul>
-                      <br />
+                      <br>
                       <div class="itembtn3-4">
-                        <span> "자세히보기"</span>
+                        <span> 자세히보기</span>
                       </div>
                     </div>
-                    <img src="images/content3_4.jpg" alt="" width="280px" height="384px" />
+                    <img src="images/content3_4.jpg" alt="" width="280" height="384">
                   </div>
                   <div class="item item3-5">
                     <div class="content_info3-5">
-                      <p>[이야기가 있는 토크콘서트]<br />클로드 모네</p>
-                      <br />
+                      <p>[이야기가 있는 토크콘서트]<br>클로드 모네</p>
+                      <br>
                       <ul>
                         <li>
                           <span>출연진 : 더겐발스 뮤직 소사이어티</span>
@@ -701,12 +701,12 @@
                           <span>수강료 : 무료(선착순 예매자에 한함)</span>
                         </li>
                       </ul>
-                      <br />
+                      <br>
                       <div class="itembtn3-5">
-                        <span> "자세히보기"</span>
+                        <span> 자세히보기</span>
                       </div>
                     </div>
-                    <img src="images/content3_5.jpg" alt="" width="280px" height="384px" />
+                    <img src="images/content3_5.jpg" alt="" width="280" height="384">
                   </div>
                 </div>
               </div>
@@ -960,16 +960,16 @@
     </p>
     <ul class="clear_fix">
       <li class="q01">
-        <a href="#"><span>메뉴 1</span></a>
+        <a href="#"><span>이달의 일정</span></a>
       </li>
       <li class="q02">
-        <a href="#"><span>메뉴 2</span></a>
+        <a href="#"><span>구독 신청</span></a>
       </li>
       <li class="q03">
-        <a href="#"><span>메뉴 3</span></a>
+        <a href="#"><span>공연 예매</span></a>
       </li>
       <li class="q04">
-        <a href="#"><span>메뉴 4</span></a>
+        <a href="#"><span>재단 위치</span></a>
       </li>
     </ul>
   </div>
